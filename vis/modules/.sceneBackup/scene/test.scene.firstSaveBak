@@ -1,0 +1,3520 @@
+{
+  "versionCode": 2,
+  "path": "scene/test.scene",
+  "width": 100.0,
+  "height": 56.52,
+  "pixelsPerUnit": 1.0,
+  "viewport": "STRETCH",
+  "physicsSettings": {
+    "physicsEnabled": true,
+    "gravityX": 0.0,
+    "gravityY": 0.0,
+    "allowSleep": true
+  },
+  "variables": {
+    "variables": []
+  },
+  "layers": [
+    {
+      "name": "spawns",
+      "id": 0,
+      "locked": false,
+      "visible": true,
+      "cordsSystem": "WORLD",
+      "@class": "EditorLayer"
+    },
+    {
+      "name": "Background",
+      "id": 1,
+      "locked": false,
+      "visible": true,
+      "cordsSystem": "WORLD",
+      "@class": "EditorLayer"
+    },
+    {
+      "name": "objects",
+      "id": 2,
+      "locked": false,
+      "visible": true,
+      "cordsSystem": "WORLD",
+      "@class": "EditorLayer"
+    },
+    {
+      "name": "scenery",
+      "id": 3,
+      "locked": false,
+      "visible": true,
+      "cordsSystem": "WORLD",
+      "@class": "EditorLayer"
+    },
+    {
+      "name": "game objects",
+      "id": 4,
+      "locked": false,
+      "visible": true,
+      "cordsSystem": "WORLD",
+      "@class": "EditorLayer"
+    }
+  ],
+  "activeLayerId": 4,
+  "groupIds": [],
+  "schemes": [
+    {
+      "components": [
+        {
+          "x": 0.0,
+          "y": 199.68213,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/concrete_texture.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 2000.0,
+          "height": 2000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "3ff3c406-1799-489f-87b1-b28dd2cd2a31",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": -76.0,
+          "y": 44.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/editor_bottom_left.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 10.0,
+          "height": 11.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "87fb74a1-0981-43ce-98d8-4841ccfb798a",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 3,
+          "@class": "Renderable"
+        },
+        {
+          "id": "bottomLeft",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 0.0,
+          "y": 0.0,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/concrete_texture.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 2000.0,
+          "height": 2000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "afbeb881-e29c-4916-b20f-b80dc7b6a7c1",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 730.0,
+          "y": 65.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "01f7cd58-f37b-49aa-ae66-586ced9510c0",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 730.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 755.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 755.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 730.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 730.0,
+                "y": 90.0
+              },
+              {
+                "x": 730.0,
+                "y": 65.0
+              },
+              {
+                "x": 755.0,
+                "y": 65.0
+              },
+              {
+                "x": 755.0,
+                "y": 90.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 662.3058,
+          "y": 85.77763,
+          "scaleX": 0.01,
+          "scaleY": 0.01,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/warehouse_metal_drum.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "1e91a69d-63af-4aed-9751-8d8fd5f7cd81",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 662.7058,
+              "y": 86.77763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.8958,
+              "y": 86.77763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 663.0858,
+              "y": 86.69763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 663.2358,
+              "y": 86.53763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 663.29584,
+              "y": 86.357635,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 663.2758,
+              "y": 86.11763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 663.18585,
+              "y": 85.95763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.9958,
+              "y": 85.81763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.77576,
+              "y": 85.78763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.5658,
+              "y": 85.83763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.4158,
+              "y": 85.95763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.3158,
+              "y": 86.14763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.3058,
+              "y": 86.357635,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.3858,
+              "y": 86.56763,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 662.5458,
+              "y": 86.717636,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 662.7058,
+                "y": 86.77763
+              },
+              {
+                "x": 662.5458,
+                "y": 86.717636
+              },
+              {
+                "x": 662.3858,
+                "y": 86.56763
+              },
+              {
+                "x": 662.3058,
+                "y": 86.357635
+              },
+              {
+                "x": 662.3158,
+                "y": 86.14763
+              },
+              {
+                "x": 662.4158,
+                "y": 85.95763
+              },
+              {
+                "x": 662.5658,
+                "y": 85.83763
+              },
+              {
+                "x": 662.77576,
+                "y": 85.78763
+              }
+            ],
+            [
+              {
+                "x": 662.77576,
+                "y": 85.78763
+              },
+              {
+                "x": 662.9958,
+                "y": 85.81763
+              },
+              {
+                "x": 663.18585,
+                "y": 85.95763
+              },
+              {
+                "x": 663.2758,
+                "y": 86.11763
+              },
+              {
+                "x": 663.29584,
+                "y": 86.357635
+              }
+            ],
+            [
+              {
+                "x": 663.29584,
+                "y": 86.357635
+              },
+              {
+                "x": 663.2358,
+                "y": 86.53763
+              },
+              {
+                "x": 663.0858,
+                "y": 86.69763
+              },
+              {
+                "x": 662.8958,
+                "y": 86.77763
+              },
+              {
+                "x": 662.7058,
+                "y": 86.77763
+              },
+              {
+                "x": 662.77576,
+                "y": 85.78763
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 700.0,
+          "y": 65.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_2.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "019f79e9-8dcd-4fdf-b9d0-c30e757252ec",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 700.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 725.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 725.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 700.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 700.0,
+                "y": 90.0
+              },
+              {
+                "x": 700.0,
+                "y": 65.0
+              },
+              {
+                "x": 725.0,
+                "y": 65.0
+              },
+              {
+                "x": 725.0,
+                "y": 90.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 670.0,
+          "y": 65.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_3.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 1000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "e4134205-62e9-4c7b-8efa-8290491c5701",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 670.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 695.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 695.0,
+              "y": 115.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 670.0,
+              "y": 115.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 670.0,
+                "y": 115.0
+              },
+              {
+                "x": 670.0,
+                "y": 65.0
+              },
+              {
+                "x": 695.0,
+                "y": 65.0
+              },
+              {
+                "x": 695.0,
+                "y": 115.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": -200.0,
+          "y": 0.0,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/concrete_texture.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 2000.0,
+          "height": 2000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "640d44f8-c496-4e3f-8784-21b54201f427",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 785.0,
+          "y": 95.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 90.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "9b10cd8f-f915-40cd-a98c-d4edd6e32cd9",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 760.0,
+              "y": 95.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 785.0,
+              "y": 95.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 785.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 760.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 760.0,
+                "y": 120.0
+              },
+              {
+                "x": 760.0,
+                "y": 95.0
+              },
+              {
+                "x": 785.0,
+                "y": 95.0
+              },
+              {
+                "x": 785.0,
+                "y": 120.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 200.0,
+          "y": 0.0,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/concrete_texture.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 2000.0,
+          "height": 2000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "cddd4033-3273-4b24-8a75-f9f741601f48",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 785.0,
+          "y": 65.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 90.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "54878a60-844a-4868-9a67-a139dd701d52",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 760.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 785.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 785.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 760.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 760.0,
+                "y": 90.0
+              },
+              {
+                "x": 760.0,
+                "y": 65.0
+              },
+              {
+                "x": 785.0,
+                "y": 65.0
+              },
+              {
+                "x": 785.0,
+                "y": 90.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 661.7711,
+          "y": 81.55148,
+          "scaleX": 0.02,
+          "scaleY": 0.02,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/warehouse_wooden_crate.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 130.0,
+          "height": 130.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "4f0fa2ee-ae14-44bc-ab24-abcfcf896026",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 661.7711,
+              "y": 81.55148,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 664.3711,
+              "y": 81.55148,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 664.3711,
+              "y": 84.15149,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 661.7711,
+              "y": 84.15149,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 661.7711,
+                "y": 84.15149
+              },
+              {
+                "x": 661.7711,
+                "y": 81.55148
+              },
+              {
+                "x": 664.3711,
+                "y": 81.55148
+              },
+              {
+                "x": 664.3711,
+                "y": 84.15149
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 670.0,
+          "y": 120.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_3.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 1000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "03e6e033-9214-4880-9888-c7270f31463f",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 670.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 695.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 695.0,
+              "y": 170.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 670.0,
+              "y": 170.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 670.0,
+                "y": 170.0
+              },
+              {
+                "x": 670.0,
+                "y": 120.0
+              },
+              {
+                "x": 695.0,
+                "y": 120.0
+              },
+              {
+                "x": 695.0,
+                "y": 170.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 700.0,
+          "y": 95.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_2.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "6c11c87c-5861-4c8c-bf49-377e41ce6f94",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 700.0,
+              "y": 95.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 725.0,
+              "y": 95.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 725.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 700.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 700.0,
+                "y": 120.0
+              },
+              {
+                "x": 700.0,
+                "y": 95.0
+              },
+              {
+                "x": 725.0,
+                "y": 95.0
+              },
+              {
+                "x": 725.0,
+                "y": 120.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 730.0,
+          "y": 95.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "c164f6e9-3df0-4742-94fe-d85947d02255",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 730.0,
+              "y": 95.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 755.0,
+              "y": 95.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 755.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 730.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 730.0,
+                "y": 120.0
+              },
+              {
+                "x": 730.0,
+                "y": 95.0
+              },
+              {
+                "x": 755.0,
+                "y": 95.0
+              },
+              {
+                "x": 755.0,
+                "y": 120.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 13.0488205,
+          "y": 159.89722,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "cdb5c920-361d-49fe-9b08-be48274cb053",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 31.0,
+          "y": 169.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 90.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "64479c36-2595-4f5e-9c4b-7a509d5297a3",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 5.9999695,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 30.99997,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 30.99997,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 5.9999695,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 5.9999695,
+                "y": 194.0
+              },
+              {
+                "x": 5.9999695,
+                "y": 169.0
+              },
+              {
+                "x": 30.99997,
+                "y": 169.0
+              },
+              {
+                "x": 30.99997,
+                "y": 194.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 58.0,
+          "y": 169.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 90.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "0a732d80-39bb-456f-8171-9ca93c13faed",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 33.00003,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 58.00003,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 58.00003,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 33.00003,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 33.00003,
+                "y": 194.0
+              },
+              {
+                "x": 33.00003,
+                "y": 169.0
+              },
+              {
+                "x": 58.00003,
+                "y": 169.0
+              },
+              {
+                "x": 58.00003,
+                "y": 194.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 19.0,
+          "y": 140.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_2.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "9678514a-ae83-42e0-ae2c-794ccd635c1c",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 19.0,
+              "y": 140.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 44.0,
+              "y": 140.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 44.0,
+              "y": 165.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 19.0,
+              "y": 165.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 19.0,
+                "y": 165.0
+              },
+              {
+                "x": 19.0,
+                "y": 140.0
+              },
+              {
+                "x": 44.0,
+                "y": 140.0
+              },
+              {
+                "x": 44.0,
+                "y": 165.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 136.0,
+          "y": 169.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "9a035c7a-0445-4265-bdfb-b080060a9b74",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 136.0,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 161.0,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 161.0,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 136.0,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 136.0,
+                "y": 194.0
+              },
+              {
+                "x": 136.0,
+                "y": 169.0
+              },
+              {
+                "x": 161.0,
+                "y": 169.0
+              },
+              {
+                "x": 161.0,
+                "y": 194.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 238.0,
+          "y": 243.0,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/editor_top_right.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 10.0,
+          "height": 11.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "eeaa7dcd-8f4b-4de2-92c5-e193740d9dbd",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 3,
+          "@class": "Renderable"
+        },
+        {
+          "id": "topRight",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 163.0,
+          "y": 169.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_1.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "b31d0ed3-4630-4df9-8c9c-248a642e4c55",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 163.0,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 188.0,
+              "y": 169.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 188.0,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 163.0,
+              "y": 194.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 163.0,
+                "y": 194.0
+              },
+              {
+                "x": 163.0,
+                "y": 169.0
+              },
+              {
+                "x": 188.0,
+                "y": 169.0
+              },
+              {
+                "x": 188.0,
+                "y": 194.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 665.0,
+          "y": 120.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 90.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_metalroof_3.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 1000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "fe79af57-99a2-4ee2-9f99-c42fd003d1dd",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 615.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 665.0,
+              "y": 120.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 665.0,
+              "y": 145.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 615.0,
+              "y": 145.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 615.0,
+                "y": 145.0
+              },
+              {
+                "x": 615.0,
+                "y": 120.0
+              },
+              {
+                "x": 665.0,
+                "y": 120.0
+              },
+              {
+                "x": 665.0,
+                "y": 145.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 659.0,
+          "y": 65.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 90.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_3.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 1000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "91985df5-4b76-4a49-a970-c513cb8b5041",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 609.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 659.0,
+              "y": 65.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 659.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 609.0,
+              "y": 90.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 609.0,
+                "y": 90.0
+              },
+              {
+                "x": 609.0,
+                "y": 65.0
+              },
+              {
+                "x": 659.0,
+                "y": 65.0
+              },
+              {
+                "x": 659.0,
+                "y": 90.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 149.0,
+          "y": 140.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_2.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 500.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "410816ef-d9ce-4673-a23f-775570d1c379",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 149.0,
+              "y": 140.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 174.0,
+              "y": 140.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 174.0,
+              "y": 165.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 149.0,
+              "y": 165.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 149.0,
+                "y": 165.0
+              },
+              {
+                "x": 149.0,
+                "y": 140.0
+              },
+              {
+                "x": 174.0,
+                "y": 140.0
+              },
+              {
+                "x": 174.0,
+                "y": 165.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 86.0,
+          "y": 127.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/map/building_tileroof_3.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 500.0,
+          "height": 1000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "367b98cd-d32b-464e-8d99-494eac5ebc3d",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        },
+        {
+          "vertices": [
+            {
+              "x": 86.0,
+              "y": 127.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 111.0,
+              "y": 127.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 111.0,
+              "y": 177.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            },
+            {
+              "x": 86.0,
+              "y": 177.0,
+              "@class": "com.badlogic.gdx.math.Vector2"
+            }
+          ],
+          "faces": [
+            [
+              {
+                "x": 86.0,
+                "y": 177.0
+              },
+              {
+                "x": 86.0,
+                "y": 127.0
+              },
+              {
+                "x": 111.0,
+                "y": 127.0
+              },
+              {
+                "x": 111.0,
+                "y": 177.0
+              }
+            ]
+          ],
+          "@class": "VisPolygon"
+        },
+        {
+          "bodyType": "StaticBody",
+          "friction": 1.0,
+          "density": 1.0,
+          "restitution": 0.0,
+          "sensor": false,
+          "gravityScale": 1.0,
+          "linearDamping": 0.0,
+          "angularDamping": 0.0,
+          "bullet": false,
+          "fixedRotation": false,
+          "active": true,
+          "sleepingAllowed": true,
+          "adjustOrigin": true,
+          "maskBits": -1,
+          "categoryBits": 1,
+          "@class": "PhysicsProperties"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 174.6842,
+          "y": 159.96538,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "4cdcd665-e8fe-4b46-800c-21aeae920c61",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 86.0,
+          "y": 122.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "5d49fb75-3a81-4ae3-83f3-65511cc77aea",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 105.0,
+          "y": 122.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "7790732d-d4ad-4d6b-a75a-c7b39dc41774",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 24.773857,
+          "y": 194.82326,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "9346b13e-e635-4565-909d-b2a8ee6ad086",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 163.99158,
+          "y": 194.6094,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "c819294d-c06f-459c-a011-df2fdd30541f",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 38.0,
+          "y": 134.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "f47d812d-b606-4053-85ae-8fef38d8c047",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 150.0,
+          "y": 134.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/editor/spawn_point_base.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 0,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "346e4899-0dcb-4c91-b4e3-0d7d223cfa0e",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "spawn",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": -200.0,
+          "y": 200.0,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/concrete_texture.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 2000.0,
+          "height": 2000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "56feb0c5-d0ce-48ad-af19-93f6bf7aa809",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 200.0,
+          "y": 200.0,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/concrete_texture.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 2000.0,
+          "height": 2000.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 1,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "fa498768-c289-4dea-94f5-2759e7e86145",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 98.0,
+          "y": 213.0,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/ui/capture_point_icon.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 4,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "74c43db0-530a-4baa-b598-cc2679ae26c7",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "capturePoint",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 126.33536,
+          "y": 213.58028,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/ui/capture_point_icon.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 4,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "b148f729-66cc-40ef-9a62-6397d536cd8d",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "capturePoint",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 80.410706,
+          "y": 195.53848,
+          "scaleX": 0.05,
+          "scaleY": 0.05,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/ui/capture_point_icon.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 4,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "9c49422b-017e-43ff-8057-0ec4545c2ce7",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "capturePoint",
+          "@class": "VisID"
+        }
+      ],
+      "@class": "EntityScheme"
+    }
+  ]
+}
