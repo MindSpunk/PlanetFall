@@ -1,6 +1,4 @@
-package com.spark.planetfall.game.actors.components.vehicle.ability;
-
-import com.spark.planetfall.game.actors.components.vehicle.VehicleStats;
+package com.spark.planetfall.game.actors.components.vehicle;
 
 /**
  * Created by godbo on 16/06/2016.

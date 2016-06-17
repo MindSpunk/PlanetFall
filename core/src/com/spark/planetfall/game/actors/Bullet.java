@@ -10,8 +10,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.spark.planetfall.game.actors.components.Transform;
 import com.spark.planetfall.game.actors.remote.Remote;
+import com.spark.planetfall.game.actors.remote.RemoteVehicleActor;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.server.packets.HitPacket;
+import com.spark.planetfall.server.packets.VehicleHitPacket;
 
 public class Bullet extends Actor {
 
@@ -67,7 +69,15 @@ public class Bullet extends Actor {
                 Remote remote = (Remote) hitscan.closestHit.getBody().getUserData();
                 HitPacket packet = new HitPacket();
                 packet.damage = damage;
-                packet.id = (int) remote.remote.id;
+                packet.id = remote.remote.id;
+                remote.handler.client.sendTCP(packet);
+            }
+            if (hitscan.closestHit.getBody().getUserData() instanceof RemoteVehicleActor) {
+                this.hit.play();
+                RemoteVehicleActor remote = (RemoteVehicleActor) hitscan.closestHit.getBody().getUserData();
+                VehicleHitPacket packet = new VehicleHitPacket();
+                packet.damage = damage;
+                packet.id = remote.remote.id;
                 remote.handler.client.sendTCP(packet);
             }
 

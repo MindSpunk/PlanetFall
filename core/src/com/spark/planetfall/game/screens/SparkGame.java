@@ -17,6 +17,7 @@ import com.kotcrab.vis.runtime.system.physics.PhysicsSystem;
 import com.spark.planetfall.game.PlanetFallClient;
 import com.spark.planetfall.game.actors.DataManager;
 import com.spark.planetfall.game.actors.Player;
+import com.spark.planetfall.game.actors.Vehicle;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
 import com.spark.planetfall.server.ClientHandler;
 
@@ -35,6 +36,7 @@ public class SparkGame implements Screen {
     public Scene scene;
     public RayHandler lightHandler;
     public UIHandler ui;
+    public Vehicle vehicle;
 
     public SparkGame(PlanetFallClient in, String ip) {
         this.game = in;

@@ -153,6 +153,11 @@ public class Harasser extends Actor implements Vehicle {
     }
 
     @Override
+    public void hit(float damage) {
+
+    }
+
+    @Override
     public void board(Player player, ConeLight light) {
 
         Log.logInfo("Boarding");

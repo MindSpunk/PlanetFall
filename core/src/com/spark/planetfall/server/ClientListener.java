@@ -6,6 +6,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.spark.planetfall.game.actors.remote.Remote;
 import com.spark.planetfall.game.actors.remote.RemoteBullet;
+import com.spark.planetfall.game.actors.remote.RemoteLightning;
 import com.spark.planetfall.game.actors.remote.RemoteHarasser;
 import com.spark.planetfall.game.actors.remote.RemoteVehicleActor;
 import com.spark.planetfall.game.screens.SparkGame;
@@ -144,6 +145,14 @@ public class ClientListener extends Listener {
                 Log.logInfo("Adding Vehicle");
                 game.stage.addActor(new RemoteHarasser(vehicle, game.world, game.handler));
             }
+            if (packet.name.equals("Lightning")) {
+                RemoteVehicle vehicle = new RemoteVehicle();
+                vehicle.id = packet.id;
+                vehicle.empty = false;
+                handler.vehicles.add(vehicle);
+                Log.logInfo("Adding Vehicle");
+                game.stage.addActor(new RemoteLightning(vehicle, game.world, game.handler));
+            }
         }
 
         if (object instanceof VehicleUpdatePacket) {
@@ -191,6 +200,10 @@ public class ClientListener extends Listener {
                     }
                 }
             }
+        }
+
+        if (object instanceof VehicleHitPacket) {
+
         }
     }
 }

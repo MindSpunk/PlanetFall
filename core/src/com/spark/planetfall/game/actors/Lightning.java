@@ -14,16 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.spark.planetfall.game.actors.components.*;
 import com.spark.planetfall.game.actors.components.player.*;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
-import com.spark.planetfall.game.actors.components.vehicle.MagriderBodyDef;
-import com.spark.planetfall.game.actors.components.vehicle.VehicleInput;
-import com.spark.planetfall.game.actors.components.vehicle.VehicleMovement;
-import com.spark.planetfall.game.actors.components.vehicle.VehicleStats;
-import com.spark.planetfall.game.actors.components.vehicle.ability.LightningStats;
+import com.spark.planetfall.game.actors.components.vehicle.*;
 import com.spark.planetfall.game.actors.components.vehicle.ability.MagBurner;
 import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.ClientHandler;
+import com.spark.planetfall.server.packets.VehicleAddPacket;
 import com.spark.planetfall.utils.Log;
 import com.spark.planetfall.utils.SparkMath;
 
@@ -32,7 +29,7 @@ public class Lightning extends Actor implements Vehicle {
     public Transform transform;
     public VehicleMovement movement;
     public VehicleInput input;
-    public Network network;
+    public VehicleNetwork network;
     public Physics physics;
     public Render render;
     public Ability ability;
@@ -61,7 +58,7 @@ public class Lightning extends Actor implements Vehicle {
         this.stage = stage;
         this.transform = new Transform(40, 40, 0);
         this.movement = new VehicleMovement(this);
-        this.network = new Network(clienthandler, transform);
+        this.network = new VehicleNetwork(clienthandler, transform);
         this.physics = new Physics(world, new MagriderBodyDef(), transform, this);
         this.render = new Render(Atlas.get().createSprite("gfx/box"));
         this.render.sprite.setSize(3, 6);
@@ -81,6 +78,13 @@ public class Lightning extends Actor implements Vehicle {
         this.ui = null;
 
         this.active = false;
+
+        VehicleAddPacket packet = new VehicleAddPacket();
+        packet.angle = transform.angle;
+        packet.position = transform.position;
+        packet.name = "Lightning";
+
+        this.network.handler.client.sendTCP(packet);
 
     }
 
@@ -144,6 +148,11 @@ public class Lightning extends Actor implements Vehicle {
 
     @Override
     public void kill() {
+
+    }
+
+    @Override
+    public void hit(float damage) {
 
     }
 

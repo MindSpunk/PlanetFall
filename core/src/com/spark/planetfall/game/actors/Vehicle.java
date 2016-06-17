@@ -10,30 +10,34 @@ import com.spark.planetfall.game.actors.weapons.WeaponController;
 
 public interface Vehicle extends Controlled {
 
-    public void board(Player player, ConeLight light);
+    void board(Player player, ConeLight light);
 
-    public Player exit();
+    Player exit();
 
-    public Movement getMovement();
+    Movement getMovement();
 
-    public Transform getTransform();
+    Transform getTransform();
 
-    public Physics getPhysics();
+    Physics getPhysics();
 
-    public Network getNetwork();
+    Network getNetwork();
 
-    public Render getRender();
+    Render getRender();
 
-    public Health getHealth();
+    Health getHealth();
 
-    public Ability getAbility();
+    Ability getAbility();
 
-    public WeaponController getWeaponController();
+    WeaponController getWeaponController();
 
-    public UIHandler getUI();
+    UIHandler getUI();
 
-    public VehicleStats getStats();
+    VehicleStats getStats();
 
-    public int getID();
+    int getID();
+
+    void hit(float damage);
+
+    void kill();
 
 }

@@ -92,8 +92,8 @@ public class Minimap extends Actor {
         this.batch.setProjectionMatrix(this.camera.combined);
         this.batch.begin();
         this.batch.draw(this.mapRegion, datamanager.mapBounds[0].x, datamanager.mapBounds[0].y);
-        for (int i = 0; i < this.capturePoints.length; i++) {
-            this.capturePoints[i].draw(this.batch);
+        for (Sprite capturePoint : this.capturePoints) {
+            capturePoint.draw(this.batch);
         }
         this.batch.end();
         this.minimap.end();
