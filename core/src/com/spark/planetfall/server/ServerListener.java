@@ -96,6 +96,10 @@ public class ServerListener extends Listener {
             HitPacket packet = (HitPacket) object;
             handler.server.sendToTCP(packet.id, packet);
         }
+        if (object instanceof VehicleHitPacket) {
+            VehicleHitPacket packet = (VehicleHitPacket) object;
+            handler.server.sendToTCP(packet.id, packet);
+        }
         if (object instanceof VehicleAddPacket) {
             Log.logInfo("ADDING VEHICLE");
             VehicleAddPacket packet = (VehicleAddPacket) object;

@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.spark.planetfall.game.actors.components.*;
@@ -20,8 +19,8 @@ import com.spark.planetfall.game.actors.components.weapons.Weapon;
 import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.constants.Constant;
+import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.game.texture.Atlas;
-import com.spark.planetfall.server.ClientHandler;
 import com.spark.planetfall.server.packets.HidePacket;
 import com.spark.planetfall.server.packets.ShowPacket;
 import com.spark.planetfall.utils.SparkMath;
@@ -50,12 +49,16 @@ public class Player extends Actor implements Controlled {
     public ConeLight coneOfView;
     public Stage elevatedStage;
     public boolean captured;
+    public SparkGame game;
 
-    public Player(World world, Stage stage, Stage elevatedStage, InputMultiplexer input, ClientHandler handler, RayHandler lightHandler, DataManager manager, UIHandler ui) {
+    public Player(SparkGame game) {
 
-        this.ui = ui;
+        this.game = game;
 
-        this.elevatedStage = elevatedStage;
+        this.ui = game.ui;
+
+        this.elevatedStage = game.elevatedStage;
+        this.stage = game.stage;
 
         Weapon[] weapons = {Weapons.AK_47.copy(), Weapons.MED_KITS.copy()};
 
@@ -63,7 +66,7 @@ public class Player extends Actor implements Controlled {
 
         this.movement = new PlayerMovement(this);
 
-        this.spawns = manager;
+        this.spawns = game.manager;
 
         this.sounds = new Sounds();
 
@@ -81,19 +84,18 @@ public class Player extends Actor implements Controlled {
 
         position = new Transform(this.spawns.spawnPoints.get(SparkMath.randInd(spawns.spawnPoints.size)), 0);
         PlayerBodyDef body = new PlayerBodyDef((render.sprite.getWidth() / 2));
-        physics = new Physics(world, body, position, this);
+        physics = new Physics(game.world, body, position, this);
 
-        this.stage = stage;
-        this.lightHandler = lightHandler;
+        this.lightHandler = game.lightHandler;
         this.lightHandler.resizeFBO((Gdx.graphics.getWidth() / 2), Gdx.graphics.getHeight() / 2);
 
         coneOfView = new ConeLight(lightHandler, 1000, new Color(0, 0, 0, 1), 1000, position.position.x, position.position.y, position.angle, Constant.CAMERA_WIDE_VIEW);
 
         this.input = new PlayerInput(this);
-        input.addProcessor(this.input);
-        this.processor = input;
+        game.input.addProcessor(this.input);
+        this.processor = game.input;
 
-        network = new Network(handler, position);
+        network = new Network(game.handler, position);
 
         this.crosshair = new CrosshairRenderer(this);
         this.captured = false;
@@ -192,7 +194,9 @@ public class Player extends Actor implements Controlled {
         this.physics.body.destroyFixture(this.physics.fixture);
         this.remove();
         this.captured = true;
-        this.network.handler.client.sendTCP(new HidePacket());
+        HidePacket packet = new HidePacket();
+        packet.id = -1;
+        this.network.handler.client.sendTCP(packet);
         return this;
     }
 
@@ -208,7 +212,9 @@ public class Player extends Actor implements Controlled {
         }
         this.movement.sprint = false;
         this.captured = false;
-        this.network.handler.client.sendTCP(new ShowPacket());
+        ShowPacket packet = new ShowPacket();
+        packet.id = -1;
+        this.network.handler.client.sendTCP(packet);
     }
 
     @Override

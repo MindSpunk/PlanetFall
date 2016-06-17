@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.spark.planetfall.game.actors.Lightning;
 import com.spark.planetfall.game.actors.Player;
 import com.spark.planetfall.game.actors.Vehicle;
+import com.spark.planetfall.server.packets.VehicleAddPacket;
 
 public class PlayerInput implements InputProcessor {
 
@@ -72,9 +73,22 @@ public class PlayerInput implements InputProcessor {
             player.controller.weapons.select(3);
         }
         if (keycode == Keys.NUM_5) {
-            Lightning harasser = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
-            harasser.getPhysics().body.setTransform(player.getTransform().position.cpy(), harasser.getPhysics().body.getAngle());
-            player.stage.addActor(harasser);
+            if (player.game.vehicle == null) {
+                Lightning harasser = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                harasser.getPhysics().body.setTransform(player.getTransform().position.cpy(), harasser.getPhysics().body.getAngle());
+                player.game.vehicle = harasser;
+                player.stage.addActor(harasser);
+
+                VehicleAddPacket packet = new VehicleAddPacket();
+                packet.angle = harasser.transform.angle;
+                packet.position = harasser.transform.position;
+                packet.name = "Lightning";
+
+                this.player.network.handler.client.sendTCP(packet);
+
+            } else {
+                player.game.vehicle = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+            }
         }
 
         return false;

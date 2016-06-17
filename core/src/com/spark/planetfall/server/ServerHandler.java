@@ -52,6 +52,7 @@ public class ServerHandler {
             kryo.register(VehicleAcceptedPacket.class);
             kryo.register(VehicleAddPacket.class);
             kryo.register(VehicleUpdatePacket.class);
+            kryo.register(VehicleHitPacket.class);
             kryo.register(ShowPacket.class);
             kryo.register(HidePacket.class);
             server.addListener(new ServerListener(game, this));
@@ -76,7 +77,6 @@ public class ServerHandler {
             }
             for (int i = 0; i < vehicles.size; i++) {
                 if (!vehicles.get(i).empty) {
-                    Log.logInfo("UPDATING VEHICLE: " + i);
                     VehicleUpdatePacket update = new VehicleUpdatePacket();
                     update.position = vehicles.get(i).position;
                     update.angle = vehicles.get(i).angle;

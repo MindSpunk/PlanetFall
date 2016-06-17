@@ -4,11 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import com.spark.planetfall.game.actors.remote.Remote;
-import com.spark.planetfall.game.actors.remote.RemoteBullet;
-import com.spark.planetfall.game.actors.remote.RemoteLightning;
-import com.spark.planetfall.game.actors.remote.RemoteHarasser;
-import com.spark.planetfall.game.actors.remote.RemoteVehicleActor;
+import com.spark.planetfall.game.actors.remote.*;
 import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
@@ -134,6 +130,10 @@ public class ClientListener extends Listener {
             Log.logCrit("HIT for: " + packet.damage);
             game.player.hit(packet.damage);
         }
+        if (object instanceof VehicleHitPacket) {
+            VehicleHitPacket packet = (VehicleHitPacket) object;
+            game.vehicle.hit(packet.damage);
+        }
 
         if (object instanceof VehicleAddPacket) {
             VehicleAddPacket packet = (VehicleAddPacket) object;
@@ -160,11 +160,8 @@ public class ClientListener extends Listener {
 
             for (int i = 0; i < handler.vehicles.size; i++) {
                 if (handler.vehicles.get(i) != null) {
-                    Log.logInfo("Updating Vehic");
                     if (!handler.vehicles.get(i).empty) {
-                        Log.logInfo("JetMemes");
                         if (handler.vehicles.get(i).id == packet.id) {
-                            Log.logInfo("Updating Vehicle From Remote");
                             handler.vehicles.get(i).position = packet.position;
                             handler.vehicles.get(i).angle = packet.angle;
                             break;
@@ -203,7 +200,18 @@ public class ClientListener extends Listener {
         }
 
         if (object instanceof VehicleHitPacket) {
+            VehicleHitPacket packet = (VehicleHitPacket) object;
+            game.vehicle.hit(packet.damage);
+        }
 
+        if (object instanceof TeleportPacket) {
+            TeleportPacket packet = (TeleportPacket) object;
+            for (Remote remote: handler.playerActors) {
+                if (remote.remote.id == packet.id) {
+                    remote.position.position = packet.location;
+                    break;
+                }
+            }
         }
     }
 }

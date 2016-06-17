@@ -37,6 +37,7 @@ public class SparkGame implements Screen {
     public RayHandler lightHandler;
     public UIHandler ui;
     public Vehicle vehicle;
+    public DataManager manager;
 
     public SparkGame(PlanetFallClient in, String ip) {
         this.game = in;
@@ -54,18 +55,18 @@ public class SparkGame implements Screen {
         stage = new Stage(scene.getEntityEngine().getSystem(CameraManager.class).getViewport());
         elevatedStage = new Stage(stage.getViewport());
 
-        DataManager mem = new DataManager();
+        manager = new DataManager();
 
-        scene.getEntityEngine().inject(mem);
+        scene.getEntityEngine().inject(manager);
 
-        mem.afterSceneInit();
+        manager.afterSceneInit();
 
         input.addProcessor(stage);
         debugRenderer = new Box2DDebugRenderer();
         handler = new ClientHandler(this, ip);
         lightHandler = new RayHandler(world, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        ui = new UIHandler(stage.getViewport(), scene, mem);
-        player = new Player(world, stage, elevatedStage, input, handler, lightHandler, mem, ui);
+        ui = new UIHandler(stage.getViewport(), scene, manager);
+        player = new Player(this);
         elevatedStage.addActor(player);
 
         Gdx.input.setInputProcessor(input);

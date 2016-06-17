@@ -20,7 +20,6 @@ import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.ClientHandler;
-import com.spark.planetfall.server.packets.VehicleAddPacket;
 import com.spark.planetfall.utils.Log;
 import com.spark.planetfall.utils.SparkMath;
 
@@ -79,13 +78,6 @@ public class Lightning extends Actor implements Vehicle {
 
         this.active = false;
 
-        VehicleAddPacket packet = new VehicleAddPacket();
-        packet.angle = transform.angle;
-        packet.position = transform.position;
-        packet.name = "Lightning";
-
-        this.network.handler.client.sendTCP(packet);
-
     }
 
     @Override
@@ -102,7 +94,6 @@ public class Lightning extends Actor implements Vehicle {
 
         if (active) {
             this.movement.update(delta);
-            this.network.update(delta);
             this.player.camera.update(delta);
 
             Vector2 angle = new Vector2(0, 1);
@@ -127,6 +118,8 @@ public class Lightning extends Actor implements Vehicle {
         this.transform.angle += 90;
         this.ability.update(delta);
         this.transform.angle -= 90;
+
+        this.network.update(delta);
 
     }
 
@@ -153,6 +146,9 @@ public class Lightning extends Actor implements Vehicle {
 
     @Override
     public void hit(float damage) {
+
+        this.health.hit(damage);
+        Log.logInfo("HIT" + damage);
 
     }
 
@@ -226,7 +222,7 @@ public class Lightning extends Actor implements Vehicle {
 
     @Override
     public Health getHealth() {
-        return null;
+        return this.health;
     }
 
     @Override

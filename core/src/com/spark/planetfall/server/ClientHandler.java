@@ -16,7 +16,6 @@ public class ClientHandler {
     public Client client;
     public SparkGame game;
     public int id;
-    public boolean connected;
     public RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
     public Remote[] playerActors = new Remote[Constant.SERVER_MAX_PLAYERS];
     public Array<RemoteVehicle> vehicles = new Array<RemoteVehicle>();
@@ -51,6 +50,7 @@ public class ClientHandler {
         kryo.register(VehicleUpdatePacket.class);
         kryo.register(ShowPacket.class);
         kryo.register(HidePacket.class);
+        kryo.register(VehicleHitPacket.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 
