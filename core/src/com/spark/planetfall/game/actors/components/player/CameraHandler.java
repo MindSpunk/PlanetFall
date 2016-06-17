@@ -9,10 +9,10 @@ import com.spark.planetfall.game.constants.Constant;
 public class CameraHandler {
 
     public float zoom;
-    public OrthographicCamera camera;
-    public Controlled player;
+    public final OrthographicCamera camera;
+    public final Controlled player;
 
-    private Vector2 lerp;
+    private final Vector2 lerp;
 
     public CameraHandler(Controlled player, OrthographicCamera camera) {
         this.camera = camera;

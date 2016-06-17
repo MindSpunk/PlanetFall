@@ -3,20 +3,20 @@ package com.spark.planetfall.game.actors.components.weapons;
 
 public interface FireMechanism {
 
-    public void update(float delta, boolean selected);
+    void update(float delta, boolean selected);
 
-    public void fire();
+    void fire();
 
-    public void setWeapon(Weapon weapon);
+    void setWeapon(Weapon weapon);
 
-    public FireMechanism copy();
+    FireMechanism copy();
 
-    public boolean canFire();
+    boolean canFire();
 
-    public float rateOfFire();
+    float rateOfFire();
 
-    public float timeToNextShot();
+    float timeToNextShot();
 
-    public boolean remainTriggered();
+    boolean remainTriggered();
 
 }

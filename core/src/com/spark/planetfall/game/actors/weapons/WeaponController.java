@@ -8,11 +8,11 @@ import com.spark.planetfall.game.actors.components.weapons.WeaponInventory;
 
 public class WeaponController {
 
-    public WeaponInventory weapons;
+    public final WeaponInventory weapons;
     public boolean aiming;
     public boolean triggered;
 
-    public Controlled controlled;
+    public final Controlled controlled;
 
     public UIHandler ui;
 

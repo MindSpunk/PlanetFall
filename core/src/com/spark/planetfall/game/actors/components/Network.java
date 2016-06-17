@@ -6,9 +6,9 @@ import com.spark.planetfall.server.packets.UpdatePacket;
 
 public class Network {
 
-    public Transform position;
+    public final Transform position;
     protected float update;
-    public ClientHandler handler;
+    public final ClientHandler handler;
 
     public Network(ClientHandler handler, Transform position) {
 

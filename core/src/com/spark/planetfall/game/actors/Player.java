@@ -13,11 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.spark.planetfall.game.actors.components.*;
 import com.spark.planetfall.game.actors.components.player.*;
-import com.spark.planetfall.game.actors.components.player.abilities.NaniteMeshGenerator;
+import com.spark.planetfall.game.actors.components.player.Class.LightAssault;
+import com.spark.planetfall.game.actors.components.player.Class.PlayerClass;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
-import com.spark.planetfall.game.actors.components.weapons.Weapon;
 import com.spark.planetfall.game.actors.weapons.WeaponController;
-import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.game.texture.Atlas;
@@ -27,29 +26,30 @@ import com.spark.planetfall.utils.SparkMath;
 
 public class Player extends Actor implements Controlled {
 
-    public Transform position;
-    public Physics physics;
-    public PlayerInput input;
-    public Stage stage;
-    public Render render;
-    public Network network;
-    public PlayerStats stats;
-    public Ability ability;
-    public WeaponController controller;
-    public CrosshairRenderer crosshair;
-    public Health health;
-    public PlayerMovement movement;
-    public UIHandler ui;
-    public CameraHandler camera;
-    public Sounds sounds;
+    public final Transform position;
+    public final Physics physics;
+    public final PlayerInput input;
+    public final Stage stage;
+    public final Render render;
+    public final Network network;
+    public final PlayerStats stats;
+    public final Ability ability;
+    public final WeaponController controller;
+    public final CrosshairRenderer crosshair;
+    public final Health health;
+    public final PlayerMovement movement;
+    public final UIHandler ui;
+    public final CameraHandler camera;
+    public final Sounds sounds;
+    public PlayerClass playerClass;
 
-    public InputMultiplexer processor;
-    public DataManager spawns;
-    public RayHandler lightHandler;
-    public ConeLight coneOfView;
-    public Stage elevatedStage;
+    public final InputMultiplexer processor;
+    public final DataManager spawns;
+    public final RayHandler lightHandler;
+    public final ConeLight coneOfView;
+    public final Stage elevatedStage;
     public boolean captured;
-    public SparkGame game;
+    public final SparkGame game;
 
     public Player(SparkGame game) {
 
@@ -59,10 +59,6 @@ public class Player extends Actor implements Controlled {
 
         this.elevatedStage = game.elevatedStage;
         this.stage = game.stage;
-
-        Weapon[] weapons = {Weapons.AK_47.copy(), Weapons.MED_KITS.copy()};
-
-        this.controller = new WeaponController(weapons, this.ui, this);
 
         this.movement = new PlayerMovement(this);
 
@@ -74,30 +70,42 @@ public class Player extends Actor implements Controlled {
 
         this.camera = new CameraHandler(this, (OrthographicCamera) stage.getCamera());
 
-        this.render = new Render(Atlas.get().createSprite("gfx/player_base"));
         this.stats = new PlayerStats();
 
-        this.ability = new NaniteMeshGenerator(this, 750, 50, 100, 50);
+        //SET EQUIPMENT AND CLASS
+        this.playerClass = new LightAssault(this);
+        this.ability = this.playerClass.ability;
+        this.controller = new WeaponController(this.playerClass.equipment, this.ui, this);
 
+        //SIZING AND CENTERING SPRITE
+        this.render = new Render(Atlas.get().createSprite("gfx/player_base"));
         render.sprite.setSize(Constant.PLAYER_SIZE, Constant.PLAYER_SIZE);
         render.sprite.setOriginCenter();
 
+        //CREATING TRANSFORM AND PHYSICS BODY
         position = new Transform(this.spawns.spawnPoints.get(SparkMath.randInd(spawns.spawnPoints.size)), 0);
         PlayerBodyDef body = new PlayerBodyDef((render.sprite.getWidth() / 2));
         physics = new Physics(game.world, body, position, this);
 
+        //SETTING LIGHT HANDLER
         this.lightHandler = game.lightHandler;
         this.lightHandler.resizeFBO((Gdx.graphics.getWidth() / 2), Gdx.graphics.getHeight() / 2);
 
+        //SETTING LIGHT
         coneOfView = new ConeLight(lightHandler, 1000, new Color(0, 0, 0, 1), 1000, position.position.x, position.position.y, position.angle, Constant.CAMERA_WIDE_VIEW);
 
+        //SETTING INPUT
         this.input = new PlayerInput(this);
         game.input.addProcessor(this.input);
         this.processor = game.input;
 
+        //SETTING NETWORK
         network = new Network(game.handler, position);
 
+        //SETTING CROSSHAIR
         this.crosshair = new CrosshairRenderer(this);
+
+        //MISC
         this.captured = false;
 
     }

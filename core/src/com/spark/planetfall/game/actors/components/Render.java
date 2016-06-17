@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Render {
 
-    public Sprite sprite;
+    public final Sprite sprite;
 
 
     public Render(Sprite sprite) {

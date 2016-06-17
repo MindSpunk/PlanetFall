@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 
 public class Effects {
 
-    private ParticleEffect shootParticle;
-    private Color bulletParticle;
+    private final ParticleEffect shootParticle;
+    private final Color bulletParticle;
 
     public Effects(String shootParticleName, Color bulletParticleName) {
 

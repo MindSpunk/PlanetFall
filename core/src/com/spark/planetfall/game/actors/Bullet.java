@@ -17,15 +17,15 @@ import com.spark.planetfall.server.packets.VehicleHitPacket;
 
 public class Bullet extends Actor {
 
-    private Transform position;
-    private Vector2 velocity;
-    private float damage;
-    private Color color;
+    private final Transform position;
+    private final Vector2 velocity;
+    private final float damage;
+    private final Color color;
 
-    protected ShapeRenderer render;
+    protected final ShapeRenderer render;
     protected float timer;
-    protected World world;
-    protected Sound hit;
+    protected final World world;
+    protected final Sound hit;
     protected Vector2 previousPosition;
     protected boolean removed;
 
@@ -70,7 +70,7 @@ public class Bullet extends Actor {
                 HitPacket packet = new HitPacket();
                 packet.damage = damage;
                 packet.id = remote.remote.id;
-                remote.handler.client.sendTCP(packet);
+                remote.handler.client.sendUDP(packet);
             }
             if (hitscan.closestHit.getBody().getUserData() instanceof RemoteVehicleActor) {
                 this.hit.play();
@@ -78,7 +78,7 @@ public class Bullet extends Actor {
                 VehicleHitPacket packet = new VehicleHitPacket();
                 packet.damage = damage;
                 packet.id = remote.remote.id;
-                remote.handler.client.sendTCP(packet);
+                remote.handler.client.sendUDP(packet);
             }
 
         }

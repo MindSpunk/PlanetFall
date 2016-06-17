@@ -16,12 +16,12 @@ import com.spark.planetfall.server.RemotePlayer;
 
 public class Remote extends Actor {
 
-    public ClientHandler handler;
-    public Transform position;
-    public Physics physics;
+    public final ClientHandler handler;
+    public final Transform position;
+    public final Physics physics;
     public Stage stage;
-    public Render render;
-    public RemotePlayer remote;
+    public final Render render;
+    public final RemotePlayer remote;
 
     public Remote(RemotePlayer remote, World world, ClientHandler handler) {
 

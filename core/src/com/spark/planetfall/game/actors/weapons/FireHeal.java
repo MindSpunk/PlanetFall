@@ -12,8 +12,8 @@ public class FireHeal implements Action {
     private Controlled player;
     private Weapon weapon;
 
-    private boolean rendersShapes;
-    private boolean hitMarkerUsed;
+    private final boolean rendersShapes;
+    private final boolean hitMarkerUsed;
 
     public FireHeal(boolean rendersShapes, boolean hitMarkerUsed) {
 

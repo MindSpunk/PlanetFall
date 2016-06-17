@@ -6,20 +6,20 @@ import com.spark.planetfall.game.actors.Controlled;
 
 public interface Action {
 
-    public boolean fire(ShapeRenderer renderer, Sound sound, float angle);
+    boolean fire(ShapeRenderer renderer, Sound sound, float angle);
 
     boolean fire(ShapeRenderer renderer, float angle);
 
     boolean fire(float angle);
 
-    public boolean update(float delta);
+    boolean update(float delta);
 
-    public float getBarrel();
+    float getBarrel();
 
-    public void setWeapon(Weapon weapon);
+    void setWeapon(Weapon weapon);
 
-    public void setPlayer(Controlled controlled);
+    void setPlayer(Controlled controlled);
 
-    public Action copy();
+    Action copy();
 
 }

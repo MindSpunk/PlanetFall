@@ -68,13 +68,13 @@ public enum Weapons {
             new FireBullet(2));
 
 
-    public FireMechanism fireMechanism;
-    public ReloadMechanism reloadMechanism;
-    public Magazine magazine;
-    public RecoilMechanism recoilMechanism;
-    public StatModifiers statModifiers;
-    public Effects effects;
-    public Action action;
+    public final FireMechanism fireMechanism;
+    public final ReloadMechanism reloadMechanism;
+    public final Magazine magazine;
+    public final RecoilMechanism recoilMechanism;
+    public final StatModifiers statModifiers;
+    public final Effects effects;
+    public final Action action;
 
     Weapons(FireMechanism fireMechanism, Magazine magazine, RecoilMechanism recoilMechanism, ReloadMechanism reloadMechanism, StatModifiers statModifiers, Effects effects, Action action) {
 

@@ -7,8 +7,8 @@ import com.spark.planetfall.game.actors.Player;
 
 public class Particles {
 
-    public ParticleEffect shot;
-    public Player player;
+    public final ParticleEffect shot;
+    public final Player player;
 
     public Particles(Player player) {
 

@@ -16,12 +16,12 @@ import com.spark.planetfall.server.RemoteVehicle;
 
 public class RemoteVehicleActor extends Actor {
 
-    public ClientHandler handler;
-    public Transform position;
+    public final ClientHandler handler;
+    public final Transform position;
     public Physics physics;
     public Stage stage;
     public Render render;
-    public RemoteVehicle remote;
+    public final RemoteVehicle remote;
 
     public RemoteVehicleActor(RemoteVehicle remote, World world, ClientHandler handler) {
 

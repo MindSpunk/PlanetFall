@@ -16,21 +16,21 @@ import com.spark.planetfall.game.ui.GUISkin;
 
 public class UIHandler {
 
-    public Stage stage;
+    public final Stage stage;
 
-    public ProgressBar healthBar;
-    public ProgressBar shieldBar;
-    public ProgressBar abilityBar;
-    public Label healthLabel;
-    public Label shieldLabel;
-    public Label abilityLabel;
-    public Label ammoLabel;
-    public Label ammo;
-    public Minimap minimap;
-    public BitmapFont font;
-    public Window minimapBound;
+    public final ProgressBar healthBar;
+    public final ProgressBar shieldBar;
+    public final ProgressBar abilityBar;
+    public final Label healthLabel;
+    public final Label shieldLabel;
+    public final Label abilityLabel;
+    public final Label ammoLabel;
+    public final Label ammo;
+    public final Minimap minimap;
+    public final BitmapFont font;
+    public final Window minimapBound;
 
-    public Window table;
+    public final Window table;
 
     public UIHandler(Viewport viewport, Scene scene, DataManager datamanager) {
 

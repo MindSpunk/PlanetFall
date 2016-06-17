@@ -9,11 +9,11 @@ import com.spark.planetfall.game.actors.components.BodyBuild;
 
 public class HarasserBodyDef implements BodyBuild {
 
-    private BodyDef bodyDef;
-    private FixtureDef fixtureDef;
-    private Shape shape;
-    private float dampening;
-    private float angularDampening;
+    private final BodyDef bodyDef;
+    private final FixtureDef fixtureDef;
+    private final Shape shape;
+    private final float dampening;
+    private final float angularDampening;
 
     public HarasserBodyDef() {
 

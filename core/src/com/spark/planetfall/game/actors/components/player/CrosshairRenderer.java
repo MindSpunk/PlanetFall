@@ -11,7 +11,7 @@ public class CrosshairRenderer {
 
     private Controlled player;
 
-    public ShapeRenderer renderer;
+    public final ShapeRenderer renderer;
 
     public CrosshairRenderer(Player player) {
         this.player = player;

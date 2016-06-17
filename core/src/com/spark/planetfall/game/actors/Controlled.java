@@ -11,24 +11,24 @@ import com.spark.planetfall.game.actors.weapons.WeaponController;
 
 public interface Controlled {
 
-    public void kill();
+    void kill();
 
-    public Transform getTransform();
+    Transform getTransform();
 
-    public Physics getPhysics();
+    Physics getPhysics();
 
-    public Network getNetwork();
+    Network getNetwork();
 
-    public Health getHealth();
+    Health getHealth();
 
-    public WeaponController getWeaponController();
+    WeaponController getWeaponController();
 
-    public Movement getMovement();
+    Movement getMovement();
 
-    public Stage getStage();
+    Stage getStage();
 
-    public boolean isCaptured();
+    boolean isCaptured();
 
-    public void newActor(Actor actor);
+    void newActor(Actor actor);
 
 }

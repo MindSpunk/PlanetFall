@@ -3,11 +3,11 @@ package com.spark.planetfall.game.actors.components.weapons;
 
 public class Magazine {
 
-    private float damage;
-    private float velocity;
-    private int pellets;
-    private float pelletSpread;
-    private int capacity;
+    private final float damage;
+    private final float velocity;
+    private final int pellets;
+    private final float pelletSpread;
+    private final int capacity;
 
     protected int amount;
 

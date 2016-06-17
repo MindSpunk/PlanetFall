@@ -13,12 +13,12 @@ import java.io.IOException;
 
 public class ClientHandler {
 
-    public Client client;
-    public SparkGame game;
+    public final Client client;
+    public final SparkGame game;
     public int id;
-    public RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
-    public Remote[] playerActors = new Remote[Constant.SERVER_MAX_PLAYERS];
-    public Array<RemoteVehicle> vehicles = new Array<RemoteVehicle>();
+    public final RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
+    public final Remote[] playerActors = new Remote[Constant.SERVER_MAX_PLAYERS];
+    public final Array<RemoteVehicle> vehicles = new Array<RemoteVehicle>();
 
     public ClientHandler(SparkGame game, String ip) {
 
@@ -48,9 +48,9 @@ public class ClientHandler {
         kryo.register(VehicleAcceptedPacket.class);
         kryo.register(VehicleAddPacket.class);
         kryo.register(VehicleUpdatePacket.class);
+        kryo.register(VehicleHitPacket.class);
         kryo.register(ShowPacket.class);
         kryo.register(HidePacket.class);
-        kryo.register(VehicleHitPacket.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 

@@ -3,13 +3,13 @@ package com.spark.planetfall.game.actors.components.weapons;
 
 public class Weapon {
 
-    private ReloadMechanism reload;
-    private RecoilMechanism recoil;
-    private Magazine magazine;
-    private FireMechanism mechanism;
-    private StatModifiers modifiers;
-    private Effects effects;
-    private Action action;
+    private final ReloadMechanism reload;
+    private final RecoilMechanism recoil;
+    private final Magazine magazine;
+    private final FireMechanism mechanism;
+    private final StatModifiers modifiers;
+    private final Effects effects;
+    private final Action action;
 
     public Weapon(FireMechanism fireMechanism, Magazine magazine, RecoilMechanism recoilMechanism, ReloadMechanism reloadMechanism, StatModifiers statModifiers, Effects effects, Action action) {
 

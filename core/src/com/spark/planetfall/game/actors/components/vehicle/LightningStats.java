@@ -1,8 +1,5 @@
 package com.spark.planetfall.game.actors.components.vehicle;
 
-/**
- * Created by godbo on 16/06/2016.
- */
 public class LightningStats extends VehicleStats {
 
     public LightningStats() {

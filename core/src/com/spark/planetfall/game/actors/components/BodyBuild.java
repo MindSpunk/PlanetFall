@@ -6,16 +6,16 @@ import com.badlogic.gdx.physics.box2d.Shape;
 
 public interface BodyBuild {
 
-    public BodyDef bodyDef();
+    BodyDef bodyDef();
 
-    public FixtureDef fixtureDef();
+    FixtureDef fixtureDef();
 
-    public Shape shape();
+    Shape shape();
 
-    public float dampening();
+    float dampening();
 
-    public float angularDampening();
+    float angularDampening();
 
-    public void dispose();
+    void dispose();
 
 }

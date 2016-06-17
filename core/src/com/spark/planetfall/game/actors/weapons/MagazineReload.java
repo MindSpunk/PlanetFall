@@ -6,10 +6,10 @@ import com.spark.planetfall.utils.Log;
 
 public class MagazineReload implements ReloadMechanism {
 
-    private float shortReload;
-    private float longReload;
+    private final float shortReload;
+    private final float longReload;
     private Weapon weapon;
-    private int longTrigger;
+    private final int longTrigger;
     private boolean canFire;
 
     protected float timer;

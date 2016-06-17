@@ -6,15 +6,15 @@ import com.spark.planetfall.game.actors.components.player.Ability;
 
 public class MagBurner implements Ability {
 
-    private float fuelCapacity;
-    private Vehicle vehicle;
-    private float regenRate;
+    private final float fuelCapacity;
+    private final Vehicle vehicle;
+    private final float regenRate;
 
-    private float maxSpeed;
+    private final float maxSpeed;
 
     protected boolean active;
     protected float fuel;
-    protected boolean hold;
+    protected final boolean hold;
 
     public MagBurner(Vehicle player, float fuelCapacity, float regenRate) {
 

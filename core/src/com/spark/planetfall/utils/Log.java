@@ -2,9 +2,9 @@ package com.spark.planetfall.utils;
 
 public class Log {
 
-    private static String logInfoTag = "[INFO]";
-    private static String logWarnTag = "[WARNING]";
-    private static String critWarnTag = "[CRITICAL]";
+    private static final String logInfoTag = "[INFO]";
+    private static final String logWarnTag = "[WARNING]";
+    private static final String critWarnTag = "[CRITICAL]";
 
     public static void logInfo(String message) {
         System.out.println(logInfoTag + message);

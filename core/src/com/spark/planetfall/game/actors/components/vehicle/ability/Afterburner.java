@@ -6,17 +6,17 @@ import com.spark.planetfall.game.actors.components.player.Ability;
 
 public class Afterburner implements Ability {
 
-    private float fuelCapacity;
-    private Vehicle vehicle;
-    private float regenRate;
+    private final float fuelCapacity;
+    private final Vehicle vehicle;
+    private final float regenRate;
 
-    private float maxSpeed;
+    private final float maxSpeed;
 
-    private float maxVel;
+    private final float maxVel;
 
     protected boolean active;
     protected float fuel;
-    protected boolean hold;
+    protected final boolean hold;
 
     public Afterburner(Vehicle player, float fuelCapacity, float regenRate) {
 

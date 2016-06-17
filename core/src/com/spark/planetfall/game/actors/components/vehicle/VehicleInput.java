@@ -7,7 +7,7 @@ import com.spark.planetfall.game.actors.Vehicle;
 
 public class VehicleInput implements InputProcessor {
 
-    public Vehicle vehicle;
+    public final Vehicle vehicle;
 
     public VehicleInput(Vehicle vehicle) {
 

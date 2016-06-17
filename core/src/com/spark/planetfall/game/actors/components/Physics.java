@@ -6,11 +6,11 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class Physics {
 
-    public Body body;
-    public World world;
-    public Transform position;
-    public Fixture fixture;
-    public BodyBuild build;
+    public final Body body;
+    public final World world;
+    public final Transform position;
+    public final Fixture fixture;
+    public final BodyBuild build;
 
     public Physics(World world, BodyBuild bodyBuild, Transform position, Object user) {
 

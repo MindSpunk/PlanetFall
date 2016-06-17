@@ -2,9 +2,9 @@ package com.spark.planetfall.game.actors.components.weapons;
 
 public class StatModifiers {
 
-    private float moveSpeedMultiplier;
-    private float sprintSpeedMultiplier;
-    private float adsSpeedMultiplier;
+    private final float moveSpeedMultiplier;
+    private final float sprintSpeedMultiplier;
+    private final float adsSpeedMultiplier;
 
 
     public StatModifiers(float moveSpeedMultiplier, float sprintSpeedMultiplier, float adsSpeedMultiplier) {

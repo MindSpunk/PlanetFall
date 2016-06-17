@@ -5,7 +5,7 @@ import com.spark.planetfall.game.actors.Vehicle;
 
 public class MagriderMovement extends VehicleMovement {
 
-    public boolean[] moving = new boolean[4];
+    public final boolean[] moving = new boolean[4];
     public Vehicle vehicle;
 
     public MagriderMovement(Vehicle vehicle) {

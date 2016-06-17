@@ -5,7 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 
 public class Sounds {
 
-    public Sound hitmarker;
+    public final Sound hitmarker;
 
     public Sounds() {
 

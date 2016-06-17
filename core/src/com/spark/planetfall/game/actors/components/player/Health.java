@@ -11,11 +11,11 @@ public class Health {
     public float health;
     public float timer;
 
-    public float maxHealth;
-    public float maxShields;
+    public final float maxHealth;
+    public final float maxShields;
 
-    protected Controlled player;
-    protected UIHandler ui;
+    protected final Controlled player;
+    protected final UIHandler ui;
 
     public Health(Controlled player, UIHandler ui) {
 

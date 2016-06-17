@@ -2,195 +2,83 @@ package com.spark.planetfall.game.actors;
 
 import box2dLight.ConeLight;
 import box2dLight.RayHandler;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.spark.planetfall.game.actors.components.*;
-import com.spark.planetfall.game.actors.components.player.*;
+import com.spark.planetfall.game.actors.components.player.Ability;
+import com.spark.planetfall.game.actors.components.player.Health;
+import com.spark.planetfall.game.actors.components.player.Sounds;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
-import com.spark.planetfall.game.actors.components.vehicle.*;
+import com.spark.planetfall.game.actors.components.vehicle.LightningStats;
+import com.spark.planetfall.game.actors.components.vehicle.MagriderBodyDef;
+import com.spark.planetfall.game.actors.components.vehicle.VehicleStats;
 import com.spark.planetfall.game.actors.components.vehicle.ability.MagBurner;
 import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.ClientHandler;
-import com.spark.planetfall.utils.Log;
-import com.spark.planetfall.utils.SparkMath;
 
-public class Lightning extends Actor implements Vehicle {
-
-    public Transform transform;
-    public VehicleMovement movement;
-    public VehicleInput input;
-    public VehicleNetwork network;
-    public Physics physics;
-    public Render render;
-    public Ability ability;
-    public UIHandler ui;
-    public LightningStats stats;
-    public WeaponController weapon;
-    public Health health;
-    public Stage stage;
-    public CameraHandler camera;
-    public ConeLight view;
-    public CrosshairRenderer crosshair;
-    public Sounds sounds;
-    public int id;
-
-    public boolean active;
-
-    public Player player;
-    public InputMultiplexer multiplexer;
-    public RayHandler rayhandler;
-    public float turretAngle;
-
+public class Lightning extends VehicleActor {
 
     public Lightning(World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
 
-        this.rayhandler = rayhandler;
-        this.stage = stage;
-        this.transform = new Transform(40, 40, 0);
-        this.movement = new VehicleMovement(this);
-        this.network = new VehicleNetwork(clienthandler, transform);
+        super(world, stage, input, clienthandler, rayhandler);
+
         this.physics = new Physics(world, new MagriderBodyDef(), transform, this);
         this.render = new Render(Atlas.get().createSprite("gfx/box"));
         this.render.sprite.setSize(3, 6);
         this.render.sprite.setOriginCenter();
-        this.input = new VehicleInput(this);
-        this.camera = new CameraHandler(this, (OrthographicCamera) stage.getCamera());
-        this.multiplexer = input;
         this.stats = new LightningStats();
         this.ability = new MagBurner(this, 0.1f, 0.02f);
         this.health = new Health(this, this.ui, 2000, 0);
         this.sounds = new Sounds();
-        this.crosshair = null;
-        this.turretAngle = 0;
-
-
         this.weapon = new WeaponController(Weapons.PYTHON_AP.copy(), null, this);
-        this.ui = null;
-
-        this.active = false;
 
     }
 
     @Override
     public void act(float delta) {
 
-        this.physics.update(delta);
-        this.health.update(delta);
-        this.weapon.update(delta);
-        this.render.sprite.setPosition(transform.position.x - this.render.sprite.getWidth() / 2f, transform.position.y - this.render.sprite.getHeight() / 2f);
-        this.weapon.weapons.getSelected().effects().shootEffect().update(delta);
-        if (player != null) this.player.getTransform().position = this.transform.position.cpy();
-        this.render.sprite.setRotation(transform.angle);
-
-
-        if (active) {
-            this.movement.update(delta);
-            this.player.camera.update(delta);
-
-            Vector2 angle = new Vector2(0, 1);
-            angle.setAngle(this.turretAngle);
-            float direction = SparkMath.pointDirection(transform.position.x, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).x, transform.position.y, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).y);
-            Vector2 temp = new Vector2(0, 1);
-            temp.setAngle(direction);
-            angle.lerp(temp, 1f);
-            this.turretAngle = angle.angle();
-
-            this.view.setDirection(this.turretAngle);
-            this.view.setPosition(this.transform.position);
-            if (ui != null) {
-                this.ui.minimap.setPosition(this.transform.position.cpy());
-            }
-
-            if (this.weapon.fire()) {
-                this.weapon.weapons.getSelected().action().fire(this.crosshair.renderer, this.sounds.hitmarker, this.turretAngle);
-            }
-
-        }
-        this.transform.angle += 90;
-        this.ability.update(delta);
-        this.transform.angle -= 90;
-
-        this.network.update(delta);
+        super.act(delta);
 
     }
 
     @Override
     public void draw(Batch batch, float alpha) {
 
-        if (this.crosshair != null) {
-            this.crosshair.draw(this.turretAngle - 90);
-        }
-
-        batch.end();
-        batch.begin();
-        this.weapon.weapons.getSelected().effects().shootEffect().draw(batch);
-        this.render.sprite.draw(batch);
-        batch.end();
-        batch.begin();
+        super.draw(batch, alpha);
 
     }
 
     @Override
     public void kill() {
 
+        super.kill();
+
     }
 
     @Override
     public void hit(float damage) {
 
-        this.health.hit(damage);
-        Log.logInfo("HIT" + damage);
+        super.hit(damage);
 
     }
 
     @Override
     public void board(Player player, ConeLight light) {
 
-        Log.logInfo("Boarding");
-        this.player = player;
-        this.view = light;
-        this.active = true;
-        this.ui = player.ui;
-        this.getUI().abilityBar.setRange(0, this.ability.maxFuel());
-        this.getUI().abilityBar.setValue(this.ability.fuel());
-        this.crosshair = this.player.crosshair;
-        this.crosshair.setControlled(this);
-        this.weapon.setUI(this.ui);
-        this.remove();
-        this.player.addElevated(this);
-
-        this.multiplexer.addProcessor(this.input);
+        super.board(player, light);
 
     }
 
     @Override
     public Player exit() {
 
-        this.ui = null;
-        this.active = false;
-        this.player.getTransform().position = this.transform.position.cpy();
-        this.newActor(this.player);
-        this.multiplexer.removeProcessor(this.input);
-        this.crosshair = null;
-        this.player.release();
-        this.player.getPhysics().body.setTransform(this.transform.position.cpy(), 0f);
-        this.weapon.ui = null;
-        for (int i = 0; i < this.movement.moving.length; i++) {
-            this.movement.moving[i] = false;
-        }
-        this.remove();
-        this.stage.addActor(this);
+        return super.exit();
 
-        return player;
     }
 
     @Override
@@ -216,7 +104,7 @@ public class Lightning extends Actor implements Vehicle {
     @Override
     public void newActor(Actor actor) {
 
-        this.stage.addActor(actor);
+        super.newActor(actor);
 
     }
 

@@ -2,20 +2,20 @@ package com.spark.planetfall.game.actors.components.weapons;
 
 public interface ReloadMechanism {
 
-    public float shortReload();
+    float shortReload();
 
-    public float longReload();
+    float longReload();
 
-    public void setWeapon(Weapon weapon);
+    void setWeapon(Weapon weapon);
 
-    public ReloadMechanism copy();
+    ReloadMechanism copy();
 
-    public boolean canFire();
+    boolean canFire();
 
-    public void update(float delta);
+    void update(float delta);
 
-    public void reload();
+    void reload();
 
-    public void cancel();
+    void cancel();
 
 }

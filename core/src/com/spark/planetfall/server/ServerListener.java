@@ -8,8 +8,8 @@ import com.spark.planetfall.utils.Log;
 
 public class ServerListener extends Listener {
 
-    PlanetFallServer serverLoop;
-    ServerHandler handler;
+    final PlanetFallServer serverLoop;
+    final ServerHandler handler;
 
     public ServerListener(PlanetFallServer serverLoop, ServerHandler handler) {
         this.serverLoop = serverLoop;

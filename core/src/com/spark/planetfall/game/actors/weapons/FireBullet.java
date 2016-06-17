@@ -14,7 +14,7 @@ public class FireBullet implements Action {
 
     private Controlled player;
     private Weapon weapon;
-    private float barrelLength;
+    private final float barrelLength;
 
     public FireBullet(float barrelLength) {
 

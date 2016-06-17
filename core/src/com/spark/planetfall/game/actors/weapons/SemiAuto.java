@@ -5,13 +5,13 @@ import com.spark.planetfall.game.actors.components.weapons.Weapon;
 
 public class SemiAuto implements FireMechanism {
 
-    private float rateOfFire;
+    private final float rateOfFire;
     private Weapon weapon;
-    private boolean remainsTriggered;
+    private final boolean remainsTriggered;
 
     protected float timer;
-    protected float shotsPerSecond;
-    protected boolean firing;
+    protected final float shotsPerSecond;
+    protected final boolean firing;
     protected boolean canFire;
 
 

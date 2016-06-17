@@ -3,7 +3,7 @@ package com.spark.planetfall.game.actors.components.weapons;
 
 public class WeaponInventory {
 
-    private Weapon[] weapons;
+    private final Weapon[] weapons;
     private int index;
 
     public WeaponInventory(Weapon[] weapons) {

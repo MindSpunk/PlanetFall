@@ -14,9 +14,9 @@ public class DataManager extends Manager implements AfterSceneInit {
 
     private Array<Entity> entities;
 
-    public Array<Vector2> spawnPoints;
-    public Array<Vector2> capturePoints;
-    public Vector2[] mapBounds = new Vector2[2];
+    public final Array<Vector2> spawnPoints;
+    public final Array<Vector2> capturePoints;
+    public final Vector2[] mapBounds = new Vector2[2];
 
 
     public DataManager() {

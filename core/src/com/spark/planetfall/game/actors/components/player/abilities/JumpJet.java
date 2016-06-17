@@ -7,13 +7,13 @@ import com.spark.planetfall.game.constants.Constant;
 
 public class JumpJet implements Ability {
 
-    private float fuelCapacity;
-    private Player player;
-    private float regenRate;
+    private final float fuelCapacity;
+    private final Player player;
+    private final float regenRate;
 
     protected boolean active;
     protected float fuel;
-    protected boolean hold;
+    protected final boolean hold;
 
     public JumpJet(Player player, float fuelCapacity, float regenRate) {
 

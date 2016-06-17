@@ -5,13 +5,14 @@ import com.spark.planetfall.game.constants.Constant;
 
 public class RecoilMechanism {
 
-    private float hipfireCOF;
-    private float adsCOF;
-    private float COFBloom;
-    private int tolerance;
-    private Vector2 recoilMagnitude;
+    private final float hipfireCOF;
+    private final float adsCOF;
+    private final float COFBloom;
+    private final int tolerance;
+    private final Vector2 recoilMagnitude;
     protected float COF;
     protected int kicks;
+    protected Weapon weapon;
 
     public RecoilMechanism(float hipfireCOF, float adsCOF, float COFBloom, Vector2 recoilMagnitude, int tolerance) {
 
@@ -96,6 +97,7 @@ public class RecoilMechanism {
     }
 
     public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
 }

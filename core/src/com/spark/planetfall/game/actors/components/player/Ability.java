@@ -2,22 +2,22 @@ package com.spark.planetfall.game.actors.components.player;
 
 public interface Ability {
 
-    public void update(float delta);
+    void update(float delta);
 
-    public void activate();
+    void activate();
 
-    public void deactivate();
+    void deactivate();
 
-    public boolean canActivate();
+    boolean canActivate();
 
-    public boolean active();
+    boolean active();
 
-    public float maxFuel();
+    float maxFuel();
 
-    public float fuel();
+    float fuel();
 
-    public float hit(float damage);
+    float hit(float damage);
 
-    public boolean hold();
+    boolean hold();
 
 }

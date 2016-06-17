@@ -5,15 +5,15 @@ import com.spark.planetfall.game.actors.components.player.Ability;
 
 public class NaniteMeshGenerator implements Ability {
 
-    private float maxFuel;
-    private float regenRate;
-    private float minimumTrigger;
-    private Player player;
+    private final float maxFuel;
+    private final float regenRate;
+    private final float minimumTrigger;
+    private final Player player;
 
     private float fuel;
     private boolean active;
-    private float drainRate;
-    private boolean hold;
+    private final float drainRate;
+    private final boolean hold;
 
     public NaniteMeshGenerator(Player player, float maxFuel, float regenRate, float minimumTrigger, float drainRate) {
 

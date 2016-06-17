@@ -6,8 +6,8 @@ public class PlayerStats {
 
     public float maxMoveSpeed;
     public float maxSprintSpeed;
-    public float maxMove;
-    public float maxSprint;
+    public final float maxMove;
+    public final float maxSprint;
 
     public PlayerStats(float maxMoveSpeed, float maxSprintSpeed, float maxMoveAcceleration, float maxSprintAcceleration) {
 

@@ -16,14 +16,14 @@ import com.spark.planetfall.game.constants.Constant;
 
 public class RemoteBullet extends Actor {
 
-    private Transform position;
-    private Vector2 velocity;
-    private Color color;
+    private final Transform position;
+    private final Vector2 velocity;
+    private final Color color;
 
-    protected ShapeRenderer render;
+    protected final ShapeRenderer render;
     protected float timer;
-    protected World world;
-    protected Matrix4 matrix;
+    protected final World world;
+    protected final Matrix4 matrix;
     protected Vector2 previousPosition;
 
     public RemoteBullet(Vector2 position, Vector2 velocity, World world, int color, Stage stage, Player player) {

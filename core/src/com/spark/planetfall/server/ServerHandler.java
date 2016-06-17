@@ -14,10 +14,10 @@ import java.io.IOException;
 public class ServerHandler {
 
     public Server server;
-    public PlanetFallServer game;
+    public final PlanetFallServer game;
     public float update;
-    public RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
-    public Array<RemoteVehicle> vehicles;
+    public final RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
+    public final Array<RemoteVehicle> vehicles;
 
     public ServerHandler(PlanetFallServer game) {
 

@@ -6,8 +6,8 @@ import com.spark.planetfall.game.actors.components.Movement;
 
 public class VehicleMovement implements Movement {
 
-    public boolean[] moving = new boolean[4];
-    public Vehicle vehicle;
+    public final boolean[] moving = new boolean[4];
+    public final Vehicle vehicle;
 
 
     public VehicleMovement(Vehicle vehicle) {

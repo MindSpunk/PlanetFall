@@ -19,14 +19,14 @@ import com.spark.planetfall.game.texture.Atlas;
 
 public class Minimap extends Actor {
 
-    private FrameBuffer map;
-    private TextureRegion mapRegion;
-    private Transform position;
-    private DataManager datamanager;
-    private OrthographicCamera camera;
-    private FrameBuffer minimap;
-    private SpriteBatch batch;
-    private Sprite[] capturePoints;
+    private final FrameBuffer map;
+    private final TextureRegion mapRegion;
+    private final Transform position;
+    private final DataManager datamanager;
+    private final OrthographicCamera camera;
+    private final FrameBuffer minimap;
+    private final SpriteBatch batch;
+    private final Sprite[] capturePoints;
 
     public Minimap(Scene scene, DataManager datamanager) {
 

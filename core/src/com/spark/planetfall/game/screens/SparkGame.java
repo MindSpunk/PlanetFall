@@ -17,18 +17,18 @@ import com.kotcrab.vis.runtime.system.physics.PhysicsSystem;
 import com.spark.planetfall.game.PlanetFallClient;
 import com.spark.planetfall.game.actors.DataManager;
 import com.spark.planetfall.game.actors.Player;
-import com.spark.planetfall.game.actors.Vehicle;
+import com.spark.planetfall.game.actors.VehicleActor;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
 import com.spark.planetfall.server.ClientHandler;
 
 public class SparkGame implements Screen {
 
-    public PlanetFallClient game;
+    public final PlanetFallClient game;
     public Stage stage;
     public Stage elevatedStage;
     public Player player;
     public ClientHandler handler;
-    public String ip;
+    public final String ip;
     public World world;
     public InputMultiplexer input;
     public Box2DDebugRenderer debugRenderer;
@@ -36,7 +36,7 @@ public class SparkGame implements Screen {
     public Scene scene;
     public RayHandler lightHandler;
     public UIHandler ui;
-    public Vehicle vehicle;
+    public VehicleActor vehicle;
     public DataManager manager;
 
     public SparkGame(PlanetFallClient in, String ip) {

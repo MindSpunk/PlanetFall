@@ -11,8 +11,8 @@ import com.spark.planetfall.utils.Log;
 
 public class ClientListener extends Listener {
 
-    public SparkGame game;
-    public ClientHandler handler;
+    public final SparkGame game;
+    public final ClientHandler handler;
 
     public ClientListener(SparkGame game, ClientHandler clientHandler) {
         this.game = game;

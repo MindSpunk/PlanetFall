@@ -21,12 +21,12 @@ public class MainMenu implements Screen {
 
     private final PlanetFallClient game;
 
-    public Stage stage;
-    public Window window;
-    public TextButton play_button;
-    public TextButton quit_button;
-    public Image background;
-    public TextField ipInput;
+    public final Stage stage;
+    public final Window window;
+    public final TextButton play_button;
+    public final TextButton quit_button;
+    public final Image background;
+    public final TextField ipInput;
 
     public MainMenu(PlanetFallClient game) {
 

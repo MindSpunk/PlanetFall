@@ -10,7 +10,7 @@ import com.spark.planetfall.server.packets.VehicleAddPacket;
 
 public class PlayerInput implements InputProcessor {
 
-    public Player player;
+    public final Player player;
 
     public PlayerInput(Player player) {
 
@@ -74,20 +74,24 @@ public class PlayerInput implements InputProcessor {
         }
         if (keycode == Keys.NUM_5) {
             if (player.game.vehicle == null) {
-                Lightning harasser = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
-                harasser.getPhysics().body.setTransform(player.getTransform().position.cpy(), harasser.getPhysics().body.getAngle());
-                player.game.vehicle = harasser;
-                player.stage.addActor(harasser);
+                player.game.vehicle = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
+
+                player.stage.addActor(player.game.vehicle);
 
                 VehicleAddPacket packet = new VehicleAddPacket();
-                packet.angle = harasser.transform.angle;
-                packet.position = harasser.transform.position;
+                packet.angle = player.game.vehicle.transform.angle;
+                packet.position = player.game.vehicle.transform.position;
                 packet.name = "Lightning";
 
                 this.player.network.handler.client.sendTCP(packet);
 
             } else {
+                player.game.vehicle.remove();
+                player.game.vehicle.getPhysics().body.destroyFixture(player.game.vehicle.getPhysics().fixture);
                 player.game.vehicle = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
+                player.stage.addActor(player.game.vehicle);
             }
         }
 

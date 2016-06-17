@@ -7,9 +7,9 @@ import com.spark.planetfall.game.constants.Constant;
 
 public class PlayerMovement implements Movement {
 
-    public boolean[] moving = new boolean[4];
+    public final boolean[] moving = new boolean[4];
     public boolean sprint;
-    public Player player;
+    public final Player player;
     public float shootCooldown;
 
 
