@@ -44,6 +44,14 @@ public class VehicleInput implements InputProcessor {
             vehicle.getWeaponController().reload(vehicle.getWeaponController().weapons.getIndex());
         }
 
+        if (keycode == Keys.L) {
+            vehicle.hit(100);
+        }
+
+        if (keycode == Keys.K) {
+            vehicle.kill();
+        }
+
         return false;
     }
 

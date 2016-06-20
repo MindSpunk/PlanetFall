@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.World;
@@ -21,6 +22,7 @@ import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.ClientHandler;
+import com.spark.planetfall.utils.Log;
 import com.spark.planetfall.utils.SparkMath;
 
 public class VehicleActor extends Actor implements Vehicle {
@@ -47,6 +49,8 @@ public class VehicleActor extends Actor implements Vehicle {
     public final RayHandler rayhandler;
     public UIHandler ui;
     public final CameraHandler camera;
+    public ParticleEffect smokeEffect;
+    public ParticleEffect fireEffect;
 
     //AUDIO
     public Sounds sounds;
@@ -64,10 +68,10 @@ public class VehicleActor extends Actor implements Vehicle {
     public boolean active;
     public Player player;
     public float turretAngle;
+    public boolean canEnter;
 
     public VehicleActor(World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
-
-
+        
         //CRITICAL SETUP
         this.rayhandler = rayhandler;
         this.stage = stage;
@@ -92,7 +96,10 @@ public class VehicleActor extends Actor implements Vehicle {
         this.health = new Health(this, this.ui, 2000, 0);
         this.sounds = new Sounds();
         this.weapon = new WeaponController(Weapons.PYTHON_AP.copy(), null, this);
-
+        this.fireEffect = new ParticleEffect();
+        this.fireEffect.load(Gdx.files.internal("particle/VEHICLE_FIRE.p"), Gdx.files.internal(""));
+        this.smokeEffect = new ParticleEffect();
+        this.smokeEffect.load(Gdx.files.internal("particle/VEHICLE_SMOKE.p"), Gdx.files.internal(""));
 
     }
 
@@ -141,6 +148,33 @@ public class VehicleActor extends Actor implements Vehicle {
 
         this.network.update(delta);
 
+        this.updateEffects(delta);
+
+    }
+
+    public void updateEffects(float delta) {
+
+        if (this.health.health <= this.health.maxHealth/2f) {
+            if (this.smokeEffect.isComplete()) {
+                this.smokeEffect.start();
+            }
+            this.smokeEffect.setPosition(this.transform.position.x, this.transform.position.y);
+        }
+        if (this.health.health <= this.health.maxHealth/4f) {
+            if (this.fireEffect.isComplete()) {
+                this.fireEffect.start();
+            }
+            this.fireEffect.setPosition(this.transform.position.x, this.transform.position.y);
+        }
+
+        this.fireEffect.update(delta);
+        this.smokeEffect.update(delta);
+
+    }
+
+    public void drawEffects(Batch batch) {
+        this.fireEffect.draw(batch);
+        this.smokeEffect.draw(batch);
     }
 
     @Override
@@ -157,6 +191,7 @@ public class VehicleActor extends Actor implements Vehicle {
         batch.begin();
         this.weapon.weapons.getSelected().effects().shootEffect().draw(batch);
         this.render.sprite.draw(batch);
+        this.drawEffects(batch);
         batch.end();
         batch.begin();
 
@@ -238,6 +273,10 @@ public class VehicleActor extends Actor implements Vehicle {
     @Override
     public void kill() {
 
+        ParticleActor explosion = new ParticleActor("particle/VEHICLE_EXPLOSION.p", transform.position.cpy());
+        this.newElevated(explosion);
+        Log.logInfo("KILLED");
+
     }
 
 
@@ -306,4 +345,11 @@ public class VehicleActor extends Actor implements Vehicle {
         //ABSTRACTION METHOD
         this.stage.addActor(actor);
     }
+
+    public void newElevated(Actor actor) {
+        if (player != null) {
+            this.player.addElevated(actor);
+        }
+    }
+
 }
