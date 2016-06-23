@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.World;
@@ -22,6 +21,7 @@ import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.actors.weapons.Weapons;
 import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.ClientHandler;
+import com.spark.planetfall.server.packets.VehicleKillPacket;
 import com.spark.planetfall.utils.Log;
 import com.spark.planetfall.utils.SparkMath;
 
@@ -49,8 +49,7 @@ public class VehicleActor extends Actor implements Vehicle {
     public final RayHandler rayhandler;
     public UIHandler ui;
     public final CameraHandler camera;
-    public ParticleEffect smokeEffect;
-    public ParticleEffect fireEffect;
+    public VehicleEffects effects;
 
     //AUDIO
     public Sounds sounds;
@@ -70,12 +69,12 @@ public class VehicleActor extends Actor implements Vehicle {
     public float turretAngle;
     public boolean canEnter;
 
-    public VehicleActor(World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
-        
+    public VehicleActor(Transform transform, World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
+
         //CRITICAL SETUP
         this.rayhandler = rayhandler;
         this.stage = stage;
-        this.transform = new Transform();
+        this.transform = transform;
         this.network = new VehicleNetwork(clienthandler, transform);
         this.input = new VehicleInput(this);
         this.camera = new CameraHandler(this, (OrthographicCamera) stage.getCamera());
@@ -86,7 +85,7 @@ public class VehicleActor extends Actor implements Vehicle {
         this.turretAngle = 0;
 
         //CUSTOMISABLE
-        this.physics = new Physics(world, new MagriderBodyDef(), transform, this);
+        this.physics = null;
         this.render = new Render(Atlas.get().createSprite("gfx/box"));
         this.render.sprite.setSize(3, 6);
         this.render.sprite.setOriginCenter();
@@ -96,10 +95,7 @@ public class VehicleActor extends Actor implements Vehicle {
         this.health = new Health(this, this.ui, 2000, 0);
         this.sounds = new Sounds();
         this.weapon = new WeaponController(Weapons.PYTHON_AP.copy(), null, this);
-        this.fireEffect = new ParticleEffect();
-        this.fireEffect.load(Gdx.files.internal("particle/VEHICLE_FIRE.p"), Gdx.files.internal(""));
-        this.smokeEffect = new ParticleEffect();
-        this.smokeEffect.load(Gdx.files.internal("particle/VEHICLE_SMOKE.p"), Gdx.files.internal(""));
+        this.effects = new VehicleEffects(this);
 
     }
 
@@ -147,38 +143,12 @@ public class VehicleActor extends Actor implements Vehicle {
         this.transform.angle -= 90;
 
         this.network.update(delta);
+        this.effects.update(delta);
 
-        this.updateEffects(delta);
-
-    }
-
-    public void updateEffects(float delta) {
-
-        if (this.health.health <= this.health.maxHealth/2f) {
-            if (this.smokeEffect.isComplete()) {
-                this.smokeEffect.start();
-            }
-            this.smokeEffect.setPosition(this.transform.position.x, this.transform.position.y);
-        }
-        if (this.health.health <= this.health.maxHealth/4f) {
-            if (this.fireEffect.isComplete()) {
-                this.fireEffect.start();
-            }
-            this.fireEffect.setPosition(this.transform.position.x, this.transform.position.y);
-        }
-
-        this.fireEffect.update(delta);
-        this.smokeEffect.update(delta);
-
-    }
-
-    public void drawEffects(Batch batch) {
-        this.fireEffect.draw(batch);
-        this.smokeEffect.draw(batch);
     }
 
     @Override
-    public void draw(Batch batch, float delta) {
+    public void draw(Batch batch, float alpha) {
 
         //UPDATE CAPTURED CROSSHAIR RENDERER
         if (this.crosshair != null) {
@@ -191,7 +161,7 @@ public class VehicleActor extends Actor implements Vehicle {
         batch.begin();
         this.weapon.weapons.getSelected().effects().shootEffect().draw(batch);
         this.render.sprite.draw(batch);
-        this.drawEffects(batch);
+        this.effects.draw(batch, alpha);
         batch.end();
         batch.begin();
 
@@ -251,15 +221,14 @@ public class VehicleActor extends Actor implements Vehicle {
             this.movement.moving[i] = false;
         }
 
-        //RETURN PLAYER TO STAGE
-        this.newActor(this.player);
-
         //RETURN TO MAIN STAGE
         this.remove();
         this.stage.addActor(this);
 
         //MAKE INACTIVE
         this.active = false;
+
+        this.player = null;
 
         return player;
 
@@ -273,9 +242,17 @@ public class VehicleActor extends Actor implements Vehicle {
     @Override
     public void kill() {
 
-        ParticleActor explosion = new ParticleActor("particle/VEHICLE_EXPLOSION.p", transform.position.cpy());
-        this.newElevated(explosion);
+        this.newElevated(new ParticleActor("particle/VEHICLE_EXPLOSION.p", transform.position.cpy()));
         Log.logInfo("KILLED");
+        this.physics.body.destroyFixture(this.physics.fixture);
+        this.remove();
+        if (this.player != null) {
+            this.player.processor.removeProcessor(this.input);
+            this.player.release();
+            this.player.kill();
+        }
+        VehicleKillPacket packet = new VehicleKillPacket();
+        this.network.handler.client.sendTCP(packet);
 
     }
 

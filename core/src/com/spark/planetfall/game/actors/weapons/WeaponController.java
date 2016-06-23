@@ -98,11 +98,7 @@ public class WeaponController {
                 selected = true;
             }
 
-            if (weapons.getWeapons()[i].mechanism().timeToNextShot() <= 0) {
-                firing = false;
-            } else {
-                firing = true;
-            }
+            firing = weapons.getWeapons()[i].mechanism().timeToNextShot() > 0;
 
             if (triggered && selected) {
                 if (weapons.getWeapons()[i].magazine().amount() <= 0) {

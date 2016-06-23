@@ -37,6 +37,7 @@ public class ClientListener extends Listener {
             for (int i = 0; i < handler.players.length; i++) {
                 if (handler.players[i].id == packet.id) {
                     handler.players[i].remove = true;
+                    handler.players[i].empty = true;
                 }
             }
         }
@@ -57,6 +58,18 @@ public class ClientListener extends Listener {
                             handler.client.sendTCP(response);
                         }
                         break;
+                    }
+                }
+            }
+        }
+
+        if (object instanceof VehicleKillPacket) {
+            VehicleKillPacket packet = (VehicleKillPacket) object;
+            for (int i = 0; i < handler.vehicles.size; i++) {
+                if (handler.vehicles.get(i) != null) {
+                    if (handler.vehicles.get(i).id == packet.id && !handler.vehicles.get(i).empty) {
+                        handler.vehicles.get(i).remove = true;
+                        handler.vehicles.get(i).empty = true;
                     }
                 }
             }
@@ -93,7 +106,7 @@ public class ClientListener extends Listener {
                 if (temp != null) {
                     if (!temp.empty) {
                         Log.logInfo("ADDING VEHICLE");
-                        game.stage.addActor(new RemoteVehicleActor(temp, game.world, game.handler));
+                        game.stage.addActor(new RemoteVehicleActor(temp, game.world, game.handler, game.stage));
                     }
                 }
             }
@@ -143,7 +156,7 @@ public class ClientListener extends Listener {
                 vehicle.empty = false;
                 handler.vehicles.add(vehicle);
                 Log.logInfo("Adding Vehicle");
-                game.stage.addActor(new RemoteHarasser(vehicle, game.world, game.handler));
+                game.stage.addActor(new RemoteHarasser(vehicle, game.world, game.handler, game.stage));
             }
             if (packet.name.equals("Lightning")) {
                 RemoteVehicle vehicle = new RemoteVehicle();
@@ -151,7 +164,7 @@ public class ClientListener extends Listener {
                 vehicle.empty = false;
                 handler.vehicles.add(vehicle);
                 Log.logInfo("Adding Vehicle");
-                game.stage.addActor(new RemoteLightning(vehicle, game.world, game.handler));
+                game.stage.addActor(new RemoteLightning(vehicle, game.world, game.handler, game.stage));
             }
         }
 
@@ -197,11 +210,6 @@ public class ClientListener extends Listener {
                     }
                 }
             }
-        }
-
-        if (object instanceof VehicleHitPacket) {
-            VehicleHitPacket packet = (VehicleHitPacket) object;
-            game.vehicle.hit(packet.damage);
         }
 
         if (object instanceof TeleportPacket) {

@@ -26,16 +26,16 @@ public class VehicleMovement implements Movement {
         Vector2 temp = new Vector2(0, this.vehicle.getStats().maxAcceleration);
         temp.setAngle(this.vehicle.getTransform().angle + 90);
 
-        if (this.moving[0] == true) {
+        if (this.moving[0]) {
             this.vehicle.getPhysics().body.applyForceToCenter(temp, true);
         }
-        if (this.moving[1] == true) {
+        if (this.moving[1]) {
             this.vehicle.getPhysics().body.applyForceToCenter(temp.scl(-1), true);
         }
-        if (this.moving[2] == true) {
+        if (this.moving[2]) {
             this.vehicle.getPhysics().body.applyTorque(5, true);
         }
-        if (this.moving[3] == true) {
+        if (this.moving[3]) {
             this.vehicle.getPhysics().body.applyTorque(-5, true);
         }
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.spark.planetfall.game.actors.Lightning;
 import com.spark.planetfall.game.actors.Player;
 import com.spark.planetfall.game.actors.Vehicle;
+import com.spark.planetfall.game.actors.components.Transform;
 import com.spark.planetfall.server.packets.VehicleAddPacket;
 
 public class PlayerInput implements InputProcessor {
@@ -74,7 +75,8 @@ public class PlayerInput implements InputProcessor {
         }
         if (keycode == Keys.NUM_5) {
             if (player.game.vehicle == null) {
-                player.game.vehicle = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                Transform transform = new Transform(player.getTransform().position.cpy(), player.getTransform().angle);
+                player.game.vehicle = new Lightning(transform, player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
                 player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
 
                 player.stage.addActor(player.game.vehicle);
@@ -88,8 +90,9 @@ public class PlayerInput implements InputProcessor {
 
             } else {
                 player.game.vehicle.remove();
+                Transform transform = new Transform(player.getTransform().position.cpy(), player.getTransform().angle);
                 player.game.vehicle.getPhysics().body.destroyFixture(player.game.vehicle.getPhysics().fixture);
-                player.game.vehicle = new Lightning(player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                player.game.vehicle = new Lightning(transform, player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
                 player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
                 player.stage.addActor(player.game.vehicle);
             }

@@ -74,6 +74,19 @@ public class ServerListener extends Listener {
             }
         }
 
+        if (object instanceof VehicleKillPacket) {
+            VehicleKillPacket packet = (VehicleKillPacket) object;
+
+            for (int i = 0; i < handler.vehicles.size; i++) {
+                if (handler.vehicles.get(i).id == connection.getID() && !handler.vehicles.get(i).empty) {
+                    handler.vehicles.set(i, new RemoteVehicle());
+                    packet.id = connection.getID();
+                    handler.server.sendToAllExceptTCP(connection.getID(), packet);
+                }
+            }
+
+        }
+
         if (object instanceof UpdatePacket) {
             UpdatePacket packet = (UpdatePacket) object;
 

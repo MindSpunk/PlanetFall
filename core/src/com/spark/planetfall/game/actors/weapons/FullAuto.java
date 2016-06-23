@@ -11,7 +11,6 @@ public class FullAuto implements FireMechanism {
 
     protected float timer;
     protected final float shotsPerSecond;
-    protected final boolean firing;
     protected boolean canFire;
 
 
@@ -23,7 +22,6 @@ public class FullAuto implements FireMechanism {
 
         this.timer = 0;
         this.shotsPerSecond = this.rateOfFire / 60f;
-        this.firing = false;
         this.canFire = false;
 
     }

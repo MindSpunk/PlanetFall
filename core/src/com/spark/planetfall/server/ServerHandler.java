@@ -55,6 +55,7 @@ public class ServerHandler {
             kryo.register(VehicleHitPacket.class);
             kryo.register(ShowPacket.class);
             kryo.register(HidePacket.class);
+            kryo.register(VehicleKillPacket.class);
             server.addListener(new ServerListener(game, this));
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,12 +67,12 @@ public class ServerHandler {
         update += delta;
         if (update >= Constant.SERVER_UPDATE_RATE) {
             update = 0;
-            for (int i = 0; i < players.length; i++) {
-                if (!players[i].empty) {
+            for (RemotePlayer player : players) {
+                if (!player.empty) {
                     UpdatePacket update = new UpdatePacket();
-                    update.position = players[i].position;
-                    update.angle = players[i].angle;
-                    update.id = players[i].id;
+                    update.position = player.position;
+                    update.angle = player.angle;
+                    update.id = player.id;
                     server.sendToAllUDP(update);
                 }
             }
@@ -90,8 +91,8 @@ public class ServerHandler {
 
     public int getPlayerCount() {
         int count = 0;
-        for (int i = 0; i < players.length; i++) {
-            if (!players[i].empty) {
+        for (RemotePlayer player : players) {
+            if (!player.empty) {
                 count++;
             }
         }

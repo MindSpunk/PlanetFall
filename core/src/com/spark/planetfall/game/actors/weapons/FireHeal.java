@@ -67,9 +67,8 @@ public class FireHeal implements Action {
     @Override
     public boolean fire(ShapeRenderer renderer, float angle) {
 
-        if (!this.rendersShapes) return fire(angle);
+        return !this.rendersShapes && fire(angle);
 
-        return false;
     }
 
     @Override

@@ -18,16 +18,16 @@ public class HarasserMovement extends VehicleMovement {
         accelerate.setAngle(this.vehicle.getTransform().angle + 90);
         reverse.setAngle(this.vehicle.getTransform().angle + 90);
 
-        if (this.moving[0] == true) {
+        if (this.moving[0]) {
             this.vehicle.getPhysics().body.applyForceToCenter(accelerate, true);
         }
-        if (this.moving[1] == true) {
+        if (this.moving[1]) {
             this.vehicle.getPhysics().body.applyForceToCenter(reverse.scl(-1), true);
         }
-        if (this.moving[2] == true) {
+        if (this.moving[2]) {
             this.vehicle.getPhysics().body.applyTorque(5 * (this.vehicle.getPhysics().body.getLinearVelocity().len() / vehicle.getStats().maxSpeed), true);
         }
-        if (this.moving[3] == true) {
+        if (this.moving[3]) {
             this.vehicle.getPhysics().body.applyTorque(-5 * (this.vehicle.getPhysics().body.getLinearVelocity().len() / vehicle.getStats().maxSpeed), true);
         }
 

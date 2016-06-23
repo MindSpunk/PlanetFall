@@ -46,11 +46,7 @@ public class MagazineReload implements ReloadMechanism {
             }
         }
 
-        if (!reloading) {
-            canFire = true;
-        } else {
-            canFire = false;
-        }
+        canFire = !reloading;
 
     }
 

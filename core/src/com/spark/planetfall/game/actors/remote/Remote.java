@@ -40,6 +40,7 @@ public class Remote extends Actor {
 
         if (remote.remove) {
             this.physics.world.destroyBody(this.physics.body);
+            this.remote.empty = true;
             this.remove();
         }
 

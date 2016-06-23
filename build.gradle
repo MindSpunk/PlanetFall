@@ -53,7 +53,6 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-        compile "com.underwaterapps.overlap2druntime:overlap2d-runtime-libgdx:0.1.2-SNAPSHOT"
         compile "com.kotcrab.vis:vis-ui:0.9.5"
         compile "net.dermetfan.libgdx-utils:libgdx-utils:0.13.2"
         compile "net.dermetfan.libgdx-utils:libgdx-utils-box2d:0.13.2"

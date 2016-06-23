@@ -15,16 +15,16 @@ public class MagriderMovement extends VehicleMovement {
     @Override
     public void update(float delta) {
 
-        if (this.moving[0] == true) {
+        if (this.moving[0]) {
             this.vehicle.getPhysics().body.applyForceToCenter(new Vector2(0, this.vehicle.getStats().maxAcceleration), true);
         }
-        if (this.moving[1] == true) {
+        if (this.moving[1]) {
             this.vehicle.getPhysics().body.applyForceToCenter(new Vector2(0, -this.vehicle.getStats().maxAcceleration), true);
         }
-        if (this.moving[2] == true) {
+        if (this.moving[2]) {
             this.vehicle.getPhysics().body.applyForceToCenter(new Vector2(-this.vehicle.getStats().maxAcceleration, 0), true);
         }
-        if (this.moving[3] == true) {
+        if (this.moving[3]) {
             this.vehicle.getPhysics().body.applyForceToCenter(new Vector2(this.vehicle.getStats().maxAcceleration, 0), true);
         }
 

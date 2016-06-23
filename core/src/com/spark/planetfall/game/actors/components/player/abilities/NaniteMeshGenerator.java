@@ -72,11 +72,7 @@ public class NaniteMeshGenerator implements Ability {
 
     @Override
     public boolean canActivate() {
-        if (fuel >= this.minimumTrigger) {
-            return true;
-        } else {
-            return false;
-        }
+        return fuel >= this.minimumTrigger;
     }
 
     @Override

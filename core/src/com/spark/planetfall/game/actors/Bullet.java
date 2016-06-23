@@ -14,6 +14,7 @@ import com.spark.planetfall.game.actors.remote.RemoteVehicleActor;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.server.packets.HitPacket;
 import com.spark.planetfall.server.packets.VehicleHitPacket;
+import com.spark.planetfall.utils.Log;
 
 public class Bullet extends Actor {
 
@@ -65,6 +66,7 @@ public class Bullet extends Actor {
             this.removed = true;
             this.position.position = hitscan.hitLocation;
             if (hitscan.closestHit.getBody().getUserData() instanceof Remote) {
+                Log.logInfo("NOT NOOT");
                 this.hit.play();
                 Remote remote = (Remote) hitscan.closestHit.getBody().getUserData();
                 HitPacket packet = new HitPacket();
@@ -73,12 +75,21 @@ public class Bullet extends Actor {
                 remote.handler.client.sendUDP(packet);
             }
             if (hitscan.closestHit.getBody().getUserData() instanceof RemoteVehicleActor) {
+                Log.logInfo("NOOT!");
                 this.hit.play();
                 RemoteVehicleActor remote = (RemoteVehicleActor) hitscan.closestHit.getBody().getUserData();
+                remote.hit(this.damage);
                 VehicleHitPacket packet = new VehicleHitPacket();
                 packet.damage = damage;
                 packet.id = remote.remote.id;
                 remote.handler.client.sendUDP(packet);
+            }
+            if (hitscan.closestHit.getBody().getUserData() instanceof VehicleActor) {
+                Log.logInfo("NOOT!!");
+                this.hit.play();
+                VehicleActor vehicle = (VehicleActor) hitscan.closestHit.getBody().getUserData();
+                vehicle.hit(this.damage);
+
             }
 
         }

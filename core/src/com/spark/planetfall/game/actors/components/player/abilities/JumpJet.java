@@ -81,11 +81,7 @@ public class JumpJet implements Ability {
     @Override
     public boolean canActivate() {
 
-        if (fuel >= fuelCapacity / 2f) {
-            return true;
-        } else {
-            return false;
-        }
+        return fuel >= fuelCapacity / 2f;
 
     }
 

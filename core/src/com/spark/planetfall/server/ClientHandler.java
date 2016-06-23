@@ -51,6 +51,7 @@ public class ClientHandler {
         kryo.register(VehicleHitPacket.class);
         kryo.register(ShowPacket.class);
         kryo.register(HidePacket.class);
+        kryo.register(VehicleKillPacket.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 

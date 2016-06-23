@@ -1,4 +1,4 @@
-package com.spark.planetfall.game.actors.components.player.Class;
+package com.spark.planetfall.game.actors.components.player.classes;
 
 import com.spark.planetfall.game.actors.Player;
 import com.spark.planetfall.game.actors.components.player.Ability;

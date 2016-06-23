@@ -53,9 +53,7 @@ public class RecoilMechanism {
                 kicks += 1;
             }
         }
-
-        Vector2[] toreturn = {recoilforce, siderecoilvec};
-        return toreturn;
+        return new Vector2[]{recoilforce, siderecoilvec};
     }
 
     public void fire() {

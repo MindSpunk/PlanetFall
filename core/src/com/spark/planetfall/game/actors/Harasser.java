@@ -24,9 +24,9 @@ import com.spark.planetfall.server.ClientHandler;
 
 public class Harasser extends VehicleActor {
 
-    public Harasser(World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
+    public Harasser(Transform transform, World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
 
-        super(world, stage, input, clienthandler, rayhandler);
+        super(transform, world, stage, input, clienthandler, rayhandler);
 
         this.physics = new Physics(world, new HarasserBodyDef(), transform, this);
         this.render = new Render(Atlas.get().createSprite("gfx/box"));

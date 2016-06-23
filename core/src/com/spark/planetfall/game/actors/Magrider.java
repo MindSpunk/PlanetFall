@@ -24,9 +24,9 @@ import com.spark.planetfall.server.ClientHandler;
 
 public class Magrider extends VehicleActor {
 
-    public Magrider(World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
+    public Magrider(Transform transform, World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
 
-        super(world, stage, input, clienthandler, rayhandler);
+        super(transform, world, stage, input, clienthandler, rayhandler);
 
         this.physics = new Physics(world, new MagriderBodyDef(), transform, this);
         this.render = new Render(Atlas.get().createSprite("gfx/box"));
