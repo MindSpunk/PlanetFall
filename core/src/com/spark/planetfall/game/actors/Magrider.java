@@ -72,6 +72,8 @@ public class Magrider extends VehicleActor {
         this.ability.update(delta);
         this.transform.angle -= 90;
 
+        this.effects.update(delta);
+
     }
 
     @Override

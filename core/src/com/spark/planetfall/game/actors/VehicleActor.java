@@ -67,7 +67,7 @@ public class VehicleActor extends Actor implements Vehicle {
     public boolean active;
     public Player player;
     public float turretAngle;
-    public boolean canEnter;
+    public boolean alive;
 
     public VehicleActor(Transform transform, World world, Stage stage, InputMultiplexer input, ClientHandler clienthandler, RayHandler rayhandler) {
 
@@ -83,6 +83,7 @@ public class VehicleActor extends Actor implements Vehicle {
         this.ui = null;
         this.active = false;
         this.turretAngle = 0;
+        this.alive = true;
 
         //CUSTOMISABLE
         this.physics = null;
@@ -253,6 +254,8 @@ public class VehicleActor extends Actor implements Vehicle {
         }
         VehicleKillPacket packet = new VehicleKillPacket();
         this.network.handler.client.sendTCP(packet);
+
+        this.alive = false;
 
     }
 

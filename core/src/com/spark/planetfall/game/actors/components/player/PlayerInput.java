@@ -89,12 +89,25 @@ public class PlayerInput implements InputProcessor {
                 this.player.network.handler.client.sendTCP(packet);
 
             } else {
-                player.game.vehicle.remove();
-                Transform transform = new Transform(player.getTransform().position.cpy(), player.getTransform().angle);
-                player.game.vehicle.getPhysics().body.destroyFixture(player.game.vehicle.getPhysics().fixture);
-                player.game.vehicle = new Lightning(transform, player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
-                player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
-                player.stage.addActor(player.game.vehicle);
+                if (player.game.vehicle.alive) {
+                    player.game.vehicle.remove();
+                    Transform transform = new Transform(player.getTransform().position.cpy(), player.getTransform().angle);
+                    player.game.vehicle.getPhysics().body.destroyFixture(player.game.vehicle.getPhysics().fixture);
+                    player.game.vehicle = new Lightning(transform, player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                    player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
+                    player.stage.addActor(player.game.vehicle);
+                } else {
+                    Transform transform = new Transform(player.getTransform().position.cpy(), player.getTransform().angle);
+                    player.game.vehicle = new Lightning(transform, player.physics.world, player.stage, player.processor, player.network.handler, player.lightHandler);
+                    player.game.vehicle.getPhysics().body.setTransform(player.getTransform().position.cpy(), player.game.vehicle.getPhysics().body.getAngle());
+                    player.stage.addActor(player.game.vehicle);
+                    VehicleAddPacket packet = new VehicleAddPacket();
+                    packet.angle = player.game.vehicle.transform.angle;
+                    packet.position = player.game.vehicle.transform.position;
+                    packet.name = "Lightning";
+
+                    this.player.network.handler.client.sendTCP(packet);
+                }
             }
         }
 
