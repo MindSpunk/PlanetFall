@@ -72,14 +72,12 @@ public class PlayerMovement implements Movement {
 
     @Override
     public boolean[] getMove() {
-        // TODO Auto-generated method stub
         return null;
     }
 
 
     @Override
     public boolean getMove(int i) {
-        // TODO Auto-generated method stub
         return false;
     }
 
@@ -93,7 +91,6 @@ public class PlayerMovement implements Movement {
 
     @Override
     public float getShootCooldown() {
-        // TODO Auto-generated method stub
         return this.shootCooldown;
     }
 

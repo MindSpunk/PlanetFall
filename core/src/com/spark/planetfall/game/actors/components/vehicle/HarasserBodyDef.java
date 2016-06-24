@@ -64,7 +64,6 @@ public class HarasserBodyDef implements BodyBuild {
 
     @Override
     public float angularDampening() {
-        // TODO Auto-generated method stub
         return this.angularDampening;
     }
 

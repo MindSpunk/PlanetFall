@@ -67,7 +67,6 @@ public class PlanetFallServer extends Game {
             handler.server.dispose();
             stage.dispose();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         super.dispose();

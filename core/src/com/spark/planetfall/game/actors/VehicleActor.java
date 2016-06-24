@@ -243,7 +243,7 @@ public class VehicleActor extends Actor implements Vehicle {
     @Override
     public void kill() {
 
-        this.newElevated(new ParticleActor("particle/VEHICLE_EXPLOSION.p", transform.position.cpy()));
+        this.stage.addActor(new ParticleActor("particle/VEHICLE_EXPLOSION.p", transform.position.cpy()));
         Log.logInfo("KILLED");
         this.physics.body.destroyFixture(this.physics.fixture);
         this.remove();

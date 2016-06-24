@@ -227,25 +227,21 @@ public class Player extends Actor implements Controlled {
 
     @Override
     public Transform getTransform() {
-        // TODO Auto-generated method stub
         return this.position;
     }
 
     @Override
     public Physics getPhysics() {
-        // TODO Auto-generated method stub
         return this.physics;
     }
 
     @Override
     public Network getNetwork() {
-        // TODO Auto-generated method stub
         return this.network;
     }
 
     @Override
     public Health getHealth() {
-        // TODO Auto-generated method stub
         return this.health;
     }
 
@@ -257,13 +253,11 @@ public class Player extends Actor implements Controlled {
 
     @Override
     public WeaponController getWeaponController() {
-        // TODO Auto-generated method stub
         return this.controller;
     }
 
     @Override
     public Movement getMovement() {
-        // TODO Auto-generated method stub
         return this.movement;
     }
 

@@ -21,7 +21,7 @@ task dist(type: Jar) {
     from files(project.assetsDir);
 
     manifest {
-        attributes 'Main-classes': project.mainClassName
+        attributes 'Main-classes': "com.spark.planetfall.game.desktop.DesktopLauncher"
     }
 }
 

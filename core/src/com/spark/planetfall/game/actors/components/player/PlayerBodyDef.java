@@ -63,7 +63,6 @@ public class PlayerBodyDef implements BodyBuild {
 
     @Override
     public float angularDampening() {
-        // TODO Auto-generated method stub
         return this.angularDampening;
     }
 

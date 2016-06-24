@@ -64,7 +64,6 @@ public class MagriderBodyDef implements BodyBuild {
 
     @Override
     public float angularDampening() {
-        // TODO Auto-generated method stub
         return this.angularDampening;
     }
 
