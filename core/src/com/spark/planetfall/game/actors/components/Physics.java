@@ -9,7 +9,7 @@ public class Physics {
     public final Body body;
     public final World world;
     public final Transform position;
-    public final Fixture fixture;
+    public Fixture fixture;
     public final BodyBuild build;
 
     public Physics(World world, BodyBuild bodyBuild, Transform position, Object user) {
@@ -20,6 +20,7 @@ public class Physics {
         bodyBuild.bodyDef().position.set(position.position);
         this.body = world.createBody(bodyBuild.bodyDef());
         this.fixture = this.body.createFixture(bodyBuild.fixtureDef());
+        this.fixture.setUserData(this);
         this.body.setUserData(user);
         this.body.setLinearDamping(bodyBuild.dampening());
         this.body.setAngularDamping(bodyBuild.angularDampening());

@@ -15,7 +15,7 @@ public enum Weapons {
             new MagazineReload(2.5f, 1.5f, 1),
             new StatModifiers(1, 1, 0.5f),
             new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1)),
-            new FireBullet(1)),
+            new FireBullet(0.5f)),
 
     //SCAR_H
     SCAR_H(
@@ -25,7 +25,7 @@ public enum Weapons {
             new MagazineReload(2f, 1.2f, 1),
             new StatModifiers(1, 1, 0.75f),
             new Effects("particle/SCAR_H_SHOOT.p", new Color(1, 1, 0, 1)),
-            new FireBullet(1)),
+            new FireBullet(0.5f)),
 
     //MED_KITS AKA SKILLSTIX
     MED_KITS(

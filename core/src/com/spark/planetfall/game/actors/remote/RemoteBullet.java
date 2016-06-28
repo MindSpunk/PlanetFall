@@ -77,7 +77,10 @@ public class RemoteBullet extends Actor {
             render.setColor(color);
             render.setProjectionMatrix(matrix);
             render.begin(ShapeType.Line);
-            render.line(this.previousPosition, this.position.position);
+            Vector2 temp = this.position.position.cpy();
+            temp.sub(this.previousPosition);
+            temp.clamp(0, 3);
+            render.line(this.previousPosition, this.position.position.cpy().sub(temp));
             render.end();
             batch.begin();
         }

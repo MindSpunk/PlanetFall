@@ -33,6 +33,15 @@ public class ServerListener extends Listener {
                 LeavePacket packet = new LeavePacket();
                 packet.id = connection.getID();
                 handler.server.sendToAllTCP(packet);
+                VehicleKillPacket packet2 = new VehicleKillPacket();
+                packet2.id = connection.getID();
+                handler.server.sendToAllTCP(packet2);
+                for (int a = 0; i < handler.vehicles.size; i++) {
+                    if (handler.vehicles.get(a).id == connection.getID() && !handler.vehicles.get(a).empty) {
+                        handler.vehicles.set(i, new RemoteVehicle());
+                    }
+                }
+
             }
         }
 
@@ -149,6 +158,11 @@ public class ServerListener extends Listener {
             ShowPacket packet = (ShowPacket) object;
             packet.id = connection.getID();
             handler.server.sendToAllExceptTCP(connection.getID(), packet);
+        }
+        if (object instanceof TeleportPacket) {
+            TeleportPacket packet = (TeleportPacket) object;
+            packet.id = connection.getID();
+            handler.server.sendToAllExceptTCP(connection.getID(),packet);
         }
     }
 }

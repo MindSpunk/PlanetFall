@@ -56,6 +56,7 @@ public class RemoteVehicleActor extends Actor {
         position.position.lerp(remote.position, Constant.SERVER_NETWORK_LERP);
 
         this.physics.body.setTransform(position.position, (float) Math.toRadians(position.angle));
+        this.physics.fixture.setUserData(this);
         physics.update(delta);
 
         render.sprite.setPosition(position.position.x - render.sprite.getWidth() / 2f, position.position.y - render.sprite.getHeight() / 2f);
@@ -96,7 +97,10 @@ public class RemoteVehicleActor extends Actor {
     }
 
     public void kill() {
-        this.physics.body.destroyFixture(this.physics.fixture);
+        if(this.physics.fixture.getUserData() != null) {
+            this.physics.body.destroyFixture(this.physics.fixture);
+            this.physics.fixture.setUserData(null);
+        }
         this.remove();
     }
 

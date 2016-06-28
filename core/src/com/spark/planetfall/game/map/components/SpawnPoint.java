@@ -1,6 +1,6 @@
 package com.spark.planetfall.game.map.components;
 
-import com.badlogic.gdx.physics.box2d.Transform;
+import com.spark.planetfall.game.actors.components.Transform;
 
 public class SpawnPoint implements BaseComponent {
 
@@ -31,11 +31,6 @@ public class SpawnPoint implements BaseComponent {
     @Override
     public void setTeam(byte team) {
         this.team = team;
-    }
-
-    @Override
-    public Class getType() {
-        return this.type;
     }
 
     @Override

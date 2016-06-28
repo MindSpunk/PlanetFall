@@ -106,7 +106,9 @@ public class ClientListener extends Listener {
                 if (temp != null) {
                     if (!temp.empty) {
                         Log.logInfo("ADDING VEHICLE");
-                        game.stage.addActor(new RemoteVehicleActor(temp, game.world, game.handler, game.stage));
+                        if (temp.name.equals("Lightning")) {
+                            game.stage.addActor(new RemoteLightning(temp, game.world, game.handler, game.stage));
+                        }
                     }
                 }
             }
@@ -215,9 +217,11 @@ public class ClientListener extends Listener {
         if (object instanceof TeleportPacket) {
             TeleportPacket packet = (TeleportPacket) object;
             for (Remote remote: handler.playerActors) {
-                if (remote.remote.id == packet.id) {
-                    remote.position.position = packet.location;
-                    break;
+                if (remote != null) {
+                    if (remote.remote.id == packet.id) {
+                        remote.position.position = packet.location;
+                        break;
+                    }
                 }
             }
         }

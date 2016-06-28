@@ -22,6 +22,7 @@ import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.packets.HidePacket;
 import com.spark.planetfall.server.packets.ShowPacket;
+import com.spark.planetfall.server.packets.TeleportPacket;
 import com.spark.planetfall.utils.SparkMath;
 
 public class Player extends Actor implements Controlled {
@@ -86,6 +87,7 @@ public class Player extends Actor implements Controlled {
         position = new Transform(this.spawns.spawnPoints.get(SparkMath.randInd(spawns.spawnPoints.size)), 0);
         PlayerBodyDef body = new PlayerBodyDef((render.sprite.getWidth() / 2));
         physics = new Physics(game.world, body, position, this);
+        this.physics.body.getMassData().mass = this.physics.body.getMassData().mass * 4f;
 
         //SETTING LIGHT HANDLER
         this.lightHandler = game.lightHandler;
@@ -151,6 +153,7 @@ public class Player extends Actor implements Controlled {
         //SET LIGHT POSITION AND ANGLE
         coneOfView.setDirection(position.angle);
         coneOfView.setPosition(position.position);
+        coneOfView.setConeDegree(this.camera.view);
 
         //UPDATE ABILITY
         ability.update(delta);
@@ -194,12 +197,17 @@ public class Player extends Actor implements Controlled {
 
         this.physics.body.setTransform(this.spawns.spawnPoints.get(SparkMath.randInd(spawns.spawnPoints.size)), 0f);
         this.health.heal();
+        TeleportPacket packet = new TeleportPacket();
+        packet.location = new Vector2(this.physics.body.getTransform().getPosition());
+        this.network.handler.client.sendTCP(packet);
 
     }
 
     public Player capture() {
         this.processor.removeProcessor(this.input);
-        this.physics.body.destroyFixture(this.physics.fixture);
+        if (this.physics.fixture.getUserData() != null) {
+            this.physics.body.destroyFixture(this.physics.fixture);
+        }
         this.remove();
         this.captured = true;
         HidePacket packet = new HidePacket();
@@ -210,7 +218,8 @@ public class Player extends Actor implements Controlled {
 
     public void release() {
         this.processor.addProcessor(this.input);
-        this.physics.body.createFixture(this.physics.build.fixtureDef());
+        this.physics.fixture = this.physics.body.createFixture(this.physics.build.fixtureDef());
+        this.physics.fixture.setUserData(this);
         this.ui.abilityBar.setRange(0, this.ability.maxFuel());
         this.ui.abilityBar.setValue(this.ability.fuel());
         this.crosshair.setControlled(this);

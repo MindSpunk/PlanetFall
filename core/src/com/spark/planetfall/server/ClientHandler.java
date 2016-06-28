@@ -52,6 +52,7 @@ public class ClientHandler {
         kryo.register(ShowPacket.class);
         kryo.register(HidePacket.class);
         kryo.register(VehicleKillPacket.class);
+        kryo.register(TeleportPacket.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 

@@ -56,6 +56,7 @@ public class ServerHandler {
             kryo.register(ShowPacket.class);
             kryo.register(HidePacket.class);
             kryo.register(VehicleKillPacket.class);
+            kryo.register(TeleportPacket.class);
             server.addListener(new ServerListener(game, this));
         } catch (IOException e) {
             e.printStackTrace();

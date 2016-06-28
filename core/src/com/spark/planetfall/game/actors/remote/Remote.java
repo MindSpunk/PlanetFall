@@ -39,9 +39,12 @@ public class Remote extends Actor {
     public void act(float delta) {
 
         if (remote.remove) {
-            this.physics.world.destroyBody(this.physics.body);
-            this.remote.empty = true;
-            this.remove();
+            if (this.physics.fixture.getUserData() != null) {
+                this.physics.world.destroyBody(this.physics.body);
+                this.physics.fixture.setUserData(null);
+                this.remote.empty = true;
+                this.remove();
+            }
         }
 
         position.position.lerp(remote.position, Constant.SERVER_NETWORK_LERP);
@@ -76,7 +79,10 @@ public class Remote extends Actor {
     }
 
     public void delete() {
-        this.physics.body.destroyFixture(this.physics.fixture);
+        if (this.physics.fixture.getUserData() != null) {
+            this.physics.body.destroyFixture(this.physics.fixture);
+            this.physics.fixture.setUserData(null);
+        }
     }
 
     public void add() {

@@ -1,7 +1,6 @@
 package com.spark.planetfall.game.map.components;
 
-import com.badlogic.gdx.physics.box2d.Transform;
-
+import com.spark.planetfall.game.actors.components.Transform;
 
 public class Generator implements BaseComponent {
 
@@ -50,11 +49,6 @@ public class Generator implements BaseComponent {
     @Override
     public void setTeam(byte team) {
         this.team = team;
-    }
-
-    @Override
-    public Class getType() {
-        return this.type;
     }
 
     @Override
