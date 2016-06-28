@@ -1,12 +1,13 @@
 package com.spark.planetfall.game.map;
 
+import com.badlogic.gdx.utils.Array;
 import com.spark.planetfall.game.map.components.Facility;
 
 public class Map {
 
-    public Facility[] facilities;
+    public Array<Facility> facilities;
 
-    public Map(Facility[] facilities) {
+    public Map(Array<Facility> facilities) {
         this.facilities = facilities;
     }
 

@@ -3515,6 +3515,172 @@
         }
       ],
       "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 421.2163,
+          "y": 230.2621,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 50.0,
+          "originY": 50.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/ui/capture_point_icon.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "031aded6-02b0-49a1-9128-c7284f26980d",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "Facility",
+          "@class": "VisID"
+        },
+        {
+          "variables": [
+            {
+              "key": "CapTime",
+              "value": "20",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Name",
+              "value": "Memeland",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Team",
+              "value": "0",
+              "@class-key": "String",
+              "@class-value": "String"
+            }
+          ],
+          "@class": "Variables"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 575.2992,
+          "y": 229.3161,
+          "scaleX": 1.0,
+          "scaleY": 1.0,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 50.0,
+          "originY": 50.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/ui/capture_point_icon.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "d7ee1035-ae7a-4d4e-8340-b1140816ef18",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "BaseComponent",
+          "@class": "VisID"
+        },
+        {
+          "variables": [
+            {
+              "key": "Owner",
+              "value": "Memeland",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Type",
+              "value": "Generator",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Time",
+              "value": "10",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "UUID",
+              "value": "1",
+              "@class-key": "String",
+              "@class-value": "String"
+            }
+          ],
+          "@class": "Variables"
+        }
+      ],
+      "@class": "EntityScheme"
     }
   ]
 }

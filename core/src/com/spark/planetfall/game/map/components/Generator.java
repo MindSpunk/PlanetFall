@@ -1,5 +1,6 @@
 package com.spark.planetfall.game.map.components;
 
+import com.badlogic.gdx.utils.Array;
 import com.spark.planetfall.game.actors.components.Transform;
 
 public class Generator implements BaseComponent {
@@ -7,7 +8,7 @@ public class Generator implements BaseComponent {
     public Transform transform;
     public byte team;
     public Class type;
-    public BaseComponent[] linked;
+    public Array<BaseComponent> linked;
     public boolean active;
     public boolean overloading;
     public float overloadTime;
@@ -15,11 +16,11 @@ public class Generator implements BaseComponent {
 
     private float timer;
 
-    public Generator(Transform transform, byte team, BaseComponent[] linked, float time) {
+    public Generator(Transform transform, float time) {
         this.type = this.getClass();
         this.transform = transform;
-        this.team = team;
-        this.linked = linked;
+        this.team = -1;
+        this.linked = new Array<BaseComponent>();
         this.timer = time;
         this.overloading = false;
         this.overloadTime = time;
@@ -64,5 +65,9 @@ public class Generator implements BaseComponent {
     @Override
     public void setFacility(Facility facility) {
         this.facility = facility;
+    }
+
+    public void setLinked(Array<BaseComponent> components) {
+        this.linked = components;
     }
 }

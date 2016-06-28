@@ -6,6 +6,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Server;
 import com.spark.planetfall.game.PlanetFallServer;
 import com.spark.planetfall.game.constants.Constant;
+import com.spark.planetfall.game.map.Map;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
 
@@ -18,6 +19,7 @@ public class ServerHandler {
     public float update;
     public final RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
     public final Array<RemoteVehicle> vehicles;
+    public Map map;
 
     public ServerHandler(PlanetFallServer game) {
 

@@ -1,22 +1,26 @@
 package com.spark.planetfall.game.map.components;
 
+import com.badlogic.gdx.utils.Array;
 import com.spark.planetfall.game.map.Map;
 
 public class Facility {
 
-    public BaseComponent[] components;
+    public Array<BaseComponent> components;
+    public String name;
     public byte team;
-    public int maxCapturePoints;
-    public int capturePoints;
+    public float captureTime;
     public boolean active;
     public boolean remote;
     public Map map;
 
-    public Facility(BaseComponent[] components, byte team, int capturePoints, boolean remote) {
-        this.components = components;
+    private float timer;
+
+    public Facility(String name, byte team, float captureTime, boolean remote) {
+        this.name = name;
+        this.components = new Array<BaseComponent>();
         this.team = team;
-        this.maxCapturePoints = capturePoints;
-        this.capturePoints = capturePoints;
+        this.timer = this.captureTime;
+        this.captureTime = captureTime;
         for (BaseComponent component: components) {
             component.setFacility(this);
         }
@@ -49,12 +53,18 @@ public class Facility {
             for (BaseComponent component : components) {
                 if (component.getClass() == SpawnPoint.class) {
                     if (component.getTeam() != this.team && component.getTeam() != -1) {
-                        this.capturePoints -= 1;
+                        this.timer -= delta;
+                        if (timer > this.captureTime) timer = captureTime;
                     } else if (component.getTeam() == this.team) {
-                        this.capturePoints += 1;
+                        if (timer > this.captureTime) timer = captureTime;;
                     }
                 }
             }
         }
+    }
+
+    public void addComponent(BaseComponent component) {
+        this.components.add(component);
+        component.setFacility(this);
     }
 }
