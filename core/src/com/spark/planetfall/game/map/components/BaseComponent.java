@@ -2,6 +2,7 @@ package com.spark.planetfall.game.map.components;
 
 
 import com.spark.planetfall.game.actors.components.Transform;
+import com.spark.planetfall.server.ServerHandler;
 
 public interface BaseComponent {
 
@@ -11,6 +12,8 @@ public interface BaseComponent {
     void setActive(boolean active);
     Facility getFacility();
     void setFacility(Facility facility);
+    void update(float delta, ServerHandler handler);
     void update(float delta);
+    boolean changed();
 
 }

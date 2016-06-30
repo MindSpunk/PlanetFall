@@ -6,6 +6,11 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.spark.planetfall.game.actors.remote.Remote;
 import com.spark.planetfall.game.constants.Constant;
+import com.spark.planetfall.game.map.Map;
+import com.spark.planetfall.game.map.components.BaseComponent;
+import com.spark.planetfall.game.map.components.CapturePoint;
+import com.spark.planetfall.game.map.components.Facility;
+import com.spark.planetfall.game.map.components.SpawnPoint;
 import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.server.packets.*;
 
@@ -53,6 +58,12 @@ public class ClientHandler {
         kryo.register(HidePacket.class);
         kryo.register(VehicleKillPacket.class);
         kryo.register(TeleportPacket.class);
+        kryo.register(MapPacket.class);
+        kryo.register(Map.class);
+        kryo.register(Facility.class);
+        kryo.register(CapturePoint.class);
+        kryo.register(SpawnPoint.class);
+        kryo.register(BaseComponent.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 

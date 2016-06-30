@@ -3519,23 +3519,23 @@
     {
       "components": [
         {
-          "x": 421.2163,
-          "y": 230.2621,
-          "scaleX": 1.0,
-          "scaleY": 1.0,
+          "x": 184.0175,
+          "y": 201.34027,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
           "rotation": 0.0,
           "@class": "Transform"
         },
         {
-          "originX": 50.0,
-          "originY": 50.0,
+          "originX": 0.0,
+          "originY": 0.0,
           "@class": "Origin"
         },
         {
           "tint": {
-            "r": 1.0,
-            "g": 1.0,
-            "b": 1.0,
+            "r": 0.96862745,
+            "g": 0.02745098,
+            "b": 0.02745098,
             "a": 1.0
           },
           "@class": "Tint"
@@ -3599,16 +3599,16 @@
     {
       "components": [
         {
-          "x": 575.2992,
-          "y": 229.3161,
-          "scaleX": 1.0,
-          "scaleY": 1.0,
+          "x": 204.507,
+          "y": 200.791,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
           "rotation": 0.0,
           "@class": "Transform"
         },
         {
-          "originX": 50.0,
-          "originY": 50.0,
+          "originX": 0.0,
+          "originY": 0.0,
           "@class": "Origin"
         },
         {
@@ -3660,7 +3660,7 @@
             },
             {
               "key": "Type",
-              "value": "Generator",
+              "value": "CapturePoint",
               "@class-key": "String",
               "@class-value": "String"
             },

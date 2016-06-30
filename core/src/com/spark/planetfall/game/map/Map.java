@@ -2,6 +2,7 @@ package com.spark.planetfall.game.map;
 
 import com.badlogic.gdx.utils.Array;
 import com.spark.planetfall.game.map.components.Facility;
+import com.spark.planetfall.server.ServerHandler;
 
 public class Map {
 
@@ -11,9 +12,9 @@ public class Map {
         this.facilities = facilities;
     }
 
-    public void update(float delta) {
+    public void update(float delta, ServerHandler handler) {
         for (Facility facility: facilities) {
-            facility.update(delta);
+            facility.update(delta, handler);
         }
 
     }

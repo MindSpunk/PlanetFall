@@ -2,12 +2,16 @@ package com.spark.planetfall.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.kotcrab.vis.runtime.scene.Scene;
+import com.kotcrab.vis.runtime.scene.VisAssetManager;
+import com.spark.planetfall.game.map.MapConfigLoader;
 import com.spark.planetfall.game.ui.GUISkin;
 import com.spark.planetfall.server.ServerHandler;
 
@@ -26,7 +30,18 @@ public class PlanetFallServer extends Game {
 
         GUISkin.load();
 
+        VisAssetManager vis = new VisAssetManager(new SpriteBatch());
+        Scene scene = vis.loadSceneNow("scene/test.scene");
+
+        MapConfigLoader mapConfigLoader = new MapConfigLoader();
+
+        scene.getEntityEngine().inject(mapConfigLoader);
+
+        mapConfigLoader.afterSceneInit();
+
         handler = new ServerHandler(this);
+
+        handler.map = mapConfigLoader.map;
 
         stage = new Stage();
         window = new Window("SERVER", GUISkin.get());

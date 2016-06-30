@@ -11,5 +11,6 @@ public class RemotePlayer {
     public float angle = 0;
     public int id = -1;
     public String name = "";
+    public byte team = -1;
 
 }

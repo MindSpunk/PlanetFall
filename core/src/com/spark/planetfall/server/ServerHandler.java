@@ -7,6 +7,10 @@ import com.esotericsoftware.kryonet.Server;
 import com.spark.planetfall.game.PlanetFallServer;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.map.Map;
+import com.spark.planetfall.game.map.components.BaseComponent;
+import com.spark.planetfall.game.map.components.CapturePoint;
+import com.spark.planetfall.game.map.components.Facility;
+import com.spark.planetfall.game.map.components.SpawnPoint;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
 
@@ -59,6 +63,12 @@ public class ServerHandler {
             kryo.register(HidePacket.class);
             kryo.register(VehicleKillPacket.class);
             kryo.register(TeleportPacket.class);
+            kryo.register(MapPacket.class);
+            kryo.register(Map.class);
+            kryo.register(Facility.class);
+            kryo.register(CapturePoint.class);
+            kryo.register(SpawnPoint.class);
+            kryo.register(BaseComponent.class);
             server.addListener(new ServerListener(game, this));
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,7 +79,6 @@ public class ServerHandler {
 
         update += delta;
         if (update >= Constant.SERVER_UPDATE_RATE) {
-            update = 0;
             for (RemotePlayer player : players) {
                 if (!player.empty) {
                     UpdatePacket update = new UpdatePacket();
@@ -88,6 +97,8 @@ public class ServerHandler {
                     server.sendToAllUDP(update);
                 }
             }
+            map.update(update, this);
+            update = 0;
         }
 
     }

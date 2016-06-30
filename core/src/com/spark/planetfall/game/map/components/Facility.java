@@ -2,6 +2,7 @@ package com.spark.planetfall.game.map.components;
 
 import com.badlogic.gdx.utils.Array;
 import com.spark.planetfall.game.map.Map;
+import com.spark.planetfall.server.ServerHandler;
 
 public class Facility {
 
@@ -39,32 +40,34 @@ public class Facility {
         this.map = map;
     }
 
-    public void update(float delta) {
+    public void update(float delta, ServerHandler handler) {
 
-        //IF THIS IS A CLIENT DATA HOLDER AS OPPOSED TO THE SERVER'S MAP
-        if (!this.remote) {
+        //UPDATE COMPONENTS -- SEE COMPONENT TYPE UPDATE METHOD FOR MORE INFORMATION
+        for (BaseComponent component : components) {
+            component.update(delta, handler);
+        }
 
-            //UPDATE COMPONENTS -- SEE COMPONENT TYPE UPDATE METHOD FOR MORE INFORMATION
-            for (BaseComponent component : components) {
-                component.update(delta);
-            }
-
-            //TICK BASE CAPTURE TIMER BASED ON CAPTURE POINT OWNERSHIP
-            for (BaseComponent component : components) {
-                if (component.getClass() == SpawnPoint.class) {
-                    if (component.getTeam() != this.team && component.getTeam() != -1) {
-                        this.timer -= delta;
-                        if (timer > this.captureTime) timer = captureTime;
-                    } else if (component.getTeam() == this.team) {
-                        if (timer > this.captureTime) timer = captureTime;;
-                    }
+        //TICK BASE CAPTURE TIMER BASED ON CAPTURE POINT OWNERSHIP
+        for (BaseComponent component : components) {
+            if (component.getClass() == SpawnPoint.class) {
+                if (component.getTeam() != this.team && component.getTeam() != -1) {
+                    this.timer -= delta;
+                    if (timer > this.captureTime) timer = captureTime;
+                } else if (component.getTeam() == this.team) {
+                    if (timer > this.captureTime) timer = captureTime;;
                 }
             }
         }
+
     }
 
     public void addComponent(BaseComponent component) {
         this.components.add(component);
         component.setFacility(this);
+        component.setTeam(this.team);
+    }
+
+    public void setRemote(boolean remote) {
+        this.remote = remote;
     }
 }

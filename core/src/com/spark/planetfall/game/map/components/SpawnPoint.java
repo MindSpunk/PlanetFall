@@ -1,6 +1,7 @@
 package com.spark.planetfall.game.map.components;
 
 import com.spark.planetfall.game.actors.components.Transform;
+import com.spark.planetfall.server.ServerHandler;
 
 public class SpawnPoint implements BaseComponent {
 
@@ -10,11 +11,14 @@ public class SpawnPoint implements BaseComponent {
     public boolean active;
     public Facility facility;
 
+    public boolean changed;
+
     public SpawnPoint(Transform transform, byte team) {
         this.transform = transform;
         this.team = team;
         this.active = true;
         this.type = this.getClass();
+        this.changed = true;
     }
 
 
@@ -51,5 +55,19 @@ public class SpawnPoint implements BaseComponent {
     @Override
     public void update(float delta) {
 
+        this.changed = false;
+
+    }
+
+    @Override
+    public void update(float delta, ServerHandler handler) {
+
+        this.changed = false;
+
+    }
+
+    @Override
+    public boolean changed() {
+        return changed;
     }
 }

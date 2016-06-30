@@ -3519,8 +3519,8 @@
     {
       "components": [
         {
-          "x": 420.0888,
-          "y": 230.26204,
+          "x": 421.2163,
+          "y": 230.2621,
           "scaleX": 1.0,
           "scaleY": 1.0,
           "rotation": 0.0,
@@ -3573,8 +3573,20 @@
         {
           "variables": [
             {
+              "key": "CapTime",
+              "value": "20",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
               "key": "Name",
               "value": "Memeland",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Team",
+              "value": "0",
               "@class-key": "String",
               "@class-value": "String"
             }
@@ -3635,7 +3647,7 @@
           "@class": "Renderable"
         },
         {
-          "id": "Generator",
+          "id": "BaseComponent",
           "@class": "VisID"
         },
         {
@@ -3643,6 +3655,24 @@
             {
               "key": "Owner",
               "value": "Memeland",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Type",
+              "value": "Generator",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Time",
+              "value": "10",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "UUID",
+              "value": "1",
               "@class-key": "String",
               "@class-value": "String"
             }
