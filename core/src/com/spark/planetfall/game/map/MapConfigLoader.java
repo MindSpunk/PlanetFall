@@ -8,9 +8,8 @@ import com.kotcrab.vis.runtime.component.Transform;
 import com.kotcrab.vis.runtime.component.Variables;
 import com.kotcrab.vis.runtime.system.VisIDManager;
 import com.kotcrab.vis.runtime.util.AfterSceneInit;
-import com.spark.planetfall.game.map.components.CapturePoint;
 import com.spark.planetfall.game.map.components.Facility;
-import com.spark.planetfall.game.map.components.Generator;
+import com.spark.planetfall.game.map.components.SpawnPoint;
 import com.spark.planetfall.utils.Log;
 
 public class MapConfigLoader extends Manager implements AfterSceneInit {
@@ -81,14 +80,14 @@ public class MapConfigLoader extends Manager implements AfterSceneInit {
 
         entities = idManager.getMultiple("BaseComponent");
 
-        // Load Facilities
+        // Load Components
         for (Entity entity: entities) {
             Variables vars = entity.getComponent(Variables.class);
             Log.logInfo("Found a: " + vars.get("Type"));
             Log.logInfo("Linked to facility: " + vars.get("Owner"));
 
             //IF THE FOUND BASE COMPONENT IS A GENERATOR ASSIGN IT TO ITS PARENT FACILITY AND GIVE IT ITS CONFIG VALUES
-            if (vars.get("Type").equals("Generator")) {
+            if (vars.get("Type").equals("SpawnPoint")) {
 
                 //Look For Owner Facility
                 for (Facility facility: facilities) {
@@ -98,34 +97,10 @@ public class MapConfigLoader extends Manager implements AfterSceneInit {
                         //Get The Components Values (Transform, and Statistics)
                         Vector2 position = new Vector2(entity.getComponent(Transform.class).getX(), entity.getComponent(Transform.class).getY());
                         float angle = entity.getComponent(Transform.class).getRotation();
-                        float overloadTime = Float.parseFloat(vars.get("Time"));
-
-
-                        Log.logInfo("Overload Time: " + overloadTime);
 
                         //Add generator to list
-                        Generator generator = new Generator(position, angle, overloadTime);
+                        SpawnPoint generator = new SpawnPoint(new com.spark.planetfall.game.actors.components.Transform(position,angle), (byte) -1);
                         facility.addComponent(generator);
-
-                        break;
-                    }
-                }
-            }
-            if (vars.get("Type").equals("CapturePoint")) {
-
-                //Look For Owner Facility
-                for (Facility facility: facilities) {
-
-                    if (facility.name.equals(vars.get("Owner"))) {
-
-                        //Get The Components Values (Transform, and Statistics)
-                        Vector2 position = new Vector2(entity.getComponent(Transform.class).getX(), entity.getComponent(Transform.class).getY());
-                        float angle = entity.getComponent(Transform.class).getRotation();
-                        float capTime = Float.parseFloat(vars.get("Time"));
-
-                        CapturePoint capPoint = new CapturePoint(position,angle,facility.team,capTime);
-
-                        facility.addComponent(capPoint);
 
                         break;
                     }
@@ -136,7 +111,9 @@ public class MapConfigLoader extends Manager implements AfterSceneInit {
 
         line();
 
-        map = new Map(facilities);
+        Facility[] fac = facilities.toArray(Facility.class);
+
+        map = new Map(fac);
 
     }
 

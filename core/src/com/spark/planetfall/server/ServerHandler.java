@@ -5,12 +5,10 @@ import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Server;
 import com.spark.planetfall.game.PlanetFallServer;
+import com.spark.planetfall.game.actors.components.Transform;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.map.Map;
-import com.spark.planetfall.game.map.components.BaseComponent;
-import com.spark.planetfall.game.map.components.CapturePoint;
-import com.spark.planetfall.game.map.components.Facility;
-import com.spark.planetfall.game.map.components.SpawnPoint;
+import com.spark.planetfall.game.map.components.*;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
 
@@ -37,10 +35,11 @@ public class ServerHandler {
         }
 
         try {
-            server = new Server();
+            server = new Server(16384*4, 2048*4);
             server.start();
             server.bind(Constant.SERVER_TCP_PORT, Constant.SERVER_UDP_PORT);
             Kryo kryo = server.getKryo();
+            kryo.setReferences(true);
             kryo.register(Vector2.class);
             kryo.register(RemotePlayer[].class);
             kryo.register(AllowedPacket.class);
@@ -66,9 +65,12 @@ public class ServerHandler {
             kryo.register(MapPacket.class);
             kryo.register(Map.class);
             kryo.register(Facility.class);
-            kryo.register(CapturePoint.class);
             kryo.register(SpawnPoint.class);
             kryo.register(BaseComponent.class);
+            kryo.register(BaseComponent[].class);
+            kryo.register(Facility[].class);
+            kryo.register(SpawnPoint[].class);
+            kryo.register(Transform.class);
             server.addListener(new ServerListener(game, this));
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,6 +100,14 @@ public class ServerHandler {
                 }
             }
             map.update(update, this);
+
+            MapPacket mapPacket = new MapPacket();
+            mapPacket.map = map.getChanges();
+            if (mapPacket.map == null) {
+            } else {
+                server.sendToAllUDP(mapPacket);
+            }
+
             update = 0;
         }
 

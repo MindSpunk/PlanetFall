@@ -2,14 +2,16 @@ package com.spark.planetfall.game.map.components;
 
 import com.spark.planetfall.game.actors.components.Transform;
 import com.spark.planetfall.server.ServerHandler;
+import com.spark.planetfall.utils.Log;
 
-public class SpawnPoint implements BaseComponent {
+public class SpawnPoint extends BaseComponent {
 
     public Transform transform;
     public byte team;
     public Class type;
     public boolean active;
     public Facility facility;
+    public boolean remote;
 
     public boolean changed;
 
@@ -19,38 +21,10 @@ public class SpawnPoint implements BaseComponent {
         this.active = true;
         this.type = this.getClass();
         this.changed = true;
+        this.remote = false;
     }
 
-
-    @Override
-    public Transform getTransform() {
-        return this.transform;
-    }
-
-    @Override
-    public byte getTeam() {
-        return this.team;
-    }
-
-    @Override
-    public void setTeam(byte team) {
-        this.team = team;
-    }
-
-    @Override
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    @Override
-    public Facility getFacility() {
-        return this.facility;
-    }
-
-    @Override
-    public void setFacility(Facility facility) {
-        this.facility = facility;
-    }
+    public SpawnPoint() {}
 
     @Override
     public void update(float delta) {
@@ -67,7 +41,13 @@ public class SpawnPoint implements BaseComponent {
     }
 
     @Override
-    public boolean changed() {
-        return changed;
+    public void printInfo() {
+
+        Log.logInfo("Spawn Point");
+        Log.logInfo("Parent Facility: " + facility.name);
+        Log.logInfo("Team: " + this.team);
+        Log.logInfo("Active: " + this.active);
+        Log.logInfo("==============================");
+
     }
 }

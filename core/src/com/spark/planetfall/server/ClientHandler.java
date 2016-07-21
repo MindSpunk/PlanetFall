@@ -4,13 +4,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.KryoSerialization;
+import com.spark.planetfall.game.actors.components.Transform;
 import com.spark.planetfall.game.actors.remote.Remote;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.map.Map;
-import com.spark.planetfall.game.map.components.BaseComponent;
-import com.spark.planetfall.game.map.components.CapturePoint;
-import com.spark.planetfall.game.map.components.Facility;
-import com.spark.planetfall.game.map.components.SpawnPoint;
+import com.spark.planetfall.game.map.components.*;
 import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.server.packets.*;
 
@@ -33,9 +32,10 @@ public class ClientHandler {
 
         this.game = game;
 
-        client = new Client();
+        client = new Client(16384*4, 2048*4 , new KryoSerialization());
         client.start();
         Kryo kryo = client.getKryo();
+        kryo.setReferences(true);
         kryo.register(Vector2.class);
         kryo.register(RemotePlayer[].class);
         kryo.register(AllowedPacket.class);
@@ -61,9 +61,12 @@ public class ClientHandler {
         kryo.register(MapPacket.class);
         kryo.register(Map.class);
         kryo.register(Facility.class);
-        kryo.register(CapturePoint.class);
         kryo.register(SpawnPoint.class);
         kryo.register(BaseComponent.class);
+        kryo.register(BaseComponent[].class);
+        kryo.register(Facility[].class);
+        kryo.register(SpawnPoint[].class);
+        kryo.register(Transform.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 

@@ -87,6 +87,8 @@ public class ClientListener extends Listener {
             AllowedPacket packet = (AllowedPacket) object;
             Log.logInfo("Connection Established");
             handler.id = packet.id;
+            handler.game.map = packet.map;
+            handler.game.map.printAll();
             for (int i = 0; i < packet.players.length; i++) {
                 if (packet.players[i].id != handler.id) {
                     Log.logInfo("Adding Player" + i);
@@ -224,6 +226,11 @@ public class ClientListener extends Listener {
                     }
                 }
             }
+        }
+
+        if (object instanceof MapPacket) {
+            MapPacket packet = (MapPacket) object;
+            this.game.map = packet.map;
         }
     }
 }

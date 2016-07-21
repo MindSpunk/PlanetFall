@@ -19,6 +19,7 @@ import com.spark.planetfall.game.actors.DataManager;
 import com.spark.planetfall.game.actors.Player;
 import com.spark.planetfall.game.actors.VehicleActor;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
+import com.spark.planetfall.game.map.Map;
 import com.spark.planetfall.server.ClientHandler;
 
 public class SparkGame implements Screen {
@@ -38,6 +39,7 @@ public class SparkGame implements Screen {
     public UIHandler ui;
     public VehicleActor vehicle;
     public DataManager manager;
+    public Map map;
 
     public SparkGame(PlanetFallClient in, String ip) {
         this.game = in;

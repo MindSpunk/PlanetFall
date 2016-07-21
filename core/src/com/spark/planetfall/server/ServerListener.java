@@ -63,6 +63,7 @@ public class ServerListener extends Listener {
                     handler.players[i].name = packet.name;
                     handler.players[i].empty = false;
                     AllowedPacket response = new AllowedPacket();
+                    response.map = handler.map;
                     response.id = connection.getID();
                     response.players = handler.players;
                     response.vehicles = handler.vehicles.items;

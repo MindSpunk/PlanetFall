@@ -3519,23 +3519,23 @@
     {
       "components": [
         {
-          "x": 421.2163,
-          "y": 230.2621,
-          "scaleX": 1.0,
-          "scaleY": 1.0,
+          "x": 184.0175,
+          "y": 201.34027,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
           "rotation": 0.0,
           "@class": "Transform"
         },
         {
-          "originX": 50.0,
-          "originY": 50.0,
+          "originX": 0.0,
+          "originY": 0.0,
           "@class": "Origin"
         },
         {
           "tint": {
-            "r": 1.0,
-            "g": 1.0,
-            "b": 1.0,
+            "r": 0.96862745,
+            "g": 0.02745098,
+            "b": 0.02745098,
             "a": 1.0
           },
           "@class": "Tint"
@@ -3599,16 +3599,16 @@
     {
       "components": [
         {
-          "x": 575.2992,
-          "y": 229.3161,
-          "scaleX": 1.0,
-          "scaleY": 1.0,
+          "x": 204.507,
+          "y": 200.791,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
           "rotation": 0.0,
           "@class": "Transform"
         },
         {
-          "originX": 50.0,
-          "originY": 50.0,
+          "originX": 0.0,
+          "originY": 0.0,
           "@class": "Origin"
         },
         {
@@ -3660,7 +3660,7 @@
             },
             {
               "key": "Type",
-              "value": "Generator",
+              "value": "CapturePoint",
               "@class-key": "String",
               "@class-value": "String"
             },
@@ -3669,10 +3669,84 @@
               "value": "10",
               "@class-key": "String",
               "@class-value": "String"
+            }
+          ],
+          "@class": "Variables"
+        }
+      ],
+      "@class": "EntityScheme"
+    },
+    {
+      "components": [
+        {
+          "x": 221.7655,
+          "y": 200.4738,
+          "scaleX": 0.1,
+          "scaleY": 0.1,
+          "rotation": 0.0,
+          "@class": "Transform"
+        },
+        {
+          "originX": 0.0,
+          "originY": 0.0,
+          "@class": "Origin"
+        },
+        {
+          "tint": {
+            "r": 0.09803922,
+            "g": 0.9882353,
+            "b": 0.9882353,
+            "a": 1.0
+          },
+          "@class": "Tint"
+        },
+        {
+          "asset": {
+            "relativePath": "gfx/ui/capture_point_icon.png",
+            "@class": "TextureRegionAsset"
+          },
+          "@class": "AssetReference"
+        },
+        {
+          "flipX": false,
+          "flipY": false,
+          "width": 100.0,
+          "height": 100.0,
+          "@class": "ProtoVisSprite"
+        },
+        {
+          "layerId": 2,
+          "@class": "Layer"
+        },
+        {
+          "uuid": "d676f13a-276a-4467-9e15-91b678917265",
+          "@class": "VisUUID"
+        },
+        {
+          "zIndex": 0,
+          "@class": "Renderable"
+        },
+        {
+          "id": "BaseComponent",
+          "@class": "VisID"
+        },
+        {
+          "variables": [
+            {
+              "key": "Owner",
+              "value": "Memeland",
+              "@class-key": "String",
+              "@class-value": "String"
             },
             {
-              "key": "UUID",
-              "value": "1",
+              "key": "Type",
+              "value": "SpawnPoint",
+              "@class-key": "String",
+              "@class-value": "String"
+            },
+            {
+              "key": "Team",
+              "value": "-1",
               "@class-key": "String",
               "@class-value": "String"
             }

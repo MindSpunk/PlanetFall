@@ -3599,8 +3599,8 @@
     {
       "components": [
         {
-          "x": 204.507,
-          "y": 200.791,
+          "x": 221.7655,
+          "y": 200.4738,
           "scaleX": 0.1,
           "scaleY": 0.1,
           "rotation": 0.0,
@@ -3613,9 +3613,9 @@
         },
         {
           "tint": {
-            "r": 1.0,
-            "g": 1.0,
-            "b": 1.0,
+            "r": 0.09803922,
+            "g": 0.9882353,
+            "b": 0.9882353,
             "a": 1.0
           },
           "@class": "Tint"
@@ -3639,7 +3639,7 @@
           "@class": "Layer"
         },
         {
-          "uuid": "d7ee1035-ae7a-4d4e-8340-b1140816ef18",
+          "uuid": "d676f13a-276a-4467-9e15-91b678917265",
           "@class": "VisUUID"
         },
         {
@@ -3660,19 +3660,13 @@
             },
             {
               "key": "Type",
-              "value": "CapturePoint",
+              "value": "SpawnPoint",
               "@class-key": "String",
               "@class-value": "String"
             },
             {
-              "key": "Time",
-              "value": "10",
-              "@class-key": "String",
-              "@class-value": "String"
-            },
-            {
-              "key": "UUID",
-              "value": "1",
+              "key": "Team",
+              "value": "-1",
               "@class-key": "String",
               "@class-value": "String"
             }
