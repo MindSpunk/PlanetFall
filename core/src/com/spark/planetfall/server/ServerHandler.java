@@ -123,4 +123,12 @@ public class ServerHandler {
         return count;
     }
 
+    public int getTeam(byte team) {
+        int count = 0;
+        for (RemotePlayer player : players) {
+            if (player.team == team) count ++;
+        }
+        return count;
+    }
+
 }

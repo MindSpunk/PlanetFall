@@ -10,6 +10,7 @@ public class AllowedPacket {
     public int id;
     public RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
     public RemoteVehicle[] vehicles;
+    public byte team;
     public Map map;
 
 }
