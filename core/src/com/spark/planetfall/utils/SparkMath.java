@@ -18,7 +18,7 @@ public class SparkMath {
 
     }
 
-    public static int randInd(int max) {
+    public static int randInt(int max) {
 
         float ret = max;
 

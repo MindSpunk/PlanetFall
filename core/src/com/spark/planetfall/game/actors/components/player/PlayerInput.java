@@ -1,8 +1,10 @@
 package com.spark.planetfall.game.actors.components.player;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.spark.planetfall.game.PlanetFallClient;
 import com.spark.planetfall.game.actors.Lightning;
 import com.spark.planetfall.game.actors.Player;
 import com.spark.planetfall.game.actors.Vehicle;
@@ -13,9 +15,12 @@ public class PlayerInput implements InputProcessor {
 
     public final Player player;
 
+    public boolean tabHeld;
+
     public PlayerInput(Player player) {
 
         this.player = player;
+        this.tabHeld = false;
 
     }
 
@@ -73,6 +78,8 @@ public class PlayerInput implements InputProcessor {
         if (keycode == Keys.NUM_4) {
             player.controller.weapons.select(3);
         }
+
+        /*
         if (keycode == Keys.NUM_5) {
             if (player.game.vehicle == null) {
                 Transform transform = new Transform(player.getTransform().position.cpy(), player.getTransform().angle);
@@ -110,6 +117,16 @@ public class PlayerInput implements InputProcessor {
                 }
             }
         }
+        */
+
+        if (keycode == Keys.TAB) {
+            this.tabHeld = true;
+        }
+
+        if (keycode == Keys.ESCAPE) {
+            player.network.handler.client.close();
+            Gdx.app.exit();
+        }
 
         return false;
     }
@@ -136,6 +153,9 @@ public class PlayerInput implements InputProcessor {
             if (player.ability.hold()) {
                 player.ability.deactivate();
             }
+        }
+        if (keycode == Keys.TAB) {
+            this.tabHeld = false;
         }
 
         return false;

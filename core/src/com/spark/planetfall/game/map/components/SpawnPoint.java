@@ -6,12 +6,6 @@ import com.spark.planetfall.utils.Log;
 
 public class SpawnPoint extends BaseComponent {
 
-    public Transform transform;
-    public byte team;
-    public Class type;
-    public boolean active;
-    public Facility facility;
-    public boolean remote;
 
     public boolean changed;
 
@@ -19,7 +13,6 @@ public class SpawnPoint extends BaseComponent {
         this.transform = transform;
         this.team = team;
         this.active = true;
-        this.type = this.getClass();
         this.changed = true;
         this.remote = false;
     }
@@ -44,7 +37,7 @@ public class SpawnPoint extends BaseComponent {
     public void printInfo() {
 
         Log.logInfo("Spawn Point");
-        Log.logInfo("Parent Facility: " + facility.name);
+        Log.logInfo("Parent Facility: " + this.parent.name);
         Log.logInfo("Team: " + this.team);
         Log.logInfo("Active: " + this.active);
         Log.logInfo("==============================");

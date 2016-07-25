@@ -23,6 +23,9 @@ public class ClientHandler {
     public final RemotePlayer[] players = new RemotePlayer[Constant.SERVER_MAX_PLAYERS];
     public final Remote[] playerActors = new Remote[Constant.SERVER_MAX_PLAYERS];
     public final Array<RemoteVehicle> vehicles = new Array<RemoteVehicle>();
+    public RemotePlayer player;
+
+    public String name;
 
     public ClientHandler(SparkGame game, String ip) {
 
@@ -67,6 +70,11 @@ public class ClientHandler {
         kryo.register(Facility[].class);
         kryo.register(SpawnPoint[].class);
         kryo.register(Transform.class);
+        kryo.register(KilledPacket.class);
+        kryo.register(ClientUpdatePacket.class);
+        kryo.register(Class.class);
+        kryo.register(RemotePlayerRequestPacket.class);
+        kryo.register(SortPacket.class);
         client.addListener(new ClientListener(game, this));
         new Thread(new ConnectThread(ip) {
 

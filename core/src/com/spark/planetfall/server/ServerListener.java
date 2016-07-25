@@ -54,34 +54,45 @@ public class ServerListener extends Listener {
         if (object instanceof ConnectPacket) {
             ConnectPacket packet = (ConnectPacket) object;
             boolean slotFound = false;
+            boolean nameTaken = false;
             Log.logInfo("Connection");
             for (int i = 0; i < handler.players.length; i++) {
-                if (handler.players[i].empty) {
-                    slotFound = true;
-                    handler.players[i].position = packet.position;
-                    handler.players[i].angle = packet.angle;
-                    handler.players[i].id = connection.getID();
-                    handler.players[i].name = packet.name;
-                    handler.players[i].empty = false;
-                    AllowedPacket response = new AllowedPacket();
-                    response.map = handler.map;
-                    response.id = connection.getID();
-                    response.players = handler.players;
-                    response.vehicles = handler.vehicles.items;
-                    if (handler.getTeam((byte)0) > handler.getTeam((byte)1)) {
-                        response.team = 1;
-                    } else if (handler.getTeam((byte)0) < handler.getTeam((byte)1)) {
-                        response.team = 0;
-                    } else {
-                        int random = SparkMath.randInd(2);
-                        if (random > 1) {
+                if (!handler.players[i].name.equals(packet.name)) {
+                    if (handler.players[i].empty) {
+                        slotFound = true;
+                        handler.players[i].position = packet.position;
+                        handler.players[i].angle = packet.angle;
+                        handler.players[i].id = connection.getID();
+                        handler.players[i].name = packet.name;
+                        handler.players[i].empty = false;
+                        AllowedPacket response = new AllowedPacket();
+                        response.map = handler.map;
+                        response.id = connection.getID();
+                        response.players = handler.players;
+                        response.vehicles = handler.vehicles.items;
+                        if (handler.getTeam((byte) 0) > handler.getTeam((byte) 1)) {
                             response.team = 1;
-                        } else {
+                        } else if (handler.getTeam((byte) 0) < handler.getTeam((byte) 1)) {
                             response.team = 0;
-                        }
+                        } else {
+                            int random = SparkMath.randInt(2);
+                            if (random > 1) {
+                                response.team = 1;
+                            } else {
+                                response.team = 0;
+                            }
 
+                        }
+                        connection.sendTCP(response);
+                        break;
                     }
-                    connection.sendTCP(response);
+                } else {
+                    Log.logInfo("Player Refused");
+                    RefusedPacket refuse = new RefusedPacket();
+                    refuse.reason = "Name Already Taken";
+                    handler.server.sendToTCP(connection.getID(), refuse);
+                    slotFound = true;
+                    nameTaken = true;
                     break;
                 }
             }
@@ -90,10 +101,11 @@ public class ServerListener extends Listener {
                 RefusedPacket refuse = new RefusedPacket();
                 refuse.reason = "ServerFull";
                 handler.server.sendToTCP(connection.getID(), refuse);
-            } else {
+            } else if (!nameTaken) {
                 Log.logInfo("New Player");
                 JoinedPacket join = new JoinedPacket();
                 join.id = connection.getID();
+                join.name = packet.name;
                 handler.server.sendToAllExceptTCP(connection.getID(), join);
             }
         }
@@ -131,6 +143,7 @@ public class ServerListener extends Listener {
         }
         if (object instanceof HitPacket) {
             HitPacket packet = (HitPacket) object;
+            handler.getPlayerFromID(packet.id).lastHitID = connection.getID();
             handler.server.sendToTCP(packet.id, packet);
         }
         if (object instanceof VehicleHitPacket) {
@@ -178,6 +191,24 @@ public class ServerListener extends Listener {
             TeleportPacket packet = (TeleportPacket) object;
             packet.id = connection.getID();
             handler.server.sendToAllExceptTCP(connection.getID(),packet);
+        }
+        if (object instanceof KilledPacket) {
+            KilledPacket packet = (KilledPacket) object;
+            packet.id = connection.getID();
+            packet.killerID = handler.getPlayerFromID(packet.id).lastHitID;
+            packet.score = 100;
+            RemotePlayer killer = handler.getPlayerFromID(packet.killerID);
+            killer.score += 100;
+            killer.kills++;
+            RemotePlayer target = handler.getPlayerFromID(connection.getID());
+            target.deaths++;
+            handler.server.sendToAllExceptTCP(connection.getID(),packet);
+            handler.server.sendToAllTCP(new SortPacket());
+        }
+        if (object instanceof RemotePlayerRequestPacket) {
+            RemotePlayerRequestPacket packet = (RemotePlayerRequestPacket) object;
+            packet.player = handler.getPlayerFromID(connection.getID());
+            handler.server.sendToUDP(connection.getID(),packet);
         }
     }
 }

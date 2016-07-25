@@ -7,5 +7,8 @@ public class UpdatePacket {
     public Vector2 position;
     public float angle;
     public int id;
+    public int score = 0;
+    public int kills = 0;
+    public int deaths = 0;
 
 }

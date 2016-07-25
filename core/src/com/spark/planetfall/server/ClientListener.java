@@ -2,10 +2,13 @@ package com.spark.planetfall.server;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.spark.planetfall.game.actors.components.ui.PlayerSort;
 import com.spark.planetfall.game.actors.remote.*;
 import com.spark.planetfall.game.screens.SparkGame;
+import com.spark.planetfall.game.ui.PlayerListEntry;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
 
@@ -38,6 +41,13 @@ public class ClientListener extends Listener {
                 if (handler.players[i].id == packet.id) {
                     handler.players[i].remove = true;
                     handler.players[i].empty = true;
+                    for (PlayerListEntry entry : game.ui.playerListEntries) {
+                        if (entry.player.id == handler.players[i].id) {
+                            handler.players[i].id = -1;
+                            game.ui.playerListEntries.removeValue(entry, false);
+                        }
+                    }
+                    game.ui.rebuildPlayerList();
                 }
             }
         }
@@ -49,10 +59,20 @@ public class ClientListener extends Listener {
                 for (int i = 0; i < handler.players.length; i++) {
                     if (handler.players[i].empty) {
                         handler.players[i].id = packet.id;
+                        handler.players[i].name = packet.name;
                         handler.players[i].empty = false;
                         Remote remote = new Remote(handler.players[i], game.world, handler);
                         handler.playerActors[i] = remote;
                         game.stage.addActor(remote);
+
+                        while (game.ui == null) {
+                            Log.logWarn("Waiting On UI BUILD");
+                        }
+                        PlayerListEntry entry = new PlayerListEntry(handler.players[i]);
+                        entry.addToTable(game.ui.playerListTable);
+                        game.ui.stage.addActor(entry);
+                        game.ui.playerListEntries.add(entry);
+
                         if (handler.game.player.isCaptured()) {
                             HidePacket response = new HidePacket();
                             handler.client.sendTCP(response);
@@ -79,7 +99,8 @@ public class ClientListener extends Listener {
             ConnectPacket packet = new ConnectPacket();
             packet.position = new Vector2(21, 21);
             packet.angle = 20f;
-            packet.name = "meme";
+            packet.name = game.name;
+            handler.name = packet.name;
             handler.client.sendTCP(packet);
         }
 
@@ -97,6 +118,15 @@ public class ClientListener extends Listener {
                         Remote remote = new Remote(handler.players[i], game.world, handler);
                         handler.playerActors[i] = remote;
                         game.stage.addActor(remote);
+
+                        while (game.ui == null) {
+                            Log.logWarn("Waiting On UI BUILD");
+                        }
+                        PlayerListEntry entry = new PlayerListEntry(handler.players[i]);
+                        entry.addToTable(game.ui.playerListTable);
+                        game.ui.stage.addActor(entry);
+                        game.ui.playerListEntries.add(entry);
+
                     }
                 } else {
                     handler.players[i] = packet.players[i];
@@ -114,6 +144,10 @@ public class ClientListener extends Listener {
                     }
                 }
             }
+
+            RemotePlayerRequestPacket response = new RemotePlayerRequestPacket();
+            handler.client.sendTCP(response);
+
         }
 
         if (object instanceof RefusedPacket) {
@@ -124,6 +158,37 @@ public class ClientListener extends Listener {
             Gdx.app.exit();
         }
 
+
+        if (object instanceof ClientUpdatePacket) {
+            ClientUpdatePacket packet = (ClientUpdatePacket) object;
+            while (game.player == null) {
+                Log.logWarn("Waiting on player build");
+            }
+            game.player.remote = packet.player;
+            for (PlayerListEntry entry : game.ui.playerListEntries) {
+                if (entry.name.equals(packet.player.name)) {
+                    entry.player = packet.player; 
+                }
+            }
+        }
+
+
+        if (object instanceof RemotePlayerRequestPacket) {
+            RemotePlayerRequestPacket packet = (RemotePlayerRequestPacket) object;
+            handler.player = packet.player;
+            while (game.player == null) {
+                Log.logWarn("Waiting on player build");
+            }
+            game.player.remote = handler.player;
+
+            PlayerListEntry entry = new PlayerListEntry(game.player.remote);
+            entry.addToTable(game.ui.playerListTable);
+            game.ui.stage.addActor(entry);
+            game.ui.playerListEntries.add(entry);
+
+            game.ui.playerListEntries.sort(new PlayerSort());
+        }
+
         if (object instanceof UpdatePacket) {
             UpdatePacket packet = (UpdatePacket) object;
             for (int i = 0; i < handler.players.length; i++) {
@@ -131,6 +196,10 @@ public class ClientListener extends Listener {
                     if (handler.players[i].id == packet.id) {
                         handler.players[i].position = packet.position;
                         handler.players[i].angle = packet.angle;
+                        handler.players[i].deaths = packet.deaths;
+                        handler.players[i].kills = packet.kills;
+                        handler.players[i].score = packet.score;
+
                         break;
                     }
                 }
@@ -231,6 +300,19 @@ public class ClientListener extends Listener {
         if (object instanceof MapPacket) {
             MapPacket packet = (MapPacket) object;
             this.game.map = packet.map;
+        }
+
+        if (object instanceof KilledPacket) {
+            KilledPacket packet = (KilledPacket) object;
+            Log.logInfo("KILL PACKET RECEIVED");
+            if (packet.killerID == handler.id) {
+                //KILL MESSAGE
+            }
+        }
+        if (object instanceof SortPacket) {
+            Log.logInfo("Sorting Player List");
+            game.ui.playerListEntries.sort(new PlayerSort());
+            game.ui.rebuildPlayerList();
         }
     }
 }

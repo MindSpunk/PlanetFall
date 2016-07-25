@@ -6,6 +6,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Server;
 import com.spark.planetfall.game.PlanetFallServer;
 import com.spark.planetfall.game.actors.components.Transform;
+import com.spark.planetfall.game.actors.remote.Remote;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.map.Map;
 import com.spark.planetfall.game.map.components.*;
@@ -71,6 +72,11 @@ public class ServerHandler {
             kryo.register(Facility[].class);
             kryo.register(SpawnPoint[].class);
             kryo.register(Transform.class);
+            kryo.register(KilledPacket.class);
+            kryo.register(ClientUpdatePacket.class);
+            kryo.register(Class.class);
+            kryo.register(RemotePlayerRequestPacket.class);
+            kryo.register(SortPacket.class);
             server.addListener(new ServerListener(game, this));
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,7 +93,14 @@ public class ServerHandler {
                     update.position = player.position;
                     update.angle = player.angle;
                     update.id = player.id;
+                    update.deaths = player.deaths;
+                    update.kills = player.kills;
+                    update.score = player.score;
                     server.sendToAllUDP(update);
+
+                    ClientUpdatePacket clientUpdate = new ClientUpdatePacket();
+                    clientUpdate.player = player;
+                    server.sendToUDP(player.id, clientUpdate);
                 }
             }
             for (int i = 0; i < vehicles.size; i++) {
@@ -129,6 +142,15 @@ public class ServerHandler {
             if (player.team == team) count ++;
         }
         return count;
+    }
+
+    public RemotePlayer getPlayerFromID(int id) {
+        for (RemotePlayer player : players) {
+            if (player.id == id) {
+                return player;
+            }
+        }
+        return null;
     }
 
 }

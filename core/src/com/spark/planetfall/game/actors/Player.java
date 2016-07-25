@@ -20,9 +20,10 @@ import com.spark.planetfall.game.actors.weapons.WeaponController;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.screens.SparkGame;
 import com.spark.planetfall.game.texture.Atlas;
+import com.spark.planetfall.server.RemotePlayer;
 import com.spark.planetfall.server.packets.HidePacket;
+import com.spark.planetfall.server.packets.KilledPacket;
 import com.spark.planetfall.server.packets.ShowPacket;
-import com.spark.planetfall.server.packets.TeleportPacket;
 import com.spark.planetfall.utils.SparkMath;
 
 public class Player extends Actor implements Controlled {
@@ -51,6 +52,7 @@ public class Player extends Actor implements Controlled {
     public final Stage elevatedStage;
     public boolean captured;
     public final SparkGame game;
+    public RemotePlayer remote;
 
     public Player(SparkGame game) {
 
@@ -84,7 +86,7 @@ public class Player extends Actor implements Controlled {
         render.sprite.setOriginCenter();
 
         //CREATING TRANSFORM AND PHYSICS BODY
-        position = new Transform(this.spawns.spawnPoints.get(SparkMath.randInd(spawns.spawnPoints.size)), 0);
+        position = new Transform(this.spawns.spawnPoints.get(SparkMath.randInt(spawns.spawnPoints.size)), 0);
         PlayerBodyDef body = new PlayerBodyDef((render.sprite.getWidth() / 2));
         physics = new Physics(game.world, body, position, this);
         this.physics.body.getMassData().mass = this.physics.body.getMassData().mass * 4f;
@@ -104,11 +106,15 @@ public class Player extends Actor implements Controlled {
         //SETTING NETWORK
         network = new Network(game.handler, position);
 
+        this.remote = game.handler.player;
+
         //SETTING CROSSHAIR
         this.crosshair = new CrosshairRenderer(this);
 
         //MISC
         this.captured = false;
+
+        this.remote = new RemotePlayer();
 
     }
 
@@ -123,6 +129,12 @@ public class Player extends Actor implements Controlled {
             camera.zoom = 2;
         } else {
             camera.zoom = 1;
+        }
+
+        if (this.input.tabHeld) {
+            this.ui.playerList.setVisible(true);
+        } else {
+            this.ui.playerList.setVisible(false);
         }
 
         controller.update(delta);
@@ -195,10 +207,9 @@ public class Player extends Actor implements Controlled {
 
     public void kill() {
 
-        this.physics.body.setTransform(this.spawns.spawnPoints.get(SparkMath.randInd(spawns.spawnPoints.size)), 0f);
+        this.physics.body.setTransform(this.spawns.spawnPoints.get(SparkMath.randInt(spawns.spawnPoints.size)), 0f);
         this.health.heal();
-        TeleportPacket packet = new TeleportPacket();
-        packet.location = new Vector2(this.physics.body.getTransform().getPosition());
+        KilledPacket packet = new KilledPacket();
         this.network.handler.client.sendTCP(packet);
 
     }

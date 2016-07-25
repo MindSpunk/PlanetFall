@@ -99,8 +99,8 @@ public class MapConfigLoader extends Manager implements AfterSceneInit {
                         float angle = entity.getComponent(Transform.class).getRotation();
 
                         //Add generator to list
-                        SpawnPoint generator = new SpawnPoint(new com.spark.planetfall.game.actors.components.Transform(position,angle), (byte) -1);
-                        facility.addComponent(generator);
+                        SpawnPoint spawnPoint = new SpawnPoint(new com.spark.planetfall.game.actors.components.Transform(position,angle), (byte) -1);
+                        facility.addComponent(spawnPoint);
 
                         break;
                     }

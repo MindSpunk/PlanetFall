@@ -5,10 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
@@ -27,19 +24,25 @@ public class MainMenu implements Screen {
     public final TextButton quit_button;
     public final Image background;
     public final TextField ipInput;
+    public final TextField nameInput;
 
     public MainMenu(PlanetFallClient game) {
 
+        nameInput = new TextField("Input Name", GUISkin.get());
         this.game = game;
-        ipInput = new TextField("localhost", GUISkin.get());
-        ipInput.setPosition(0, 0);
+        ipInput = new TextField("Enter IP", GUISkin.get());
         stage = new Stage(new ExtendViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
         window = new Window("", GUISkin.get());
         window.setPosition(100, Gdx.graphics.getHeight() - 300);
         window.align(Align.center);
         window.setMovable(false);
         play_button = new TextButton("Play", GUISkin.get());
+        ipInput.setPosition(0, 0);
         quit_button = new TextButton("Quit", GUISkin.get());
+        window.add(nameInput);
+        window.row();
+        window.add(ipInput);
+        window.row();
         window.add(play_button).width(200);
         window.row();
         window.add(quit_button).width(200);
@@ -47,7 +50,6 @@ public class MainMenu implements Screen {
         background.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stage.addActor(background);
         stage.addActor(window);
-        stage.addActor(ipInput);
         Gdx.input.setInputProcessor(stage);
 
     }
@@ -58,7 +60,7 @@ public class MainMenu implements Screen {
         play_button.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(new SparkGame(game, ipInput.getText()));
+                game.setScreen(new SparkGame(game, ipInput.getText(), nameInput.getText()));
                 Log.logInfo(ipInput.getText());
             }
         });

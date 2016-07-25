@@ -21,6 +21,7 @@ import com.spark.planetfall.game.actors.VehicleActor;
 import com.spark.planetfall.game.actors.components.ui.UIHandler;
 import com.spark.planetfall.game.map.Map;
 import com.spark.planetfall.server.ClientHandler;
+import com.spark.planetfall.utils.SparkMath;
 
 public class SparkGame implements Screen {
 
@@ -40,10 +41,21 @@ public class SparkGame implements Screen {
     public VehicleActor vehicle;
     public DataManager manager;
     public Map map;
+    public String name;
 
-    public SparkGame(PlanetFallClient in, String ip) {
+    public SparkGame(PlanetFallClient in, String ip, String name) {
         this.game = in;
-        this.ip = ip;
+
+        if (ip.equals("Enter IP")) {
+            this.ip = "localhost";
+        } else {
+            this.ip = ip;
+        }
+        if (name.equals("Input Name")) {
+            this.name = "Player" + SparkMath.randInt(100000);
+        } else {
+            this.name = name;
+        }
     }
 
     @Override

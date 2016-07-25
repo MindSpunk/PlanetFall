@@ -1,18 +1,21 @@
 package com.spark.planetfall.game.actors.components.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.runtime.scene.Scene;
 import com.spark.planetfall.game.actors.DataManager;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.ui.GUISkin;
+import com.spark.planetfall.game.ui.PlayerListEntry;
+import com.spark.planetfall.server.RemotePlayer;
 
 public class UIHandler {
 
@@ -30,9 +33,16 @@ public class UIHandler {
     public final BitmapFont font;
     public final Window minimapBound;
 
+    public Window playerList;
+    public ScrollPane playerListPane;
+    public Table playerListTable;
+    public Array<PlayerListEntry> playerListEntries;
+
     public final Window table;
 
     public UIHandler(Viewport viewport, Scene scene, DataManager datamanager) {
+
+        this.playerListEntries = new Array<PlayerListEntry>();
 
         this.minimap = new Minimap(scene, datamanager);
 
@@ -82,6 +92,8 @@ public class UIHandler {
         ammo = new Label("0/0", GUISkin.get());
         table.add(ammo);
 
+        this.setupPlayerListWindow();
+
         stage.addActor(table);
         stage.addActor(this.minimapBound);
         stage.addActor(minimap);
@@ -97,6 +109,87 @@ public class UIHandler {
         stage.getBatch().begin();
         stage.getBatch().draw(minimap.region(), Gdx.graphics.getWidth() - 180, 0, 180, 180);
         stage.getBatch().end();
+
+    }
+
+    private void setupPlayerListWindow() {
+
+        this.playerList = new Window("Players", GUISkin.get());
+        this.playerList.setColor(1,1,1,0.5f);
+        this.playerList.setWidth(650);
+        this.playerList.setHeight(400);
+        this.playerList.align(Align.center);
+        this.playerList.setResizable(false);
+        this.playerList.setMovable(false);
+
+        Vector2 playerListPosition = new Vector2();
+        playerListPosition.x = Gdx.graphics.getWidth()/2f - playerList.getWidth()/2f;
+        playerListPosition.y = Gdx.graphics.getHeight()/2f - playerList.getHeight()/2f;
+        this.playerList.setPosition(playerListPosition.x, playerListPosition.y);
+
+        this.playerListTable = new Table();
+        this.buildPlayerList();
+
+        this.playerListPane = new ScrollPane(this.playerListTable,GUISkin.get());
+        this.playerListPane.setHeight(200);
+        this.playerListPane.setWidth(450);
+
+        this.playerList.add(this.playerListPane);
+
+        this.stage.addActor(this.playerList);
+
+    }
+
+    public void buildPlayerList() {
+        Label labelName = new Label("Name",GUISkin.get());
+        Label labelKills = new Label("Kills",GUISkin.get());
+        Label labelDeaths = new Label("Deaths",GUISkin.get());
+        Label labelScore = new Label("Score",GUISkin.get());
+        labelName.setColor(Color.RED);
+        labelKills.setColor(Color.RED);
+        labelDeaths.setColor(Color.RED);
+        labelScore.setColor(Color.RED);
+
+        this.playerListTable.add(labelName).padLeft(30).padRight(30);
+        this.playerListTable.add(labelKills).padLeft(20).padRight(20);
+        this.playerListTable.add(labelDeaths).padLeft(20).padRight(20);
+        this.playerListTable.add(labelScore).padLeft(20).padRight(20);
+        this.playerListTable.row();
+        /*
+        for (int i = 0; i < 16; i++) {
+            Label label = new Label("debug", GUISkin.get());
+            this.playerListTable.add(label);
+            Label label2 = new Label("debug", GUISkin.get());
+            this.playerListTable.add(label2);
+            Label label3 = new Label("debug", GUISkin.get());
+            this.playerListTable.add(label3);
+            Label label4 = new Label("debug", GUISkin.get());
+            this.playerListTable.add(label4);
+            this.playerListTable.row();
+        }
+        */
+
+        /*
+        for (int i = 0; i < 16; i++) {
+            PlayerListEntry entry = new PlayerListEntry(new RemotePlayer());
+            entry.addToTable(this.playerListTable);
+            this.stage.addActor(entry);
+        }
+        */
+
+    }
+    public void rebuildPlayerList() {
+        this.playerListPane.remove();
+        this.playerListTable.reset();
+        buildPlayerList();
+        for (PlayerListEntry entry : this.playerListEntries) {
+            entry.rebuild(this.playerListTable);
+        }
+
+        this.playerListPane = new ScrollPane(this.playerListTable,GUISkin.get());
+        this.playerListPane.setHeight(200);
+        this.playerListPane.setWidth(450);
+        this.playerList.add(this.playerListPane);
 
     }
 

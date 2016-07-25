@@ -8,7 +8,7 @@ import com.spark.planetfall.utils.Log;
 public class Facility {
 
     public BaseComponent[] components;
-    public String name;
+    public String name = "blank";
     public byte team;
     public float captureTime;
     public boolean active;

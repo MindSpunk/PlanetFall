@@ -43,6 +43,8 @@ public class PlanetFallServer extends Game {
 
         handler.map = mapConfigLoader.map;
 
+        handler.map.printAll();
+
         stage = new Stage();
         window = new Window("SERVER", GUISkin.get());
         window.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
