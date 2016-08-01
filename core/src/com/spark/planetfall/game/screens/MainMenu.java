@@ -209,7 +209,7 @@ public class MainMenu implements Screen {
         playTable.row();
         playTable.add(playSecondary);
         playTable.add(playSecondaryList);
-        playTable.add(secondaryImage).size(250, 250);
+        playTable.add(secondaryImage).size(250, 150);
 
         play.add(playTable);
         this.stage.addActor(play);
