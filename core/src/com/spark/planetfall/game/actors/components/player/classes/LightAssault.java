@@ -12,9 +12,9 @@ public class LightAssault extends PlayerClass {
 
         if (player != null) {
             this.equipment = new Weapon[3];
-            this.equipment[0] = Weapons.AK_47.copy();
-            this.equipment[1] = Weapons.SCAR_H.copy();
-            this.equipment[2] = Weapons.MED_KITS.copy();
+            this.equipment[0] = Weapons.values()[0].copy();
+            this.equipment[1] = Weapons.values()[0].copy();
+            this.equipment[2] = Weapons.values()[0].copy();
             this.ability = new JumpJet(player, 0.1f, 0.2f);
         }
     }

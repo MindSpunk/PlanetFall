@@ -32,7 +32,7 @@ public class Lightning extends VehicleActor {
         this.ability = new MagBurner(this, 0.1f, 0.02f);
         this.health = new Health(this, this.ui, 2000, 0);
         this.sounds = new Sounds();
-        this.weapon = new WeaponController(Weapons.PYTHON_AP.copy(), null, this);
+        this.weapon = new WeaponController(Weapons.values()[0].copy(), null, this);
 
     }
 

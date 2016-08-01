@@ -8,6 +8,16 @@ import com.spark.planetfall.game.actors.components.weapons.*;
 
 public enum Weapons {
 
+    /*
+    *  DEBUG WEAPONS
+    *
+    *  These weapons are purely for testing purposes and MUST be commented out later
+    *
+     */
+
+
+    /*
+
     //AK_47
     AK_47(
             new FullAuto(500),
@@ -78,7 +88,40 @@ public enum Weapons {
             new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1),"LMGs/NC6_Gauss_Saw", "NC6_Gauss_SAW"),
             new FireBullet(2),
             WeaponTypes.PRIMARY_WEAPON,
-            "BASILISK");
+            "BASILISK"),
+
+    */
+
+
+
+    /*
+    *
+    * Final Weapons
+    *
+     */
+
+    NC6_GAUSS_SAW(
+            new FullAuto(500),
+            new Magazine(200, 600, 1, 0f, 100),
+            new RecoilMechanism(4f, 0.3f, 0.2f, new Vector2(15, 10), 2),
+            new MagazineReload(7.5f, 6.5f, 1),
+            new StatModifiers(1, 1, 0.5f),
+            new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "LMGs/NC6_Gauss_Saw", "NC6_Gauss_SAW"),
+            new FireBullet(0.5f),
+            WeaponTypes.PRIMARY_WEAPON,
+            "NC6 Gauss Saw"),
+
+    TX2_Emperor(
+            new SemiAuto(400),
+            new Magazine(167, 390, 1, 0f, 21),
+            new RecoilMechanism(4f, 0.3f, 0.2f, new Vector2(3, 5), 1),
+            new MagazineReload(1.8f, 1.525f, 1),
+            new StatModifiers(1, 1, 0.75f),
+            new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "Pistols/TX2_Emperor", "TX2_Emperor"),
+            new FireBullet(0.5f),
+            WeaponTypes.SECONDARY_WEAPON,
+            "TX-2 Emperor");
+
 
 
     public final FireMechanism fireMechanism;

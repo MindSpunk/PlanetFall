@@ -157,9 +157,9 @@ public class MainMenu implements Screen {
         playPrimary = new Label("PRIMARY", GUISkin.get());
         playSecondary = new Label("SECONDARY", GUISkin.get());
         playPrimaryList = new SelectBox<String>(GUISkin.get());
-        primaryImage = new Image(Weapons.AK_47.effects.sprite);
+        primaryImage = new Image(Weapons.values()[0].effects.sprite);
         primaryImage.setScaling(Scaling.fit);
-        secondaryImage = new Image(Weapons.AK_47.effects.sprite);
+        secondaryImage = new Image(Weapons.values()[1].effects.sprite);
         secondaryImage.setScaling(Scaling.fit);
         Array<String> primaryWeapons = new Array<String>();
         for (Weapons weapon : WeaponUtils.getType(WeaponTypes.PRIMARY_WEAPON)) {

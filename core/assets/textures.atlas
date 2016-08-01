@@ -203,7 +203,7 @@ weapons/LMGs/Orion_VS54/Orion_VS54
   orig: 1033, 291
   offset: 0, 0
   index: -1
-weapons/Pistols/TX1_Repeater/TX1_Repeater
+weapons/Pistols/TX2_Emperor/TX2_Emperor
   rotate: false
   xy: 1269, 1520
   size: 712, 475

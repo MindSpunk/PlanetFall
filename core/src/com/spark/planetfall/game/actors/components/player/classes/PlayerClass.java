@@ -15,7 +15,7 @@ public class PlayerClass {
 
         if (player != null) {
             equipment = new Weapon[1];
-            equipment[0] = Weapons.AK_47.copy();
+            equipment[0] = Weapons.values()[0].copy();
             this.ability = new JumpJet(player, 0.1f, 0.2f);
         }
 

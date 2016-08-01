@@ -59,6 +59,8 @@ project(":core") {
         compile "com.esotericsoftware:kryo:3.0.1"
         compile "com.kotcrab.vis:vis-runtime:$visRuntimeVersion"
         compile("com.esotericsoftware:kryonet:2.22.0-RC1") { exclude module: 'kryo' }
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
     }
 }
 

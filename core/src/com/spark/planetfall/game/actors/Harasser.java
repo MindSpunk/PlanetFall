@@ -37,7 +37,7 @@ public class Harasser extends VehicleActor {
         this.movement = new HarasserMovement(this);
         this.health = new Health(this, this.ui, 2000, 0);
         this.sounds = new Sounds();
-        this.weapon = new WeaponController(Weapons.BASILISK.copy(), null, this);
+        this.weapon = new WeaponController(Weapons.values()[0].copy(), null, this);
 
     }
 
