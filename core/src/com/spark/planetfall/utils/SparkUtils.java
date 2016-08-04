@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class SparkMath {
+public class SparkUtils {
 
     public static float pointDirection(float fromX, float toX, float fromY, float toY) {
 
@@ -57,6 +57,17 @@ public class SparkMath {
         }
 
         return value;
+
+    }
+
+    public static float[] getScreenCenter() {
+
+        float[] xy = new float[2];
+
+        xy[0] = Gdx.graphics.getWidth()/2f;
+        xy[1] = Gdx.graphics.getHeight()/2f;
+
+        return xy;
 
     }
 

@@ -9,7 +9,7 @@ import com.spark.planetfall.game.actors.Controlled;
 import com.spark.planetfall.game.actors.components.weapons.Action;
 import com.spark.planetfall.game.actors.components.weapons.Weapon;
 import com.spark.planetfall.server.packets.BulletPacket;
-import com.spark.planetfall.utils.SparkMath;
+import com.spark.planetfall.utils.SparkUtils;
 
 public class FireBullet implements Action {
 
@@ -69,7 +69,7 @@ public class FireBullet implements Action {
         }
 
         this.weapon.effects().fireEnd.stop();
-        this.weapon.effects().fire.play(SparkMath.randRange(0.5f,1f), SparkMath.randRange(0.7f,1.2f),0);
+        this.weapon.effects().fire.play(SparkUtils.randRange(0.5f,1f), SparkUtils.randRange(0.7f,1.2f),0);
 
         return true;
 

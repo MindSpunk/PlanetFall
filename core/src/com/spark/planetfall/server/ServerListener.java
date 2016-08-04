@@ -5,7 +5,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.spark.planetfall.game.PlanetFallServer;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
-import com.spark.planetfall.utils.SparkMath;
+import com.spark.planetfall.utils.SparkUtils;
 
 public class ServerListener extends Listener {
 
@@ -75,7 +75,7 @@ public class ServerListener extends Listener {
                         } else if (handler.getTeam((byte) 0) < handler.getTeam((byte) 1)) {
                             response.team = 0;
                         } else {
-                            int random = SparkMath.randInt(2);
+                            int random = SparkUtils.randInt(2);
                             if (random > 1) {
                                 response.team = 1;
                             } else {

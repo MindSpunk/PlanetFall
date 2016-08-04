@@ -1,9 +1,11 @@
 package com.spark.planetfall.game.actors.components.weapons;
 
 
+import com.spark.planetfall.game.actors.weapons.DamageModel;
+
 public class Magazine {
 
-    private final float damage;
+    private final DamageModel damageModel;
     private final float velocity;
     private final int pellets;
     private final float pelletSpread;
@@ -12,9 +14,9 @@ public class Magazine {
     protected int amount;
 
 
-    public Magazine(float damage, float velocity, int pellets, float pelletSpread, int capacity) {
+    public Magazine(DamageModel damageModel, float velocity, int pellets, float pelletSpread, int capacity) {
 
-        this.damage = damage;
+        this.damageModel = damageModel;
         this.velocity = velocity; //PLAYER IS ALWAYS 1M x 1M
         this.pellets = pellets;
         this.pelletSpread = pelletSpread;
@@ -25,9 +27,9 @@ public class Magazine {
     }
 
 
-    public float damage() {
+    public DamageModel damage() {
 
-        return damage;
+        return damageModel;
 
     }
 
@@ -69,7 +71,7 @@ public class Magazine {
 
     public Magazine copy() {
 
-        return new Magazine(damage, velocity, pellets, pelletSpread, capacity);
+        return new Magazine(damageModel, velocity, pellets, pelletSpread, capacity);
 
     }
 

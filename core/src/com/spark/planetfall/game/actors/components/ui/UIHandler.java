@@ -12,8 +12,10 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.runtime.scene.Scene;
 import com.spark.planetfall.game.actors.DataManager;
+import com.spark.planetfall.game.actors.components.weapons.Weapon;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.game.ui.GUISkin;
+import com.spark.planetfall.game.ui.KillMessage;
 import com.spark.planetfall.game.ui.PlayerListEntry;
 import com.spark.planetfall.server.RemotePlayer;
 
@@ -97,6 +99,7 @@ public class UIHandler {
         stage.addActor(table);
         stage.addActor(this.minimapBound);
         stage.addActor(minimap);
+
 
     }
 

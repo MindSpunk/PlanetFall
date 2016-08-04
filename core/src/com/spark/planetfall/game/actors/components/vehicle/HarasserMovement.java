@@ -2,7 +2,7 @@ package com.spark.planetfall.game.actors.components.vehicle;
 
 import com.badlogic.gdx.math.Vector2;
 import com.spark.planetfall.game.actors.Vehicle;
-import com.spark.planetfall.utils.SparkMath;
+import com.spark.planetfall.utils.SparkUtils;
 
 public class HarasserMovement extends VehicleMovement {
 
@@ -34,7 +34,7 @@ public class HarasserMovement extends VehicleMovement {
         float maxVelFrac = this.vehicle.getPhysics().body.getLinearVelocity().len() / vehicle.getStats().maxSpeed;
 
         this.vehicle.getPhysics().body.getLinearVelocity().clamp(0, this.vehicle.getStats().maxSpeed);
-        this.vehicle.getPhysics().body.setAngularVelocity(SparkMath.clamp(this.vehicle.getPhysics().body.getAngularVelocity(), -1 * maxVelFrac, 1 * maxVelFrac));
+        this.vehicle.getPhysics().body.setAngularVelocity(SparkUtils.clamp(this.vehicle.getPhysics().body.getAngularVelocity(), -1 * maxVelFrac, 1 * maxVelFrac));
 
 
     }

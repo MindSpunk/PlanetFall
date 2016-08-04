@@ -125,7 +125,7 @@ public class WeaponController {
             weapons.getSelected().effects().shootEffect().update(delta);
         }
         if (this.ui != null) {
-            ui.ammo.setText("" + weapons.getSelected().magazine().capacity() + "/" + weapons.getSelected().magazine().amount());
+            ui.ammo.setText("" + weapons.getSelected().magazine().amount() + "/" + weapons.getSelected().magazine().capacity());
         }
 
     }

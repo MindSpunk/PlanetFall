@@ -8,6 +8,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.spark.planetfall.game.actors.components.ui.PlayerSort;
 import com.spark.planetfall.game.actors.remote.*;
 import com.spark.planetfall.game.screens.SparkGame;
+import com.spark.planetfall.game.ui.KillMessage;
 import com.spark.planetfall.game.ui.PlayerListEntry;
 import com.spark.planetfall.server.packets.*;
 import com.spark.planetfall.utils.Log;
@@ -305,8 +306,13 @@ public class ClientListener extends Listener {
         if (object instanceof KilledPacket) {
             KilledPacket packet = (KilledPacket) object;
             Log.logInfo("KILL PACKET RECEIVED");
+            game.ui.playerListEntries.sort(new PlayerSort());
+            game.ui.rebuildPlayerList();
             if (packet.killerID == handler.id) {
-                //KILL MESSAGE
+                Log.logInfo("You got a kill");
+                KillMessage message = new KillMessage(handler.getPlayerFromID(packet.id).name,game.ui.stage);
+                game.ui.stage.addActor(message.label);
+                game.ui.stage.addActor(message);
             }
         }
         if (object instanceof SortPacket) {

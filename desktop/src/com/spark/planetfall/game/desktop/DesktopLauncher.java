@@ -9,7 +9,7 @@ import com.spark.planetfall.utils.Log;
 public class DesktopLauncher {
     public static void main(String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.samples = 2;
+        config.samples = 4;
         config.vSyncEnabled = true;
 
 

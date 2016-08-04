@@ -23,7 +23,7 @@ import com.spark.planetfall.game.texture.Atlas;
 import com.spark.planetfall.server.ClientHandler;
 import com.spark.planetfall.server.packets.VehicleKillPacket;
 import com.spark.planetfall.utils.Log;
-import com.spark.planetfall.utils.SparkMath;
+import com.spark.planetfall.utils.SparkUtils;
 
 public class VehicleActor extends Actor implements Vehicle {
 
@@ -120,7 +120,7 @@ public class VehicleActor extends Actor implements Vehicle {
 
             Vector2 angle = new Vector2(0, 1);
             angle.setAngle(this.turretAngle);
-            float direction = SparkMath.pointDirection(transform.position.x, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).x, transform.position.y, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).y);
+            float direction = SparkUtils.pointDirection(transform.position.x, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).x, transform.position.y, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).y);
             Vector2 temp = new Vector2(0, 1);
             temp.setAngle(direction);
             angle.lerp(temp, 1f);

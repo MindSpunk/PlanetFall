@@ -22,7 +22,7 @@ import com.spark.planetfall.game.actors.components.ui.UIHandler;
 import com.spark.planetfall.game.actors.components.weapons.Weapon;
 import com.spark.planetfall.game.map.Map;
 import com.spark.planetfall.server.ClientHandler;
-import com.spark.planetfall.utils.SparkMath;
+import com.spark.planetfall.utils.SparkUtils;
 
 public class SparkGame implements Screen {
 
@@ -55,7 +55,7 @@ public class SparkGame implements Screen {
             this.ip = ip;
         }
         if (name.equals("Input Name")) {
-            this.name = "Player" + SparkMath.randInt(100000);
+            this.name = "Player" + SparkUtils.randInt(100000);
         } else {
             this.name = name;
         }

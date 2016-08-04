@@ -25,7 +25,7 @@ public class FireHeal implements Action {
     @Override
     public boolean fire(float angle) {
 
-        player.getHealth().healHealthOnly(weapon.magazine().damage());
+        player.getHealth().healHealthOnly(weapon.magazine().damage().maxDamage);
         weapon.effects().shootEffect().start();
         Vector2 temp = new Vector2(0, 1f);
         temp.setAngle(player.getTransform().angle);

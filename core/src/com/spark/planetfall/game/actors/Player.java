@@ -24,7 +24,7 @@ import com.spark.planetfall.server.RemotePlayer;
 import com.spark.planetfall.server.packets.HidePacket;
 import com.spark.planetfall.server.packets.KilledPacket;
 import com.spark.planetfall.server.packets.ShowPacket;
-import com.spark.planetfall.utils.SparkMath;
+import com.spark.planetfall.utils.SparkUtils;
 
 public class Player extends Actor implements Controlled {
 
@@ -89,7 +89,7 @@ public class Player extends Actor implements Controlled {
         render.sprite.setOriginCenter();
 
         //CREATING TRANSFORM AND PHYSICS BODY
-        position = new Transform(this.spawns.spawnPoints.get(SparkMath.randInt(spawns.spawnPoints.size)), 0);
+        position = new Transform(this.spawns.spawnPoints.get(SparkUtils.randInt(spawns.spawnPoints.size)), 0);
         PlayerBodyDef body = new PlayerBodyDef((render.sprite.getWidth() / 2));
         physics = new Physics(game.world, body, position, this);
         this.physics.body.getMassData().mass = this.physics.body.getMassData().mass * 4f;
@@ -154,7 +154,7 @@ public class Player extends Actor implements Controlled {
         //SET ANGLE
         Vector2 angle = new Vector2(0,1);
         angle.setAngle(position.angle);
-        float direction = SparkMath.pointDirection(position.position.x, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).x, position.position.y, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).y);
+        float direction = SparkUtils.pointDirection(position.position.x, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).x, position.position.y, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).y);
         Vector2 temp = new Vector2(0, 1);
         temp.setAngle(direction);
         angle.lerp(temp, 1f);
@@ -210,7 +210,7 @@ public class Player extends Actor implements Controlled {
 
     public void kill() {
 
-        this.physics.body.setTransform(this.spawns.spawnPoints.get(SparkMath.randInt(spawns.spawnPoints.size)), 0f);
+        this.physics.body.setTransform(this.spawns.spawnPoints.get(SparkUtils.randInt(spawns.spawnPoints.size)), 0f);
         this.health.heal();
         this.controller.weapons.refill();
         KilledPacket packet = new KilledPacket();

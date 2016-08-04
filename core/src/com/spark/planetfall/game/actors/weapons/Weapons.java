@@ -12,11 +12,6 @@ public enum Weapons {
     *  DEBUG WEAPONS
     *
     *  These weapons are purely for testing purposes and MUST be commented out later
-    *
-     */
-
-
-    /*
 
     //AK_47
     AK_47(
@@ -102,7 +97,7 @@ public enum Weapons {
 
     NC6_GAUSS_SAW(
             new FullAuto(500),
-            new Magazine(200, 600, 1, 0f, 100),
+            new Magazine(new DamageModel(200,15,167,85), 600, 1, 0f, 100),
             new RecoilMechanism(4f, 0.3f, 0.2f, new Vector2(15, 10), 2),
             new MagazineReload(7.5f, 6.5f, 1),
             new StatModifiers(1, 1, 0.5f),
@@ -111,16 +106,50 @@ public enum Weapons {
             WeaponTypes.PRIMARY_WEAPON,
             "NC6 Gauss Saw"),
 
-    TX2_Emperor(
+    TX2_EMPEROR(
             new SemiAuto(400),
-            new Magazine(167, 390, 1, 0f, 21),
-            new RecoilMechanism(4f, 0.3f, 0.2f, new Vector2(3, 5), 1),
+            new Magazine(new DamageModel(167,10,112,50), 390, 1, 0f, 21),
+            new RecoilMechanism(2f, 0.3f, 0.2f, new Vector2(3, 5), 1),
             new MagazineReload(1.8f, 1.525f, 1),
             new StatModifiers(1, 1, 0.75f),
             new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "Pistols/TX2_Emperor", "TX2_Emperor"),
             new FireBullet(0.5f),
             WeaponTypes.SECONDARY_WEAPON,
-            "TX-2 Emperor");
+            "TX-2 Emperor"),
+
+    ORION_V54(
+            new FullAuto(750),
+            new Magazine(new DamageModel(143,10,125,65), 540, 1, 0f, 50),
+            new RecoilMechanism(2f, 0.3f, 0.2f, new Vector2(7, 7), 2),
+            new MagazineReload(7.5f, 6.5f, 1),
+            new StatModifiers(1, 1, 0.5f),
+            new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "LMGs/Orion_VS54", "Orion_VS54"),
+            new FireBullet(0.5f),
+            WeaponTypes.PRIMARY_WEAPON,
+            "Orion VS54"),
+
+    LA39_BRUISER(
+            new SemiAuto(71),
+            new Magazine(new DamageModel(130,8,50,18), 300, 11, 3.5f, 4),
+            new RecoilMechanism(3f, 0.3f, 0.5f, new Vector2(10, 5), 1),
+            new MagazineReload(1.8f, 1.525f, 1),
+            new StatModifiers(1, 1, 0.75f),
+            new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "Shotguns/LA39_Bruiser", "LA39_Bruiser"),
+            new FireBullet(0.5f),
+            WeaponTypes.PRIMARY_WEAPON,
+            "LA39 Bruiser"),
+
+    TORQ_9(
+            new FullAuto(857),
+            new Magazine(new DamageModel(2000,10,2,20), 620, 1, 0f, 40),
+            new RecoilMechanism(4f, 0.3f, 0.2f, new Vector2(3, 5), 1),
+            new MagazineReload(2.92f, 2.12f, 1),
+            new StatModifiers(1, 1, 0.5f),
+            new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "Assault_Rifles/TORQ-9", "TORQ-9"),
+            new FireBullet(0.5f),
+            WeaponTypes.PRIMARY_WEAPON,
+            "TORQ-9");
+
 
 
 

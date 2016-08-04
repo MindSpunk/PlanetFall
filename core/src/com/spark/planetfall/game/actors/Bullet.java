@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.spark.planetfall.game.actors.components.Transform;
 import com.spark.planetfall.game.actors.remote.Remote;
 import com.spark.planetfall.game.actors.remote.RemoteVehicleActor;
+import com.spark.planetfall.game.actors.weapons.DamageModel;
 import com.spark.planetfall.game.constants.Constant;
 import com.spark.planetfall.server.packets.HitPacket;
 import com.spark.planetfall.server.packets.VehicleHitPacket;
@@ -20,7 +21,7 @@ public class Bullet extends Actor {
 
     private final Transform position;
     private final Vector2 velocity;
-    private final float damage;
+    private final DamageModel damageModel;
     private final Color color;
 
     protected final ShapeRenderer render;
@@ -29,16 +30,18 @@ public class Bullet extends Actor {
     protected final Sound hit;
     protected Vector2 previousPosition;
     protected boolean removed;
+    protected float travel;
 
-    public Bullet(Vector2 position, Vector2 velocity, float damage, World world, Sound sound, ShapeRenderer render, Color color) {
+    public Bullet(Vector2 position, Vector2 velocity, DamageModel damageModel, World world, Sound sound, ShapeRenderer render, Color color) {
 
         this.position = new Transform();
         this.position.position = position.cpy();
         this.velocity = velocity;
         this.world = world;
-        this.damage = damage;
+        this.damageModel = damageModel;
         this.hit = sound;
         this.color = color;
+        this.travel = 0f;
 
         this.removed = false;
 
@@ -55,6 +58,7 @@ public class Bullet extends Actor {
 
         Vector2 temp = velocity.cpy();
         temp.clamp(0, temp.len() * delta);
+        travel += temp.len();
 
         temp.add(position.position);
         HitScan hitscan = new HitScan();
@@ -70,7 +74,7 @@ public class Bullet extends Actor {
                 this.hit.play();
                 Remote remote = (Remote) hitscan.closestHit.getBody().getUserData();
                 HitPacket packet = new HitPacket();
-                packet.damage = damage;
+                packet.damage = damageModel.calcDamage(travel);
                 packet.id = remote.remote.id;
                 remote.handler.client.sendUDP(packet);
             }
@@ -78,9 +82,9 @@ public class Bullet extends Actor {
                 Log.logInfo("NOOT!");
                 this.hit.play();
                 RemoteVehicleActor remote = (RemoteVehicleActor) hitscan.closestHit.getBody().getUserData();
-                remote.hit(this.damage);
+                remote.hit(damageModel.calcDamage(travel));
                 VehicleHitPacket packet = new VehicleHitPacket();
-                packet.damage = damage;
+                packet.damage = damageModel.calcDamage(travel);
                 packet.id = remote.remote.id;
                 remote.handler.client.sendUDP(packet);
             }
@@ -88,7 +92,7 @@ public class Bullet extends Actor {
                 Log.logInfo("NOOT!!");
                 this.hit.play();
                 VehicleActor vehicle = (VehicleActor) hitscan.closestHit.getBody().getUserData();
-                vehicle.hit(this.damage);
+                vehicle.hit(damageModel.calcDamage(travel));
 
             }
 

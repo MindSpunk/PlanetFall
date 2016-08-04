@@ -91,4 +91,13 @@ public class ClientHandler {
 
         }, "Client Connect").start();
     }
+
+    public RemotePlayer getPlayerFromID(int id) {
+        for (RemotePlayer player : players) {
+            if (player.id == id) {
+                return player;
+            }
+        }
+        return null;
+    }
 }
