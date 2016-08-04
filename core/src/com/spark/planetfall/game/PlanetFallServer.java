@@ -31,7 +31,7 @@ public class PlanetFallServer extends Game {
         GUISkin.load();
 
         VisAssetManager vis = new VisAssetManager(new SpriteBatch());
-        Scene scene = vis.loadSceneNow("scene/test.scene");
+        Scene scene = vis.loadSceneNow("scene/debug.scene");
 
         MapConfigLoader mapConfigLoader = new MapConfigLoader();
 

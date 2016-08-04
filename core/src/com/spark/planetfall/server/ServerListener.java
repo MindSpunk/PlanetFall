@@ -106,6 +106,7 @@ public class ServerListener extends Listener {
                 JoinedPacket join = new JoinedPacket();
                 join.id = connection.getID();
                 join.name = packet.name;
+                join.player = handler.getPlayerFromID(connection.getID());
                 handler.server.sendToAllExceptTCP(connection.getID(), join);
             }
         }

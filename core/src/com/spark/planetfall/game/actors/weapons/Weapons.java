@@ -120,13 +120,24 @@ public enum Weapons {
     ORION_V54(
             new FullAuto(750),
             new Magazine(new DamageModel(143,10,125,65), 540, 1, 0f, 50),
-            new RecoilMechanism(2f, 0.3f, 0.2f, new Vector2(7, 7), 2),
-            new MagazineReload(7.5f, 6.5f, 1),
+            new RecoilMechanism(2f, 0.3f, 0.15f, new Vector2(7, 7), 2),
+            new MagazineReload(3.4f, 3f, 1),
             new StatModifiers(1, 1, 0.5f),
             new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "LMGs/Orion_VS54", "Orion_VS54"),
             new FireBullet(0.5f),
             WeaponTypes.PRIMARY_WEAPON,
             "Orion VS54"),
+
+    LA1_ANCHOR(
+            new FullAuto(600),
+            new Magazine(new DamageModel(167,10,143,75), 570, 1, 0f, 50),
+            new RecoilMechanism(2f, 0.3f, 0.1f, new Vector2(7, 7), 2),
+            new MagazineReload(4f, 3.37f, 1),
+            new StatModifiers(1, 1, 0.5f),
+            new Effects("particle/AK_47_SHOOT.p", new Color(1, 1, 0, 1), "LMGs/LA1_Anchor", "LA1_Anchor"),
+            new FireBullet(0.5f),
+            WeaponTypes.PRIMARY_WEAPON,
+            "LA1 Anchor"),
 
     LA39_BRUISER(
             new SemiAuto(71),

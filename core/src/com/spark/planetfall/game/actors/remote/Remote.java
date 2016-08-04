@@ -70,11 +70,9 @@ public class Remote extends Actor {
     @Override
     public void draw(Batch batch, float alpha) {
 
-        batch.end();
-        batch.begin();
+
         render.sprite.draw(batch);
-        batch.end();
-        batch.begin();
+
 
     }
 

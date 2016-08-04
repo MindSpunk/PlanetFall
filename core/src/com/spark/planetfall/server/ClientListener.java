@@ -31,6 +31,8 @@ public class ClientListener extends Listener {
     @Override
     public void disconnected(Connection connection) {
 
+        Gdx.app.exit();
+
     }
 
     @Override
@@ -42,6 +44,7 @@ public class ClientListener extends Listener {
                 if (handler.players[i].id == packet.id) {
                     handler.players[i].remove = true;
                     handler.players[i].empty = true;
+                    handler.playerActors[i] = null;
                     for (PlayerListEntry entry : game.ui.playerListEntries) {
                         if (entry.player.id == handler.players[i].id) {
                             handler.players[i].id = -1;
@@ -59,15 +62,14 @@ public class ClientListener extends Listener {
                 Log.logInfo("New Player Connected");
                 for (int i = 0; i < handler.players.length; i++) {
                     if (handler.players[i].empty) {
-                        handler.players[i].id = packet.id;
-                        handler.players[i].name = packet.name;
-                        handler.players[i].empty = false;
+                        Log.logInfo("FOUND EMPTY SLOT");
+                        handler.players[i] = packet.player;
                         Remote remote = new Remote(handler.players[i], game.world, handler);
-                        handler.playerActors[i] = remote;
+                        handler.playerActors[i] = null;
                         game.stage.addActor(remote);
 
                         while (game.ui == null) {
-                            Log.logWarn("Waiting On UI BUILD");
+                            Log.logInfo("LEWG");
                         }
                         PlayerListEntry entry = new PlayerListEntry(handler.players[i]);
                         entry.addToTable(game.ui.playerListTable);
@@ -75,6 +77,7 @@ public class ClientListener extends Listener {
                         game.ui.playerListEntries.add(entry);
 
                         if (handler.game.player.isCaptured()) {
+                            Log.logInfo("meme");
                             HidePacket response = new HidePacket();
                             handler.client.sendTCP(response);
                         }
@@ -119,9 +122,8 @@ public class ClientListener extends Listener {
                         Remote remote = new Remote(handler.players[i], game.world, handler);
                         handler.playerActors[i] = remote;
                         game.stage.addActor(remote);
-
                         while (game.ui == null) {
-                            Log.logWarn("Waiting On UI BUILD");
+                            Log.logInfo("LEWGgra");
                         }
                         PlayerListEntry entry = new PlayerListEntry(handler.players[i]);
                         entry.addToTable(game.ui.playerListTable);
@@ -163,7 +165,7 @@ public class ClientListener extends Listener {
         if (object instanceof ClientUpdatePacket) {
             ClientUpdatePacket packet = (ClientUpdatePacket) object;
             while (game.player == null) {
-                Log.logWarn("Waiting on player build");
+                Log.logInfo("");
             }
             game.player.remote = packet.player;
             for (PlayerListEntry entry : game.ui.playerListEntries) {
@@ -178,7 +180,7 @@ public class ClientListener extends Listener {
             RemotePlayerRequestPacket packet = (RemotePlayerRequestPacket) object;
             handler.player = packet.player;
             while (game.player == null) {
-                Log.logWarn("Waiting on player build");
+                Log.logInfo("");
             }
             game.player.remote = handler.player;
 
