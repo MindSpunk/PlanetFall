@@ -176,6 +176,7 @@ public class PlayerInput implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Buttons.LEFT) {
+            player.movement.sprint = false;
             player.controller.triggered = true;
         }
         if (button == Buttons.RIGHT) {

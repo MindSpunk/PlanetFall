@@ -68,7 +68,7 @@ public class SparkGame implements Screen {
 
         input = new InputMultiplexer();
         vis = new VisAssetManager(new SpriteBatch());
-        scene = vis.loadSceneNow("scene/debug.scene");
+        scene = vis.loadSceneNow("scene/test.scene");
 
         world = scene.getEntityEngine().getSystem(PhysicsSystem.class).getPhysicsWorld();
         stage = new Stage(scene.getEntityEngine().getSystem(CameraManager.class).getViewport());

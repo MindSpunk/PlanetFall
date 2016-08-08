@@ -6,21 +6,21 @@ filter: Nearest,Nearest
 repeat: none
 gfx/concrete_texture
   rotate: false
-  xy: 2, 25
+  xy: 2, 46
   size: 2000, 2000
   orig: 2000, 2000
   offset: 0, 0
   index: -1
 gfx/editor/editor_bottom_left
   rotate: false
-  xy: 2, 12
+  xy: 2004, 2035
   size: 10, 11
   orig: 10, 11
   offset: 0, 0
   index: -1
 gfx/editor/editor_top_right
   rotate: false
-  xy: 2004, 2014
+  xy: 36, 33
   size: 10, 11
   orig: 10, 11
   offset: 0, 0
@@ -30,6 +30,13 @@ particle/fire
   xy: 2, 2
   size: 8, 8
   orig: 8, 8
+  offset: 0, 0
+  index: -1
+particle/particle
+  rotate: false
+  xy: 2, 12
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 
@@ -73,7 +80,7 @@ gfx/background_1
   index: -1
 gfx/box
   rotate: false
-  xy: 134, 4
+  xy: 1136, 7
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
@@ -94,7 +101,7 @@ gfx/map/warehouse_metal_drum
   index: -1
 gfx/map/warehouse_wooden_crate
   rotate: false
-  xy: 2, 2
+  xy: 1004, 5
   size: 130, 130
   orig: 130, 130
   offset: 0, 0
@@ -113,32 +120,32 @@ gfx/ui/capture_point_icon
   orig: 100, 100
   offset: 0, 0
   index: -1
+weapons/Assault_Rifles/AK_47/AK_47
+  rotate: false
+  xy: 2, 2
+  size: 1000, 300
+  orig: 1000, 300
+  offset: 0, 0
+  index: -1
 weapons/Carbines/NS-11C/NS-11C
   rotate: false
-  xy: 2, 544
+  xy: 1004, 137
   size: 1033, 408
   orig: 1033, 408
   offset: 0, 0
   index: -1
 weapons/LMGs/LA1_Anchor/LA1_Anchor
   rotate: false
-  xy: 981, 132
+  xy: 1004, 547
   size: 1035, 405
   orig: 1035, 405
   offset: 0, 0
   index: -1
-weapons/LMGs/NS-15M2/NS-15M2
+weapons/Pistols/M9/M9
   rotate: false
-  xy: 1037, 539
-  size: 988, 413
-  orig: 988, 413
-  offset: 0, 0
-  index: -1
-weapons/Pistols/NC08_Mag-Scatter/NC08_Mag-Scatter
-  rotate: false
-  xy: 2, 134
-  size: 977, 408
-  orig: 977, 408
+  xy: 2, 304
+  size: 1000, 648
+  orig: 1000, 648
   offset: 0, 0
   index: -1
 
@@ -149,77 +156,91 @@ filter: Nearest,Nearest
 repeat: none
 gfx/libgdx_powered
   rotate: false
-  xy: 2, 1693
+  xy: 2, 1737
   size: 1265, 302
   orig: 1265, 302
   offset: 0, 0
   index: -1
-gfx/map/building_metalroof_3
+weapons/Assault_Rifles/AKM/AKM
   rotate: false
-  xy: 2, 691
-  size: 500, 1000
-  orig: 500, 1000
+  xy: 1036, 466
+  size: 1000, 298
+  orig: 1000, 298
   offset: 0, 0
   index: -1
-gfx/map/building_tileroof_3
+weapons/Assault_Rifles/M14/M14
   rotate: false
-  xy: 504, 691
-  size: 500, 1000
-  orig: 500, 1000
+  xy: 1037, 766
+  size: 1001, 171
+  orig: 1001, 171
   offset: 0, 0
   index: -1
-gfx/spark_industries
+weapons/Assault_Rifles/SCAR_H/SCAR_H
   rotate: false
-  xy: 1035, 314
-  size: 946, 292
-  orig: 946, 292
-  offset: 0, 0
-  index: -1
-weapons/Carbines/LC2-Lynx/LC2_Lynx
-  rotate: false
-  xy: 1035, 25
-  size: 884, 287
-  orig: 884, 287
+  xy: 1037, 1298
+  size: 1002, 264
+  orig: 1002, 264
   offset: 0, 0
   index: -1
 weapons/Carbines/Razor_GD-23/Razor_GD-23
   rotate: false
-  xy: 2, 332
+  xy: 1037, 939
   size: 1001, 357
   orig: 1001, 357
   offset: 0, 0
   index: -1
 weapons/LMGs/NC6_Gauss_Saw/NC6_Gauss_SAW
   rotate: false
-  xy: 1006, 901
+  xy: 2, 1118
   size: 1033, 296
   orig: 1033, 296
   offset: 0, 0
   index: -1
+weapons/LMGs/NS-15M2/NS-15M2
+  rotate: false
+  xy: 1035, 51
+  size: 988, 413
+  orig: 988, 413
+  offset: 0, 0
+  index: -1
 weapons/LMGs/Orion_VS54/Orion_VS54
   rotate: false
-  xy: 1006, 608
+  xy: 2, 825
   size: 1033, 291
   orig: 1033, 291
   offset: 0, 0
   index: -1
 weapons/Pistols/TX2_Emperor/TX2_Emperor
   rotate: false
-  xy: 1269, 1520
+  xy: 1269, 1564
   size: 712, 475
   orig: 712, 475
   offset: 0, 0
   index: -1
 weapons/Shotguns/AS16_Nighthawk/AS16_Nighthawk
   rotate: false
-  xy: 2, 2
+  xy: 2, 202
   size: 1031, 328
   orig: 1031, 328
   offset: 0, 0
   index: -1
+weapons/Shotguns/LA39_Bruiser/LA39_Bruiser
+  rotate: false
+  xy: 2, 532
+  size: 1032, 291
+  orig: 1032, 291
+  offset: 0, 0
+  index: -1
+weapons/Shotguns/SPAZ_12/SPAZ_12
+  rotate: false
+  xy: 2, 2
+  size: 1000, 198
+  orig: 1000, 198
+  offset: 0, 0
+  index: -1
 weapons/Shotguns/Thanatos_VE70/Thanatos_VE70
   rotate: false
-  xy: 1006, 1199
+  xy: 2, 1416
   size: 1033, 319
   orig: 1033, 319
   offset: 0, 0
@@ -232,64 +253,105 @@ filter: Nearest,Nearest
 repeat: none
 gfx/map/building_metalroof_1
   rotate: false
-  xy: 2, 2
+  xy: 1524, 1521
   size: 500, 500
   orig: 500, 500
   offset: 0, 0
   index: -1
 gfx/map/building_metalroof_2
   rotate: false
-  xy: 681, 856
+  xy: 1524, 1019
   size: 500, 500
   orig: 500, 500
+  offset: 0, 0
+  index: -1
+gfx/map/building_metalroof_3
+  rotate: false
+  xy: 2, 1021
+  size: 500, 1000
+  orig: 500, 1000
   offset: 0, 0
   index: -1
 gfx/map/building_tileroof_1
   rotate: false
-  xy: 678, 354
+  xy: 1452, 517
   size: 500, 500
   orig: 500, 500
   offset: 0, 0
   index: -1
-gfx/map/building_tileroof_2
+gfx/map/building_tileroof_3
   rotate: false
-  xy: 1183, 1012
-  size: 500, 500
-  orig: 500, 500
+  xy: 2, 19
+  size: 500, 1000
+  orig: 500, 1000
+  offset: 0, 0
+  index: -1
+gfx/spark_industries
+  rotate: false
+  xy: 504, 730
+  size: 946, 292
+  orig: 946, 292
+  offset: 0, 0
+  index: -1
+weapons/Assault_Rifles/ACR/ACR
+  rotate: false
+  xy: 504, 1024
+  size: 944, 307
+  orig: 944, 307
   offset: 0, 0
   index: -1
 weapons/Assault_Rifles/TORQ-9/TORQ-9
   rotate: false
-  xy: 2, 1358
+  xy: 504, 1333
   size: 1018, 278
   orig: 1018, 278
   offset: 0, 0
   index: -1
+weapons/Carbines/LC2-Lynx/LC2_Lynx
+  rotate: false
+  xy: 504, 441
+  size: 884, 287
+  orig: 884, 287
+  offset: 0, 0
+  index: -1
 weapons/Pistols/Beamer_VS3/Beamer_VS3
   rotate: false
-  xy: 2, 919
+  xy: 504, 2
   size: 677, 437
   orig: 677, 437
   offset: 0, 0
   index: -1
+weapons/Pistols/NC08_Mag-Scatter/NC08_Mag-Scatter
+  rotate: false
+  xy: 504, 1613
+  size: 977, 408
+  orig: 977, 408
+  offset: 0, 0
+  index: -1
 weapons/Pistols/NS-357_Underboss/NS-357_Underboss
   rotate: false
-  xy: 1036, 1514
+  xy: 1183, 24
   size: 536, 415
   orig: 536, 415
   offset: 0, 0
   index: -1
-weapons/Pistols/NS-61_Emissary/NS-61_Emissary
+
+textures7.png
+size: 2048,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+gfx/map/building_tileroof_2
   rotate: false
-  xy: 2, 504
-  size: 674, 413
-  orig: 674, 413
+  xy: 678, 2
+  size: 500, 500
+  orig: 500, 500
   offset: 0, 0
   index: -1
-weapons/Shotguns/LA39_Bruiser/LA39_Bruiser
+weapons/Pistols/NS-61_Emissary/NS-61_Emissary
   rotate: false
-  xy: 2, 1638
-  size: 1032, 291
-  orig: 1032, 291
+  xy: 2, 89
+  size: 674, 413
+  orig: 674, 413
   offset: 0, 0
   index: -1

@@ -43,8 +43,6 @@ public class MagazineReload implements ReloadMechanism {
                 timer = 0;
                 reloading = false;
                 this.weapon.magazine().setAmount(this.weapon.magazine().capacity());
-                this.weapon.effects().shortReload.stop();
-                this.weapon.effects().longReload.stop();
             }
         }
 

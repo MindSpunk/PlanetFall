@@ -154,7 +154,7 @@ public class Player extends Actor implements Controlled {
         //SET ANGLE
         Vector2 angle = new Vector2(0,1);
         angle.setAngle(position.angle);
-        float direction = SparkUtils.pointDirection(position.position.x, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).x, position.position.y, stage.getCamera().unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)).y);
+        float direction = SparkUtils.pointDirection(position.position.x, SparkUtils.getMousePosition(stage).x, position.position.y, SparkUtils.getMousePosition(stage).y);
         Vector2 temp = new Vector2(0, 1);
         temp.setAngle(direction);
         angle.lerp(temp, 1f);
