@@ -99,17 +99,22 @@ public class SparkGame implements Screen {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        world.step(delta, 6, 6);
-        stage.act();
-        elevatedStage.act();
-        lightHandler.update();
-        scene.render();
-        stage.getViewport().apply();
-        stage.draw();
-        lightHandler.setCombinedMatrix((OrthographicCamera) stage.getCamera());
-        lightHandler.render();
-        elevatedStage.draw();
-        ui.draw(delta);
+        try {
+
+            world.step(delta, 6, 6);
+            stage.act();
+            elevatedStage.act();
+            lightHandler.update();
+            scene.render();
+            stage.getViewport().apply();
+            stage.draw();
+            lightHandler.setCombinedMatrix((OrthographicCamera) stage.getCamera());
+            lightHandler.render();
+            elevatedStage.draw();
+            ui.draw(delta);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         //debugRenderer.render(world, stage.getCamera().combined);
 
