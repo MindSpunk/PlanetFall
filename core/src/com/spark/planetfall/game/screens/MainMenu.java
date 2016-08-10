@@ -28,6 +28,7 @@ public class MainMenu implements Screen {
     public final Window window;
     public final TextButton play_button;
     public final TextButton quit_button;
+    public final TextButton controls_button;
     public final Image background;
     public final TextField ipInput;
     public final TextField nameInput;
@@ -40,6 +41,10 @@ public class MainMenu implements Screen {
     public SelectBox<String> playSecondaryList;
     public Image primaryImage;
     public Image secondaryImage;
+
+    public Window controls;
+    public Label controlsLabel;
+    public TextButton controlsExit;
 
     public MainMenu(PlanetFallClient game) {
 
@@ -54,11 +59,14 @@ public class MainMenu implements Screen {
         play_button = new TextButton("Play", GUISkin.get());
         ipInput.setPosition(0, 0);
         quit_button = new TextButton("Quit", GUISkin.get());
+        controls_button = new TextButton("Controls", GUISkin.get());
         window.add(nameInput);
         window.row();
         window.add(ipInput);
         window.row();
         window.add(play_button).width(200);
+        window.row();
+        window.add(controls_button).width(200);
         window.row();
         window.add(quit_button).width(200);
         background = new Image(Atlas.get().createSprite("gfx/background_1"));
@@ -66,6 +74,7 @@ public class MainMenu implements Screen {
         stage.addActor(background);
         stage.addActor(window);
         weapons();
+        controls();
         Gdx.input.setInputProcessor(stage);
 
     }
@@ -105,6 +114,12 @@ public class MainMenu implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
+            }
+        });
+        controls_button.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                stage.addActor(controls);
             }
         });
 
@@ -213,6 +228,42 @@ public class MainMenu implements Screen {
 
         play.add(playTable);
         this.stage.addActor(play);
+    }
+
+    public void controls() {
+
+        this.controls = new Window("Controls", GUISkin.get());
+        this.controls.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+
+        this.controlsExit = new TextButton("OK", GUISkin.get());
+        controlsExit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                controls.remove();
+            }
+        });
+
+        String controls =
+                "W - Move Up \n" +
+                        "S - Move Down \n" +
+                        "A - Move Left \n" +
+                        "D - Move Right \n" +
+                        "F - Activate Ability \n" +
+                        "1 / 2 - Select Weapon 1/2 \n" +
+                        "Shift - Sprint \n" +
+                        "Left Mouse - Shoot \n" +
+                        "Right Mouse - Aim \n" +
+                        "R - Reload \n \n \n" +
+                        "The goal of the game is to score as many kills as possible against enemy players by shooting at them.\n" +
+                        "The lines that come from the player in an arc represent your aim and cone of fire, the range in which your bullets spread.\n" +
+                        "The wider the arc, the less accurate the shot will be.\n" +
+                        "The blue and green parts of these lines represent your shields and health respectively. The less blue or green, the less shields or health.";
+
+        controlsLabel = new Label(controls,GUISkin.get());
+
+        this.controls.add(controlsLabel);
+        this.controls.row();
+        this.controls.add(controlsExit);
     }
 
 
